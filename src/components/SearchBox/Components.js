@@ -5,6 +5,11 @@ const Container = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 100%;
+    @media only screen 
+    and (max-device-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+}
 `
 
 const Div = styled.div`

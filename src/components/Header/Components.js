@@ -10,6 +10,11 @@ const Header = styled.header`
   grid-gap: 50px;
   align-items: center;
   box-sizing: border-box;
+  @media only screen 
+  and (max-device-width: 768px) {
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+}
 `
 
 const Container = styled.div`
