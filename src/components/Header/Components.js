@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { Cart } from "styled-icons/evil/Cart"
+import { User } from "styled-icons/evil/User"
 
 const Header = styled.header`
   margin: 1rem auto;
@@ -16,8 +18,22 @@ const Container = styled.div`
   border-bottom: 3px solid #440E5E;
 `
 
-const Div = styled.div`
-  
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
 `
 
-export { Header, Container, Div }
+const CartIcon = styled(Cart)`
+  color: #440E5E;
+  width: 50px;
+  height: 50px;
+`
+
+const UserIcon = styled(User)`
+  color: #440E5E;
+  width: 50px;
+  height: 50px;
+`
+
+export { Header, Container, Grid, CartIcon, UserIcon }

@@ -15,7 +15,7 @@ const TextInput = styled.input`
   display: block;
   width: 100%;
   padding: 0.5rem 2.5rem;
-  border: 2px solid #440E5E;
+  border: 3px solid #440E5E;
   border-radius: 4px;
   font-family: inherit;
   outline: none;

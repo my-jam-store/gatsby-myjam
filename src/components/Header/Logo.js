@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import { Div } from "./Components"
+import { Link } from "gatsby"
 
 const Logo = () => {
   const data = useStaticQuery(graphql`
@@ -17,9 +17,11 @@ const Logo = () => {
   `)
 
   return (
-    <Div>
-      <Img fluid={data.placeholderImage.childImageSharp.fluid} alt={`My Jam Store`} />
-    </Div>
+    <div>
+      <Link to={`/`}>
+        <Img fluid={data.placeholderImage.childImageSharp.fluid} alt={`My Jam Store`} />
+      </Link>
+    </div>
   )
 }
 
