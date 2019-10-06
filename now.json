@@ -3,9 +3,6 @@
     "autoAlias": true
   },
   "build": {
-    "env": {
-      "CONTENTFUL_SPACE_ID": "@environment-space-id",
-      "CONTENTFUL_API_KEY": "@environment-api-key"
-    }
+    "dotenv": ".env.development"
   }
 }
