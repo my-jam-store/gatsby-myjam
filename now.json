@@ -1,0 +1,8 @@
+{
+  "github": {
+    "autoAlias": true
+  },
+  "build": {
+    "dotenv": ".env.development"
+  }
+}
