@@ -6,6 +6,9 @@ const ProductsQuery = `{
         name
         sku
         price
+        image {
+          image
+        }
         description {
           description
         }
@@ -17,7 +20,8 @@ const ProductsQuery = `{
 const flatten = arr =>
   arr.map(({ node }) => ({
     ...node,
-    ...node.description
+    ...node.description,
+    ...node.image
   }))
 
 const queries = [
