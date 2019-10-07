@@ -1,3 +1,5 @@
+const queries = require("./src/utils/algolia")
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -13,6 +15,16 @@ module.exports = {
         spaceId: `${process.env.CONTENTFUL_SPACE_ID}`,
         accessToken: `${process.env.CONTENTFUL_API_KEY}`
       }
+    },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: `${process.env.GATSBY_ALGOLIA_APP_ID}`,
+        apiKey: `${process.env.ALGOLIA_ADMIN_KEY}`,
+        indexName: `${process.env.ALGOLIA_INDEX_NAME}`,
+        queries,
+        chunkSize: 10000,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,

@@ -5,9 +5,11 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "algoliasearch": "^3.35.0",
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.15.29",
     "gatsby-image": "^2.2.24",
+    "gatsby-plugin-algolia": "^0.3.4",
     "gatsby-plugin-manifest": "^2.2.20",
     "gatsby-plugin-offline": "^3.0.11",
     "gatsby-plugin-react-helmet": "^3.1.10",
@@ -20,6 +22,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
+    "react-instantsearch-dom": "^5.7.0",
     "styled-components": "^4.4.0",
     "styled-icons": "^8.4.2"
   },
