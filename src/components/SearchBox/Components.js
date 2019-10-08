@@ -5,15 +5,45 @@ const Container = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-    @media only screen 
-    and (max-device-width: 768px) {
+  @media only screen 
+  and (max-device-width: 768px) {
     width: 80%;
     margin: 0 auto;
-}
+  }
 `
 
-const Div = styled.div`
-  
+const Wrapper = styled.div`
+  .ais-InstantSearch__root {
+    position: relative;
+  }
+  .ais-Hits {
+    position: absolute;
+    background-color: #FAFAFA;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
+    border-radius: 3px;
+  }
+  .ais-Hits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    box-sizing: border-box;
+    grid-gap: 15px;
+    padding: 15px;
+  }
+  .ais-Hits-item {
+    margin: 0;
+  }
+  @media only screen 
+  and (max-device-width: 768px) {
+    .ais-Hits {
+      width: 80%;
+      left: 10%;
+    }
+  }
 `
 
 const TextInput = styled.input`
@@ -38,4 +68,4 @@ const SearchIcon = styled(Search)`
   transform: translate(50%, -50%);
 `
 
-export { Container, Div, TextInput, SearchIcon }
+export { Container, Wrapper, TextInput, SearchIcon }

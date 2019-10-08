@@ -3,13 +3,16 @@ import algoliasearch from "algoliasearch/lite"
 import { InstantSearch, Configure } from "react-instantsearch-dom"
 import Search from "./Search"
 import SearchResult from "./SearchResult"
+import { Wrapper } from "./Components"
 
 const searchClient = algoliasearch(`${process.env.GATSBY_ALGOLIA_APP_ID}`, `${process.env.GATSBY_ALGOLIA_SEARCH_KEY}`)
 
 export default () => (
-  <InstantSearch searchClient={searchClient} indexName="Products">
-    <Configure hitsPerPage={20} />
-    <Search />
-    <SearchResult />
-  </InstantSearch>
+  <Wrapper>
+    <InstantSearch searchClient={searchClient} indexName="Products">
+      <Configure hitsPerPage={20} />
+      <Search />
+      <SearchResult />
+    </InstantSearch>
+  </Wrapper>
 );
