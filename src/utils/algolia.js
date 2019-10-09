@@ -1,33 +1,28 @@
 const ProductsQuery = `{
-  allContentfulProducts {
-    edges {
-      node {
-        id
+  allAirtable(filter: {table: {eq: "Products"}}) {
+    nodes {
+      data {
+        productId
         name
+        slug
         sku
+        description
         price
-        image {
-          image
-        }
-        description {
-          description
-        }
+        categories
       }
     }
   }
 }`
 
 const flatten = arr =>
-  arr.map(({ node }) => ({
-    ...node,
-    ...node.description,
-    ...node.image
+  arr.map(({ data }) => ({
+    ...data
   }))
 
 const queries = [
   {
     query: ProductsQuery,
-    transformer: ({data}) => flatten(data.allContentfulProducts.edges),
+    transformer: ({ data }) => flatten(data.allAirtable.nodes),
   }
 ]
 
