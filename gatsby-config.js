@@ -10,10 +10,19 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: `gatsby-source-airtable`,
       options: {
-        spaceId: `${process.env.CONTENTFUL_SPACE_ID}`,
-        accessToken: `${process.env.CONTENTFUL_API_KEY}`
+        apiKey: `${process.env.AIRTABLE_API_KEY}`,
+        tables: [
+          {
+            baseId: `${process.env.AIRTABLE_BASE_ID}`,
+            tableName: `Products`
+          },
+          {
+            baseId: `${process.env.AIRTABLE_BASE_ID}`,
+            tableName: `Categories`
+          }
+        ]
       }
     },
     {
