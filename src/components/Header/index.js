@@ -1,9 +1,10 @@
 import React from "react"
 import { Container, Header, CartIcon, UserIcon, Grid } from "./Components"
-import SearchBox from "../SearchBox";
+import SearchBox from "../SearchBox"
+import NavItems from "../NavItems"
 import Logo from "./Logo"
 
-export default () => (
+export default ({ categories }) => (
   <Container>
     <Header>
       <Logo />
@@ -13,5 +14,6 @@ export default () => (
         <CartIcon />
       </Grid>
     </Header>
+    <NavItems categories={categories} />
   </Container>
 )

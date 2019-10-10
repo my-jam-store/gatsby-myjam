@@ -20,7 +20,6 @@ const Header = styled.header`
 const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
-  border-bottom: 3px solid #440E5E;
 `
 
 const Grid = styled.div`
