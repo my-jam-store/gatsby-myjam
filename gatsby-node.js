@@ -1,7 +1,43 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require(`path`)
+const slash = require(`slash`)
 
-// You can delete this file if you're not using it
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+  return graphql(
+    `
+      {
+        allAirtable(filter: {table: {eq: "Categories"}}) {
+          nodes {
+            data {
+              categoryId
+              name
+              slug
+              mainCategory
+              subCategory
+            }
+          }
+        }
+      }
+    `
+  ).then(result => {
+    if (result.errors) {
+      console.log(`Error retrieving categories data`, result.errors)
+    }
+
+    const categoryTemplate = path.resolve(`./src/templates/category.js`)
+
+    result.data.allAirtable.nodes.forEach(({ data }) => {
+      createPage({
+        path: `/category/${data.slug}/`,
+        component: slash(categoryTemplate),
+        context: {
+          slug: data.slug,
+          id: data.categoryId
+        }
+      });
+    });
+  })
+    .catch(error => {
+      console.log(`Error retrieving categories data`, error)
+    })
+}
