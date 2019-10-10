@@ -13,7 +13,7 @@ exports.createPages = ({ graphql, actions }) => {
               name
               slug
               mainCategory
-              subCategory
+              subCategories
             }
           }
         }
