@@ -64,8 +64,12 @@ const List = styled.div`
   box-sizing: border-box;
   a {
     padding: 10px 35px;
+    border-bottom: 1px solid #EAEAEA;
     text-decoration: none;
     color: #333;
+  }
+  a:last-child {
+    border-bottom: none;
   }
 `
 const Grid = styled.div`
