@@ -13,8 +13,9 @@ const Header = styled.header`
   @media only screen 
   and (max-device-width: 768px) {
     grid-gap: 20px;
-    grid-template-columns: 1fr;
-}
+    grid-template-columns: repeat(3, 1fr);
+    width: 95%;
+  }
 `
 
 const Container = styled.div`
@@ -26,6 +27,10 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+  @media only screen 
+  and (max-device-width: 768px) {
+    justify-items: right;
+  }
 `
 
 const CartIcon = styled(Cart)`

@@ -27,7 +27,7 @@ const Item = styled.div`
   position: relative;
   span {
     color: #440E5E;
-    font-weight: 600
+    font-weight: 600;
   }
   div {
     visibility:hidden;

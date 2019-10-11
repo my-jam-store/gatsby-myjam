@@ -5,11 +5,6 @@ const Container = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  @media only screen 
-  and (max-device-width: 768px) {
-    width: 80%;
-    margin: 0 auto;
-  }
 `
 
 const Wrapper = styled.div`
@@ -39,6 +34,8 @@ const Wrapper = styled.div`
   }
   @media only screen 
   and (max-device-width: 768px) {
+    order: 3;
+    grid-column: 1/-1;
     .ais-Hits {
       width: 80%;
       left: 10%;
