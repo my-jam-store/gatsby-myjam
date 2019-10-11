@@ -25,7 +25,7 @@
     "react-helmet": "^5.2.1",
     "react-instantsearch-dom": "^5.7.0",
     "styled-components": "^4.4.0",
-    "styled-icons": "^8.4.2"
+    "styled-icons": "^8.5.1"
   },
   "devDependencies": {
     "env-cmd": "^10.0.1",
