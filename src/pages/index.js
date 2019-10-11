@@ -26,10 +26,13 @@ export default IndexPage
 
 export const categoriesQuery = graphql`
     {
-        allAirtable(filter: { table: { eq: "Categories" }, data: { mainCategory: { eq: 1 }}}) {
+        allAirtable(filter: { table: { eq: "Categories" }}) {
             nodes {
+                recordId
                 data {
                     categoryId
+                    mainCategory
+                    subCategories
                     name
                     slug
                 }

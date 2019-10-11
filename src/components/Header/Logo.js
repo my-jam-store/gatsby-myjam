@@ -16,7 +16,7 @@ const Div = styled.div`
 const Logo = () => {
   const data = useStaticQuery(graphql`
       query {
-          placeholderImage: file(relativePath: { eq: "logo-myjam.png" }) {
+          placeholderImage: file(relativePath: { eq: "logo.png" }) {
               childImageSharp {
                   fluid(maxWidth: 300) {
                       ...GatsbyImageSharpFluid
