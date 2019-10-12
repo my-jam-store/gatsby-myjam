@@ -1,21 +1,22 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import React from "react"
+import { graphql } from "gatsby"
+import Index from "../components/Layout"
+import SEO from "../components/seo"
+import ProductGrid from "../components/ProductGrid"
 
 const categoryPage = ({ data }) => {
-  const { category, products, allCategories: { nodes } } = data
+  const { category, products, allCategories } = data
   console.log(products)
-  const name = "test";
   return (
-    <Layout categories={nodes}>
-      <SEO title={name} />
+    <Index categories={allCategories.nodes}>
+      <SEO title={category.data.name} />
       <div>
-        <h1>{name}</h1>
+        <h1>{category.data.name}</h1>
+        <ProductGrid products={products.nodes} />
       </div>
-    </Layout>
-  );
-};
+    </Index>
+  )
+}
 
 export default categoryPage
 
@@ -27,7 +28,6 @@ export const pageQuery = graphql`
                 name
             }
         }
-
         allCategories: allAirtable(filter: { table: { eq: "Categories" }}) {
             nodes {
                 recordId
@@ -40,7 +40,6 @@ export const pageQuery = graphql`
                 }
             }
         }
-
         products: allAirtable(filter: {table: { eq: "Products" }, data: {categories: { eq: $recordId}}}) {
             nodes {
                 data {
