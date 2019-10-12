@@ -15,14 +15,15 @@ export default ({ categories }) => {
       navItem = e.target.parentNode
     }
 
-    Array.from(e.target.closest('nav').children).forEach((child) => {
-      if(child.getAttribute('data-id') !== navItem.getAttribute('data-id')) {
-        child.querySelector('div').classList.remove('active')
-        child.querySelector('svg').classList.remove('rotate')
-      }
-    })
-
     if(!!navItem) {
+
+      Array.from(e.target.closest('nav').children).forEach((child) => {
+        if(child.getAttribute('data-id') !== navItem.getAttribute('data-id')) {
+          child.querySelector('div').classList.remove('active')
+          child.querySelector('svg').classList.remove('rotate')
+        }
+      })
+
       const subItems  = navItem.querySelector('div')
       const arrowIcon = navItem.querySelector('svg')
       navItem.classList.toggle('active')
