@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 
-import Layout from "../components/layout"
+import Index from "../components/Layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
@@ -9,7 +9,7 @@ const IndexPage = ({ data }) => {
   const { nodes } = data.allAirtable
 
   return (
-    <Layout categories={nodes}>
+    <Index categories={nodes}>
       <SEO title="Home" />
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
@@ -18,7 +18,7 @@ const IndexPage = ({ data }) => {
         <Image />
       </div>
       <Link to="/page-2/">Go to page 2</Link>
-    </Layout>
+    </Index>
   )
 }
 
