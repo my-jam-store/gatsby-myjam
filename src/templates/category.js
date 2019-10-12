@@ -6,13 +6,12 @@ import ProductGrid from "../components/ProductGrid"
 
 const categoryPage = ({ data }) => {
   const { category, products, allCategories } = data
-  console.log(products)
+
   return (
     <Index categories={allCategories.nodes}>
       <SEO title={category.data.name} />
       <div>
-        <h1>{category.data.name}</h1>
-        <ProductGrid products={products.nodes} />
+        <ProductGrid title={category.data.name} products={products.nodes} />
       </div>
     </Index>
   )

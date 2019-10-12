@@ -1,18 +1,15 @@
 import React from "react"
-import { Grid } from "./Components"
+import { Grid, Title } from "./Components"
+import Product from "./Product"
 
-const ProductGrid = ({ products }) => {
-
+const ProductGrid = ({ products, title }) => {
   return (
-    <Grid>
-      {products.map(({ data }) => (
-        <div key={data.productId}>
-          <h2>{data.name}</h2>
-          <h2>{data.price}</h2>
-          <h2>{data.description}</h2>
-        </div>
-      ))}
-    </Grid>
+    <>
+      <Title>{title}</Title>
+      <Grid>
+        {products.map(({ data }) => ( <Product key={data.productId} data={data} /> ))}
+      </Grid>
+    </>
   )
 }
 

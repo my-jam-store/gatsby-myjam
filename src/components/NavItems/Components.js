@@ -7,7 +7,7 @@ const Container = styled.div`
 
 const NavItems = styled.nav`
   margin: 1rem auto;
-  max-width: 1260px;
+  max-width: 1120px;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: max-content;

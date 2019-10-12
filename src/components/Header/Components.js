@@ -4,7 +4,7 @@ import { User } from "styled-icons/evil/User"
 
 const Header = styled.header`
   margin: 1rem auto;
-  max-width: 1260px;
+  max-width: 1120px;
   display: grid;
   grid-template-columns: 100px auto 200px;
   grid-gap: 50px;
