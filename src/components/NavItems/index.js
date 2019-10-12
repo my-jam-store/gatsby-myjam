@@ -32,7 +32,7 @@ export default ({ categories }) => {
   }
 
   return (
-    <Container>
+    <Container id="navDesktop">
       <NavItems onClick={handleNavItemStatus}>
         {categories.map(({ data }) => (data.mainCategory === 1 && (
           <Item

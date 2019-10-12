@@ -30,7 +30,7 @@ export default ({ categories }) => {
   }, [isOpen])
 
   return (
-    <Container>
+    <Container id="navMobile">
       <MenuIcon onClick={handleMenuOpen} />
       <Wrapper style={{
         left: leftVal

@@ -21,6 +21,18 @@ const Header = styled.header`
 const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
+  #navMobile {
+    display: none;
+  }
+  @media only screen 
+  and (max-device-width: 768px) {
+    #navMobile {
+      display: block;
+    }
+    #navDesktop {
+      display: none !important;
+    }
+  }
 `
 
 const Grid = styled.div`

@@ -9,7 +9,7 @@ const Div = styled.div`
   @media only screen 
     and (max-device-width: 768px) {
     width: 100px;
-    margin: 0 auto;
+    justify-self: center;
     grid-column-start: 2;
   }
 `
