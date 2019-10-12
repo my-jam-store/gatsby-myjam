@@ -29,6 +29,13 @@ export default ({ categories }) => {
     setLeftVal(isOpen ? '0%' : '-80%')
   }, [isOpen])
 
+  useEffect(() => {
+    return () => {
+      const el = document.querySelector('.black-layer')
+      return el && el.remove()
+    }
+  }, [])
+
   return (
     <Container id="navMobile">
       <MenuIcon onClick={handleMenuOpen} />
