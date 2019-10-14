@@ -45,7 +45,7 @@ exports.createPages = ({ graphql, actions }) => {
     const { categories, products } = result.data
 
     const categoryTemplate = path.resolve(`./src/templates/category.js`)
-    const countProductsPerPage = 2
+    const countProductsPerPage = 20
 
     for(let i = 0; i < categories.totalCount; i++) {
       const totalProductsPerCategory = products.nodes.filter((product) => (
@@ -66,6 +66,7 @@ exports.createPages = ({ graphql, actions }) => {
           path: `/category/${categories.nodes[i].data.slug}/${pathSuffix}`,
           component: categoryTemplate,
           context: {
+            name: categories.nodes[i].data.name,
             pageProducts: pageProducts,
             currentPage: currentPage,
             countPages: countPages,
