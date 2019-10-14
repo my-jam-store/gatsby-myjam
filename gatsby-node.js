@@ -1,12 +1,14 @@
 const path = require(`path`)
 const slash = require(`slash`)
+const fs = require(`fs`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(
     `
       {
-        allAirtable(filter: {table: {eq: "Categories"}}) {
+        categories: allAirtable(filter: {table: {eq: "Categories"}}) {
+          totalCount
           nodes {
             recordId
             data {
@@ -18,6 +20,21 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        
+        products: allAirtable(filter: {table: {eq: "Products"}}) {
+          totalCount
+          nodes {
+            data {
+              productId
+              name
+              slug
+              sku
+              description
+              price
+              categories
+            }
+          }
+        }
       }
     `
   ).then(result => {
@@ -25,21 +42,61 @@ exports.createPages = ({ graphql, actions }) => {
       console.log(`Error retrieving categories data`, result.errors)
     }
 
-    const categoryTemplate = path.resolve(`./src/templates/category.js`)
+    const { categories, products } = result.data
 
-    result.data.allAirtable.nodes.forEach(({ recordId, data }) => {
-      createPage({
-        path: `/category/${data.slug}/`,
-        component: slash(categoryTemplate),
-        context: {
-          slug: data.slug,
-          recordId: recordId,
-          id: data.categoryId
+    const categoryTemplate = path.resolve(`./src/templates/category.js`)
+    const countProductsPerPage = 2
+
+    for(let i = 0; i < categories.totalCount; i++) {
+      const totalProductsPerCategory = products.nodes.filter((product) => (
+        product.data.categories.indexOf(categories.nodes[i].recordId)) !== -1
+      )
+
+      const countPages = Math.ceil(totalProductsPerCategory.length / countProductsPerPage)
+
+      for(let currentPage = 1; currentPage <= countPages; currentPage++) {
+        const pathSuffix = currentPage > 1 ? currentPage : ""
+
+        const startIndexInclusive = countProductsPerPage * (currentPage - 1)
+        const endIndexExclusive = startIndexInclusive + countProductsPerPage
+        const pageProducts = products.nodes.slice(startIndexInclusive, endIndexExclusive)
+
+        const pageData = {
+          filePath: `/${pathSuffix}`,
+          path: `/category/${categories.nodes[i].data.slug}/${pathSuffix}`,
+          component: categoryTemplate,
+          context: {
+            pageProducts: pageProducts,
+            currentPage: currentPage,
+            countPages: countPages,
+            slug: categories.nodes[i].data.slug,
+            recordId: categories.nodes[i].recordId,
+            id: categories.nodes[i].data.categoryId
+          }
         }
-      })
-    })
+
+        createJSON(pageData)
+        createPage(pageData)
+      }
+      console.log(`\nCreated ${countPages} pages of paginated content.`)
+    }
   })
     .catch(error => {
       console.log(`Error retrieving categories data`, error)
     })
+}
+
+function createJSON(pageData) {
+  const pathSuffix = pageData.filePath.substring(1)
+  const dir = "public/paginationJson/"
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+  }
+  const filePath = `${dir}${pageData.context.slug}${pathSuffix}.json`;
+  const dataToSave = JSON.stringify(pageData.context.pageProducts);
+  fs.writeFile(filePath, dataToSave, function(err) {
+    if(err) {
+      return console.log(err);
+    }
+  });
 }
