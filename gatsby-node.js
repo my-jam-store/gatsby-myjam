@@ -1,5 +1,4 @@
 const path = require(`path`)
-const slash = require(`slash`)
 const fs = require(`fs`)
 
 exports.createPages = ({ graphql, actions }) => {
@@ -21,7 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
         
-        products: allAirtable(filter: {table: {eq: "Products"}}) {
+        products: allAirtable(filter: {table: {eq: "Products"} }, sort: { fields: [data___productId] }) {
           totalCount
           nodes {
             data {
