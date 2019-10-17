@@ -1,10 +1,7 @@
 import React from "react"
 import { Item } from "./Components"
 
-const Product = ({ js, item }) => {
-  if(js) {
-    console.log(item.data)
-  }
+const Product = React.memo(({ js, item }) => {
   return (
     <>
       {js && (
@@ -15,10 +12,18 @@ const Product = ({ js, item }) => {
             />
             <h3>{item.data.name}</h3>
             <span>{item.data.price}</span>
+            <button
+              className="snipcart-add-item"
+              data-item-id={item.recordId}
+              data-item-name={item.data.name}
+              data-item-price={item.data.price}
+              data-item-url="https://a888cd7c.ngrok.io/products"
+              data-item-description="">
+              Add To Cart
+            </button>
         </Item>
       )}
     </>
   )
-}
-
+})
 export default Product

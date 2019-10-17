@@ -23,6 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
         products: allAirtable(filter: {table: {eq: "Products"} }, sort: { fields: [data___productId] }) {
           totalCount
           nodes {
+            recordId
             data {
               productId
               name
