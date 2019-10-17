@@ -1,3 +1,5 @@
+const queries = require("./src/utils/algolia")
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -8,11 +10,30 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: `gatsby-source-airtable`,
       options: {
-        spaceId: `${process.env.CONTENTFUL_SPACE_ID}`,
-        accessToken: `${process.env.CONTENTFUL_API_KEY}`
+        apiKey: `${process.env.AIRTABLE_API_KEY}`,
+        tables: [
+          {
+            baseId: `${process.env.AIRTABLE_BASE_ID}`,
+            tableName: `Products`
+          },
+          {
+            baseId: `${process.env.AIRTABLE_BASE_ID}`,
+            tableName: `Categories`
+          }
+        ]
       }
+    },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: `${process.env.GATSBY_ALGOLIA_APP_ID}`,
+        apiKey: `${process.env.ALGOLIA_ADMIN_KEY}`,
+        indexName: `${process.env.ALGOLIA_INDEX_NAME}`,
+        queries,
+        chunkSize: 10000,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,

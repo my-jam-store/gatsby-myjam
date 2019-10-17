@@ -6,17 +6,18 @@ import styled from "styled-components"
 
 const Div = styled.div`
   width: 100%;
-    @media only screen 
+  @media only screen 
     and (max-device-width: 768px) {
     width: 100px;
-    margin: 0 auto;
-}
+    justify-self: center;
+    grid-column-start: 2;
+  }
 `
 
 const Logo = () => {
   const data = useStaticQuery(graphql`
       query {
-          placeholderImage: file(relativePath: { eq: "logo-myjam.png" }) {
+          placeholderImage: file(relativePath: { eq: "logo.png" }) {
               childImageSharp {
                   fluid(maxWidth: 300) {
                       ...GatsbyImageSharpFluid

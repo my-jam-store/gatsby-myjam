@@ -5,23 +5,28 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "algoliasearch": "^3.35.0",
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.15.29",
     "gatsby-image": "^2.2.24",
+    "gatsby-plugin-algolia": "^0.3.4",
     "gatsby-plugin-manifest": "^2.2.20",
     "gatsby-plugin-offline": "^3.0.11",
     "gatsby-plugin-react-helmet": "^3.1.10",
     "gatsby-plugin-sharp": "^2.2.28",
     "gatsby-plugin-styled-components": "^3.1.8",
+    "gatsby-source-airtable": "^2.0.9",
     "gatsby-source-contentful": "^2.1.45",
     "gatsby-source-filesystem": "^2.1.29",
     "gatsby-transformer-sharp": "^2.2.20",
+    "lodash.throttle": "^4.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
+    "react-instantsearch-dom": "^5.7.0",
     "styled-components": "^4.4.0",
-    "styled-icons": "^8.4.2"
+    "styled-icons": "^8.5.1"
   },
   "devDependencies": {
     "env-cmd": "^10.0.1",
@@ -33,7 +38,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "env-cmd -f .env.develpoment gatsby develop",
+    "develop": "rm -rf .cache && env-cmd -f .env.develpoment gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

@@ -4,7 +4,7 @@ import { User } from "styled-icons/evil/User"
 
 const Header = styled.header`
   margin: 1rem auto;
-  max-width: 1260px;
+  max-width: 1120px;
   display: grid;
   grid-template-columns: 100px auto 200px;
   grid-gap: 50px;
@@ -13,20 +13,36 @@ const Header = styled.header`
   @media only screen 
   and (max-device-width: 768px) {
     grid-gap: 20px;
-    grid-template-columns: 1fr;
-}
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
 `
 
 const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
-  border-bottom: 3px solid #440E5E;
+  #navMobile {
+    display: none;
+  }
+  @media only screen 
+  and (max-device-width: 768px) {
+    #navMobile {
+      display: block;
+    }
+    #navDesktop {
+      display: none !important;
+    }
+  }
 `
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+  @media only screen 
+  and (max-device-width: 768px) {
+    justify-items: right;
+  }
 `
 
 const CartIcon = styled(Cart)`

@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+body {
+	font-family: 'Nunito', sans-serif !important;
+}
+
 html {
-  font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -7,6 +12,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #FBFCFF;
 }
 article,
 aside,
@@ -618,5 +624,12 @@ pre tt:after {
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
+  }
+}
+
+@media only screen
+and (max-device-width: 768px) {
+  body {
+    padding: 0 20px;
   }
 }

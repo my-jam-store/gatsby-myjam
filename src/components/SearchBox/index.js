@@ -1,15 +1,18 @@
 import React from "react"
-import { Container, TextInput, SearchIcon } from "./Components"
+import algoliasearch from "algoliasearch/lite"
+import { InstantSearch, Configure } from "react-instantsearch-dom"
+import Search from "./Search"
+import SearchResult from "./SearchResult"
+import { Wrapper } from "./Components"
 
-// TODO working on algolia integration.
+const searchClient = algoliasearch(`${process.env.GATSBY_ALGOLIA_APP_ID}`, `${process.env.GATSBY_ALGOLIA_SEARCH_KEY}`)
 
-const SearchBox = () => {
-  return (
-    <Container>
-      <SearchIcon />
-      <TextInput placeholder={`What are you looking for ?`} />
-    </Container>
-  )
-}
-
-export default SearchBox
+export default () => (
+  <Wrapper>
+    <InstantSearch searchClient={searchClient} indexName="Products">
+      <Configure hitsPerPage={20} />
+      <Search />
+      <SearchResult />
+    </InstantSearch>
+  </Wrapper>
+);
