@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Plus } from "styled-icons/evil/Plus"
 
 const Grid = styled.div`
   display: grid;
@@ -24,10 +25,26 @@ const Item = styled.div`
     margin-bottom: 0.5rem;
   }
   h3 {
+    margin-bottom: 0.2rem;
+  }
+  h3 span {
+    color: #000;
     font-size: 20px;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-weight: 600;
+  }
+  span {
+    font-size: 15px;
   }
 `
 
-export { Grid, Item, Title }
+const PlusIcon = styled(Plus)`
+  color: #440E5E;
+  width: 35px;
+  height: 35px;
+  float: right;
+  position: relative;
+  top: -1px;
+  right: -5px;
+`
+
+export { Grid, Item, Title, PlusIcon }
