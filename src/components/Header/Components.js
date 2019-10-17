@@ -14,7 +14,7 @@ const Header = styled.header`
   and (max-device-width: 768px) {
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
-    width: 95%;
+    width: 100%;
   }
 `
 

@@ -626,3 +626,10 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+@media only screen
+and (max-device-width: 768px) {
+  body {
+    padding: 0 20px;
+  }
+}
