@@ -24,6 +24,7 @@
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-instantsearch-dom": "^5.7.0",
+    "react-modal": "^3.10.1",
     "styled-components": "^4.4.0",
     "styled-icons": "^8.5.1"
   },
