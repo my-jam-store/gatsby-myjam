@@ -42,7 +42,7 @@ const Item = styled.div`
     transform:scaleY(1);
   }
   svg.rotate {
-    transform: rotate(-90deg);
+    transform: rotate(-180deg);
   }
 `
 
