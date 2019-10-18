@@ -656,3 +656,94 @@ and (max-device-width: 768px) {
     padding: 0 20px;
   }
 }
+
+body .snip-layout {
+  font-family: 'Nunito' !important;
+}
+
+body .snip-layout .snip-header, body .snip-layout .snip-footer {
+  background-color: #440E5E;
+}
+
+body .snip-layout .snip-header__total {
+  background-color: #FAFAFA;
+}
+
+body .snip-layout .snip-footer__copyright {
+  color: #FFF;
+}
+
+body .snip-layout .snip-header__total-label, body .snip-layout #snipcart-amount {
+  color: #000;
+}
+
+body .snip-layout .snip-quantity-trigger__btn {
+  background-color: transparent;
+  font-weight: bold;
+}
+
+body .snip-layout .snip-quantity-trigger__btn--minus:before {
+  content: "_";
+  line-height: 7px;
+}
+
+body .snip-layout .snip-quantity-trigger__text {
+  padding: 0 7px;
+}
+
+body .snip-layout .snip-quantity-trigger__btn:hover {
+  background-color: #440E5E;
+  color: #FFF;
+}
+
+body .snip-layout .snip-actions__link {
+  font-size: 16px;
+  color: #333;
+}
+
+body .snip-layout .snip-btn--highlight {
+  background-color: #440E5E;
+  color: #FFF;
+  letter-spacing: 2px;
+  font-size: 14px;
+  padding: 5px 25px;
+  box-sizing: content-box;
+}
+
+body .snip-layout .snip-btn--left {
+  letter-spacing: 2px;
+  font-size: 14px;
+  padding: 5px 25px;
+  box-sizing: content-box;
+}
+
+body .snip-layout .snip-btn--highlight:hover {
+  background-color: #440E5E;
+}
+
+body .snip-layout .snip-step__item {
+  background-color: #EAEAEA;
+}
+
+body .snip-layout input[type=password],
+body .snip-layout input[type=text],
+body .snip-layout select {
+  box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
+  border: none;
+}
+
+body .snip-layout input:focus,
+body .snip-layout input:hover,
+body .snip-layout select:focus,
+body .snip-layout select:hover {
+  box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
+  border: none;
+}
+
+body .snip-layout .snip-col .snip-form__label {
+  color: #000;
+}
+
+body .snip-layout {
+  color: #000;
+}
