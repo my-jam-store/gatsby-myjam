@@ -75,7 +75,8 @@ function SEO({ description, lang, meta, title }) {
       </script>
       <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
               id="snipcart"
-              data-api-key="NjMyNDlmZTEtMTEzMS00YjU2LWI0YjQtZGU2NjBmMGM0YjY1NjM3MDU3ODM1NzExNDE0MDk4">
+              data-api-key="NjMyNDlmZTEtMTEzMS00YjU2LWI0YjQtZGU2NjBmMGM0YjY1NjM3MDU3ODM1NzExNDE0MDk4"
+              data-autopop="false">
       </script>
       <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet"/>
     </Helmet>
