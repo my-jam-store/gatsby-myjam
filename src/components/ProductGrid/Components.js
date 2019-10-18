@@ -50,6 +50,64 @@ const PlusIcon = styled(Plus)`
   position: relative;
   top: -1px;
   right: -5px;
+  @media only screen 
+  and (max-device-width: 768px) {
+    display: none;
+  }
+`
+const QuantityBoxMobile = styled.div`
+  display: none;
+  div {
+    position: relative;
+    box-sizing: border-box;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #EAEAEA;
+    outline: none !important;
+    box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
+    user-select: none;
+  }
+  button {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #440E5E;
+    box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
+    color: #FFF;
+    border: 1px solid #440E5E;
+    :focus {
+      outline: none !important;
+    }
+  }
+  span {
+    grid-column: 1/-1;
+  }
+  svg:nth-child(2) {
+    top: 50%;
+    right: 5px;
+    transform: translate(0, -50%);
+  }
+  svg:nth-child(3) {
+    top: 50%;
+    left: 5px;
+    transform: translate(0, -50%);
+  }
+  @media only screen 
+  and (max-device-width: 768px) {
+    display: grid;
+    margin-top: 1.2rem;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto 50px;
+    grid-gap: 0.5rem;
+    justify-content: center;
+    align-content: center;
+    user-select: none; 
+  }
 `
 
 const Content = styled.div`
@@ -160,4 +218,4 @@ const CloseIcon = styled(CloseO)`
   cursor: pointer;
 `
 
-export { Grid, Item, Title, PlusIcon, Content, QuantityBox, QtyPlus, QtyMinus, CartIcon, CloseIcon }
+export { Grid, Item, Title, PlusIcon, Content, QuantityBox, QuantityBoxMobile, QtyPlus, QtyMinus, CartIcon, CloseIcon }

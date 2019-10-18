@@ -17,6 +17,7 @@ const ProductGrid = (props) => {
   const js = !g.isInitializing()
   const items = []
 
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768
 
   if(g.useInfiniteScroll && g["page"+currentPage]) {
     for(let pageNum = currentPage ;; pageNum++) {
@@ -42,7 +43,7 @@ const ProductGrid = (props) => {
   }
 
   const handleProductModal = (e) => {
-    if(e.target.parentNode.getAttribute('data-id')) {
+    if(!isMobile() && e.target.parentNode.getAttribute('data-id')) {
       componentMounted.current = true
       const item = e.target.parentNode
       setItem({
