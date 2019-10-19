@@ -21,6 +21,19 @@ const Header = styled.header`
 const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
+  .snipcart-total-items {
+    position: absolute;
+    top: 1px;
+    right: 14px;
+    background: #e8104a;
+    color: #FFF;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 2;
+  }
   #navMobile {
     display: none;
   }
@@ -39,6 +52,9 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+  div {
+    position: relative;
+  }
   @media only screen 
   and (max-device-width: 768px) {
     justify-items: right;

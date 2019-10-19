@@ -54,7 +54,15 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
               <QtyMinus onClick={handleQuantityDecrement} />
             </div>
             <div>
-              <button onClick={handleCloseModal}>
+              <button
+                onClick={handleCloseModal}
+                className="snipcart-add-item"
+                data-item-id={item.recordId}
+                data-item-name={item.name}
+                data-item-price={item.price}
+                data-item-quantity={qty}
+                data-item-url="https://myjam.store/products"
+              >
                 <CartIcon/>
                 <span>
                   Add To Cart

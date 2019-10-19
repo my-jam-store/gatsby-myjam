@@ -4,6 +4,7 @@ import SearchBox from "../SearchBox"
 import NavItems from "../NavItems"
 import NavItemsMobile from "../NavItemsMobile"
 import Logo from "./Logo"
+import MiniCart from "./MiniCart"
 
 export default ({ categories }) => {
   const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768
@@ -21,7 +22,7 @@ export default ({ categories }) => {
         <SearchBox />
         <Grid>
           <UserIcon />
-          <CartIcon />
+          <MiniCart />
         </Grid>
       </Header>
       <NavItems categories={categories} />
