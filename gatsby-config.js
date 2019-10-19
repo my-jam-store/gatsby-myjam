@@ -10,6 +10,12 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
+      resolve: 'gatsby-plugin-snipcart',
+      options: {
+        apiKey: `${process.env.GATSBY_SNIPCART_API_KEY}`
+      }
+    },
+    {
       resolve: `gatsby-source-airtable`,
       options: {
         apiKey: `${process.env.AIRTABLE_API_KEY}`,
