@@ -19,7 +19,7 @@ const MiniCart = () => {
         setItemsCount(count)
       })
 
-      window.Snipcart.subscribe('item.adding', function (ev, item, items) {
+      window.Snipcart.subscribe('item.adding', (ev, item, items) => {
         const count = window.Snipcart.api.items.count()
         setItemsCount(count + item.quantity)
       })

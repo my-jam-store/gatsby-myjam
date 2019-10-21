@@ -1,10 +1,11 @@
 import React, { useEffect } from "react"
-import { Container, Header, CartIcon, UserIcon, Grid } from "./Components"
+import { Container, Header, Grid } from "./Components"
 import SearchBox from "../SearchBox"
 import NavItems from "../NavItems"
 import NavItemsMobile from "../NavItemsMobile"
 import Logo from "./Logo"
 import MiniCart from "./MiniCart"
+import Customer from "./Customer"
 
 export default ({ categories }) => {
   const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768
@@ -21,7 +22,7 @@ export default ({ categories }) => {
         <Logo />
         <SearchBox />
         <Grid>
-          <UserIcon />
+          <Customer />
           <MiniCart />
         </Grid>
       </Header>

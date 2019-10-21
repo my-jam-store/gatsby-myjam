@@ -25,7 +25,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
     handleClose()
     setTimeout(() => setQty(1), 500)
   }
-
+  
   return (
     <Modal
       isOpen={isOpen}
@@ -61,7 +61,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
                 data-item-name={item.name}
                 data-item-price={item.price}
                 data-item-quantity={qty}
-                data-item-url="https://myjam.store/products"
+                data-item-url={`url/products`}
               >
                 <CartIcon/>
                 <span>

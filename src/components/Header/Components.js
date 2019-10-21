@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { Cart } from "styled-icons/evil/Cart"
 import { User } from "styled-icons/evil/User"
+import { UserCheck } from "styled-icons/boxicons-solid/UserCheck"
 
 const Header = styled.header`
   margin: 1rem auto;
@@ -52,8 +53,22 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+  align-items: center;
   div {
     position: relative;
+    cursor: pointer;
+  }
+  div:first-child div {
+    visibility:hidden;
+    overflow:hidden;
+    transform-origin: top;
+    transform: scaleY(0)  translate(-50%, 0);
+    transition:all .2s ease;
+  }
+  div:first-child div.active {
+    visibility: visible;
+    transition: all .2s ease;
+    transform:scaleY(1) translate(-50%, 0);
   }
   @media only screen 
   and (max-device-width: 768px) {
@@ -67,10 +82,36 @@ const CartIcon = styled(Cart)`
   height: 50px;
 `
 
-const UserIcon = styled(User)`
+const GuestIcon = styled(User)`
   color: #440E5E;
   width: 50px;
   height: 50px;
 `
 
-export { Header, Container, Grid, CartIcon, UserIcon }
+const AuthUser = styled(UserCheck)`
+  color: #440E5E;
+  width: 50px;
+  height: 50px;
+`
+
+const Menu = styled.div`
+  position: absolute !important;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 120px;
+  font-size: 15px;
+  background-color: #FFF;
+  padding: 15px 10px;
+  display: grid;
+  justify-items: center;
+  grid-gap: 10px;
+  grid-template-columns: 1fr;
+  box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
+  border-radius: 5px;
+  a {
+    color: #440E5E;
+    text-decoration: none;
+  }
+`
+
+export { Header, Container, Grid, CartIcon, GuestIcon, AuthUser, Menu }
