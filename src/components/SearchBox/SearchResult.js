@@ -1,10 +1,10 @@
 import React from "react"
-import { connectStateResults, Hits } from "react-instantsearch-dom"
-import Product from "./Product"
+import { connectStateResults } from "react-instantsearch-dom"
+import Hits from "./Hits"
 
 const SearchResult = connectStateResults(
   ({ searchState }) =>
-    searchState && searchState.query ? <Hits hitComponent={Product} /> : <span></span>
+    searchState && searchState.query ? <Hits /> : <></>
 )
 
 export default SearchResult

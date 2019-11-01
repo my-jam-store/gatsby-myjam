@@ -1,6 +1,7 @@
 const ProductsQuery = `{
   allAirtable(filter: {table: {eq: "Products"}}) {
     nodes {
+      recordId
       data {
         productId
         name
@@ -15,7 +16,8 @@ const ProductsQuery = `{
 }`
 
 const flatten = arr =>
-  arr.map(({ data }) => ({
+  arr.map(({ recordId, data }) => ({
+    recordId,
     ...data
   }))
 

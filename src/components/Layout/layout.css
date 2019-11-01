@@ -622,6 +622,10 @@ pre tt:after {
   content: "";
 }
 
+.ReactModal__Overlay--after-open {
+  z-index: 9;
+}
+
 .ReactModal__Overlay {
   background-color: rgba(33, 33, 33, 0.5) !important;
 }
