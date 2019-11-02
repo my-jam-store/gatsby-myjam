@@ -288,6 +288,10 @@ const Div = styled.div`
   top: 100px;
   background-color: #EAEAEA;
   z-index: 2;
+  @media only screen 
+  and (max-device-width: 768px) {
+    top: 160px;
+  }
 `
 
 export {
