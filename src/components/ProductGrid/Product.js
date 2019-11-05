@@ -20,6 +20,10 @@ const Product = React.memo(({ js, item }) => {
     }
   }
 
+  const handleRestQty = () => {
+    setTimeout(() => setQuantity(1), 500)
+  }
+
   return (
     <>
       {js && (
@@ -47,7 +51,15 @@ const Product = React.memo(({ js, item }) => {
               <QtyMinus onClick={handleQuantityDecrement} />
             </div>
             <div>
-              <button>
+              <button
+                onClick={handleRestQty}
+                className="snipcart-add-item"
+                data-item-id={item.recordId}
+                data-item-name={item.data.name}
+                data-item-price={item.data.price}
+                data-item-quantity={quantity}
+                data-item-url={`url/products`}
+              >
                 <CartIcon/>
                 <span>
                   Add To Cart

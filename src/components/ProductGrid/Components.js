@@ -40,6 +40,15 @@ const Item = styled.div`
   span {
     font-size: 15px;
   }
+  @media only screen 
+  and (max-device-width: 768px) {
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+    span {
+      font-size: 17px;
+    }
+  }
 `
 
 const PlusIcon = styled(Plus)`
@@ -100,8 +109,8 @@ const QuantityBoxMobile = styled.div`
   @media only screen 
   and (max-device-width: 768px) {
     display: grid;
-    margin-top: 1.2rem;
-    grid-template-columns: 1fr 2fr;
+    margin-top: 0.5rem;
+    grid-template-columns: 2fr 3fr;
     grid-template-rows: auto 50px;
     grid-gap: 0.5rem;
     justify-content: center;
