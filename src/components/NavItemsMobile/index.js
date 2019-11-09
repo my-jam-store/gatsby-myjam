@@ -9,8 +9,8 @@ export default ({ categories }) => {
   const handleMenuOpen = () => {
     if(isOpen) {
       document.querySelector('.black-layer').remove()
-      document.querySelector('html').style.overflowY = 'hidden'
-      document.querySelector('body').style.overflowY = 'hidden'
+      document.querySelector('html').removeAttribute('style')
+      document.querySelector('body').removeAttribute('style')
     }
     setMenuStatus(!isOpen)
   }

@@ -10,7 +10,7 @@ const Hits = connectHits(({ hits }) => {
 
   const componentMounted = useRef(false)
 
-  const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
 
   const handleProductModal = (e) => {
     if(!isMobile() && e.target.parentNode.getAttribute('data-id')) {

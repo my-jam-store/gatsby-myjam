@@ -17,7 +17,7 @@ const ProductGrid = (props) => {
   const js = !g.isInitialized
   const items = []
 
-  const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
 
   if(g["page"+currentPage]) {
     for(let pageNum = currentPage ;; pageNum++) {
