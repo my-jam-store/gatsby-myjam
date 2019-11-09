@@ -1,34 +1,66 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { InfiniteScroll } from "./InfiniteScroll"
 import ProductGrid from "../ProductGrid"
 
 const View = (props) => {
+  const [ cursor, setCursor ] = useState(0)
+  const [ pages, setPages ]   = useState({})
 
-  if (props.globalState.isInitializing() || !props.globalState.useInfiniteScroll) {
-    const pageKey = "page" + props.pageContext.currentPage
-    props.globalState.updateState({
-      [pageKey]: props.pageContext.pageProducts,
-      cursor: props.pageContext.currentPage + 1
-    })
+  const isInitializing = () => cursor === 0
+
+  const loadMore = (pageContext, pageNum) => {
+    setCursor(pageNum + 1)
+    fetch(`${__PATH_PREFIX__}/paginationJson/${pageContext.slug}${pageNum}.json`)
+      .then(res => res.json())
+      .then(
+        res => {
+          setPages({
+            ...pages,
+            ["page"+pageNum]: res
+          })
+        },
+        error => this.setState({ useInfiniteScroll: false })
+      )
   }
 
-  const g = props.globalState
+  const hasMore = (countPages) => {
+    if (isInitializing()) return true
+    return cursor <= countPages
+  }
+
+  useEffect(() => {
+    const pageKey = "page" + props.pageContext.currentPage
+
+    setCursor(props.pageContext.currentPage + 1)
+    setPages({
+      ...pages,
+      [pageKey]: props.pageContext.pageProducts
+    })
+  }, [])
+
   const pageContext = props.pageContext
 
   return (
     <>
       <InfiniteScroll
+        cursor={cursor}
         throttle={150}
         threshold={300}
-        hasMore={g.hasMore(pageContext)}
+        hasMore={hasMore(pageContext.countPages)}
         pageContext={pageContext}
-        onLoadMore={g.loadMore}
+        onLoadMore={loadMore}
       >
-        <ProductGrid globalState={g} pageContext={pageContext} />
-
+        <ProductGrid
+          pageContext={pageContext}
+          globalState={{
+            cursor,
+            ...pages,
+            isInitialized: isInitializing()
+          }}
+        />
       </InfiniteScroll>
 
-      {(g.cursor === 0 || g.hasMore(pageContext)) && (
+      {(cursor === 0 || hasMore(pageContext.countPages)) && (
         <h3>
           Loading.....
         </h3>

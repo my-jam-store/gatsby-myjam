@@ -14,12 +14,12 @@ const ProductGrid = (props) => {
 
   let i = 0, j = 0 , numberOfItemsOnLatestPage = 0
 
-  const js = !g.isInitializing()
+  const js = !g.isInitialized
   const items = []
 
   const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768
 
-  if(g.useInfiniteScroll && g["page"+currentPage]) {
+  if(g["page"+currentPage]) {
     for(let pageNum = currentPage ;; pageNum++) {
       const key = "page"+pageNum
       if (g[key]) {
@@ -38,8 +38,6 @@ const ProductGrid = (props) => {
         break;
       }
     }
-  } else {
-    props.pageContext.pageProducts.forEach(item => items.push(<GridItem item={item} key={"gi"+(i++)}/>))
   }
 
   const handleProductModal = (e) => {

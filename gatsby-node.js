@@ -59,7 +59,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         const startIndexInclusive = countProductsPerPage * (currentPage - 1)
         const endIndexExclusive = startIndexInclusive + countProductsPerPage
-        const pageProducts = products.nodes.slice(startIndexInclusive, endIndexExclusive)
+        const pageProducts = totalProductsPerCategory.slice(startIndexInclusive, endIndexExclusive)
 
         const pageData = {
           filePath: `/${pathSuffix}`,

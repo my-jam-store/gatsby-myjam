@@ -3,21 +3,14 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import View from "../components/Category"
-import { GlobalStateContext } from "../store/globalState.js"
 
 const categoryPage = ({ data, pageContext }) => {
   const { allCategories } = data
 
   return (
     <Layout categories={allCategories.nodes}>
-      <GlobalStateContext.Consumer>
-        {globalState => (
-          <>
-            <SEO title={pageContext.name} />
-            <View globalState={globalState} pageContext={pageContext} />
-          </>
-        )}
-      </GlobalStateContext.Consumer>
+      <SEO title={pageContext.name} />
+      <View pageContext={pageContext} />
     </Layout>
   )
 }
