@@ -23,11 +23,11 @@ const NavItems = styled.nav`
 
 const Item = styled.div`
   padding: 20px 0;
-  cursor: pointer;
   position: relative;
   span {
     color: #440E5E;
     font-weight: 600;
+    cursor: pointer;
   }
   div {
     visibility:hidden;

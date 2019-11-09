@@ -12,6 +12,8 @@ const NavItems = styled.nav`
   grid-template-columns: 1fr;
   margin-top: 10px;
   align-items: center;
+  overflow-y: scroll;
+  padding-bottom: 75px;
   grid-template-rows: repeat(10, 50px);
 `
 
@@ -20,7 +22,7 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 90px;
   position: absolute;
-  height: 100vh;
+  height: 100%;
   background: #FFF;
   top: 0;
   left: -80%;
@@ -51,7 +53,7 @@ const Item = styled.div`
     transform:scaleY(1);
   }
   svg.rotate {
-    transform: rotate(-90deg);
+    transform: rotate(-180deg);
   }
 `
 

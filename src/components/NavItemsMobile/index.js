@@ -9,22 +9,29 @@ export default ({ categories }) => {
   const handleMenuOpen = () => {
     if(isOpen) {
       document.querySelector('.black-layer').remove()
+      document.querySelector('html').style.overflowY = 'hidden'
+      document.querySelector('body').style.overflowY = 'hidden'
     }
     setMenuStatus(!isOpen)
   }
 
   useEffect(() => {
     if(isOpen) {
+      document.querySelector('html').style.overflowY = 'hidden'
+      document.querySelector('body').style.overflowY = 'hidden'
       const blackLayer = document.createElement("div")
       blackLayer.classList.add('black-layer')
-      blackLayer.style.width = "100vh"
-      blackLayer.style.height = "100vh"
+      blackLayer.style.width = "100%"
+      blackLayer.style.height = "100%"
       blackLayer.style.background = "#000"
       blackLayer.style.opacity = "0.6"
       blackLayer.style.zIndex = "5"
       blackLayer.style.position = "absolute"
       blackLayer.style.top = "0"
-      document.querySelector('body').appendChild(blackLayer)
+      blackLayer.style.left = "0"
+      setTimeout(() => {
+        document.querySelector('body').appendChild(blackLayer)
+      }, 200)
     }
     setLeftVal(isOpen ? '0%' : '-80%')
   }, [isOpen])
