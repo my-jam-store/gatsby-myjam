@@ -20,6 +20,10 @@ const NavItems = styled.nav`
     font-weight: 600
   }
   box-sizing: border-box;
+  @media only screen 
+  and (max-device-width: 768px) {
+    max-width: 100%;
+  }
 `
 
 const Item = styled.div`

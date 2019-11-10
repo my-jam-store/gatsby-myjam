@@ -17,6 +17,7 @@ const Header = styled.header`
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
+    max-width: 100%;
   }
 `
 
