@@ -10,6 +10,10 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;
   justify-content: center;
+  @media only screen 
+  and (max-device-width: 768px) {
+    grid-gap: 1.5rem;
+  }
 `
 
 const Title = styled.h1`

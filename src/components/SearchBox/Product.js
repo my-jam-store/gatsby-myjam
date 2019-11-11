@@ -29,7 +29,7 @@ const Product = React.memo(({ item }) => {
       data-id={item.recordId}
       data-sku={item.sku}
       data-price={item.price}
-      data-name={item.name}
+      data-name={item.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}
     >
       <img
         src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${item.sku}.jpg`}
@@ -39,7 +39,7 @@ const Product = React.memo(({ item }) => {
         <span>&#163;{item.price}</span>
         <PlusIcon />
       </h3>
-      <span className="name">{item.name}</span>
+      <span className="name">{item.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}</span>
       <QuantityBoxMobile>
         <span>Quantity: (Kg)</span>
         <div>
