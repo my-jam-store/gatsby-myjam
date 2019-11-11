@@ -8,7 +8,7 @@ import { CloseO } from "styled-icons/evil/CloseO"
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 1.5rem;
+  grid-gap: 1rem;
   justify-content: center;
 `
 
@@ -23,11 +23,13 @@ const Item = styled.div`
   cursor: pointer;
   border-radius: 5px;
   background: #FFF;
-  padding: 1rem;
+  padding: 0.5rem;
   box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
   box-sizing: border-box;
   img {
     margin-bottom: 0.5rem;
+    width: 100%;
+    border-radius: 5px;
   }
   h3 {
     margin-bottom: 0.2rem;
@@ -38,15 +40,16 @@ const Item = styled.div`
     font-weight: 600;
   }
   span {
-    font-size: 15px;
+    font-size: 17px;
   }
   @media only screen 
   and (max-device-width: 768px) {
+    padding: 1rem;
     h3 {
       margin-bottom: 0.5rem;
     }
     span {
-      font-size: 17px;
+      font-size: 18px;
     }
   }
 `
@@ -128,12 +131,15 @@ const Content = styled.div`
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
   user-select: none;
   img {
     margin: 0;
+    border-radius: 5px;
   }
   .product-info {
     padding-left: 2rem;
+    align-self: flex-start;
   }
   .name {
     text-transform: capitalize;

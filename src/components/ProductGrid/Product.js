@@ -42,7 +42,7 @@ const Product = React.memo(({ js, item }) => {
             <span>&#163;{item.data.price}</span>
             <PlusIcon />
           </h3>
-          <span className="name">{item.data.name}</span>
+          <span className="name">{item.data.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}</span>
           <QuantityBoxMobile>
             <span>Quantity: (Kg)</span>
             <div>
