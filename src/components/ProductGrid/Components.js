@@ -82,6 +82,7 @@ const QuantityBoxMobile = styled.div`
     height: 100%;
     text-align: center;
     border-radius: 5px;
+    font-size: 20px;
     border: 1px solid #EAEAEA;
     outline: none !important;
     box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
@@ -105,24 +106,31 @@ const QuantityBoxMobile = styled.div`
   }
   svg:nth-child(2) {
     top: 50%;
-    right: 5px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
     transform: translate(0, -50%);
   }
   svg:nth-child(3) {
     top: 50%;
-    left: 5px;
+    left: 10px;
+    height: 30px;
+    width: 30px;
     transform: translate(0, -50%);
   }
   @media only screen 
   and (max-device-width: 768px) {
     display: grid;
     margin-top: 0.5rem;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto 50px;
-    grid-gap: 0.5rem;
+    grid-gap: 0.75rem;
     justify-content: center;
     align-content: center;
     user-select: none; 
+    button {
+      padding: 10px 0;
+    }
   }
 `
 
