@@ -41,9 +41,9 @@ const ProductGrid = (props) => {
   }
 
   const handleProductModal = (e) => {
-    if(!isMobile() && e.target.parentNode.getAttribute('data-id')) {
+    if(!isMobile() && e.target.closest('div').getAttribute('data-id')) {
       componentMounted.current = true
-      const item = e.target.parentNode
+      const item = e.target.closest('div')
       setItem({
         recordId: item.getAttribute('data-id'),
         name: item.getAttribute('data-name'),

@@ -58,7 +58,7 @@ const Product = React.memo(({ js, item }) => {
                 data-item-name={item.data.name}
                 data-item-price={item.data.price}
                 data-item-quantity={quantity}
-                data-item-url={`url/products`}
+                data-item-url={`https://zen-colden-f5dbb1.netlify.com/products`}
               >
                 <CartIcon/>
                 <span>
