@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css');
 
 body {
 	font-family: 'Nunito', sans-serif !important;
@@ -646,6 +647,21 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.notification-item .notification-message {
+  font-size: 17px !important;
+}
+
+.notification-item .notification-close:after {
+  font-size: 20px;
+}
+
+.notification-item .notification-close {
+  width: 25px;
+  height: 25px;
+  top: 8px;
+  right: 8px;
 }
 
 @media only screen and (max-width: 480px) {

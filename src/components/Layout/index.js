@@ -7,6 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
+import ReactNotification from "react-notifications-component"
 import Header from "../Header"
 import { Main } from "./Components"
 import "./layout.css"
@@ -14,6 +15,7 @@ import "./layout.css"
 const Index = ({ children, categories }) => {
   return (
     <>
+      <ReactNotification />
       <Header categories={categories || []} />
       <div>
         <Main>{children}</Main>

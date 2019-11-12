@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
+import { store } from "react-notifications-component"
 import { CartIcon } from "./Components"
+import "react-notifications-component/dist/theme.css"
 
 const MiniCart = () => {
   const [ itemsCount, setItemsCount ] = useState(0)
@@ -22,6 +24,19 @@ const MiniCart = () => {
       window.Snipcart.subscribe('item.adding', (ev, item, items) => {
         const count = window.Snipcart.api.items.count()
         setItemsCount(count + item.quantity)
+        store.addNotification({
+          title: "",
+          message: "Item added to cart successfully!",
+          type: "success",
+          insert: "top",
+          container: "top-left",
+          animationIn: ["animated", "fadeIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 3000,
+            showIcon: true
+          }
+        })
       })
     }
 
