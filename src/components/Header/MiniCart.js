@@ -21,6 +21,10 @@ const MiniCart = () => {
         setItemsCount(count)
       })
 
+      window.Snipcart.subscribe('order.completed', function (data) {
+        setItemsCount(0)
+      });
+
       window.Snipcart.subscribe('item.adding', (ev, item, items) => {
         const count = window.Snipcart.api.items.count()
         setItemsCount(count + item.quantity)
@@ -44,6 +48,7 @@ const MiniCart = () => {
       window.Snipcart.unsubscribe('cart.closed')
       window.Snipcart.unsubscribe('cart.ready')
       window.Snipcart.unsubscribe('item.adding')
+      window.Snipcart.unsubscribe('order.completed')
     }
   }, [])
 
