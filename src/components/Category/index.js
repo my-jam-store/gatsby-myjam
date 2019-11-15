@@ -45,7 +45,7 @@ const View = (props) => {
       <InfiniteScroll
         cursor={cursor}
         throttle={300}
-        threshold={500}
+        threshold={1000}
         hasMore={hasMore(pageContext.countPages)}
         pageContext={pageContext}
         onLoadMore={loadMore}
