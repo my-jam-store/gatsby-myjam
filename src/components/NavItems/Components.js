@@ -62,6 +62,7 @@ const Grid = styled.div`
   width: 640px;
   padding: 20px;
   box-sizing: border-box;
+  z-index: 2;
 `
 
 const ArrowDown = styled(ArrowDownS)`
