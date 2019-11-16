@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { Menu } from "styled-icons/feather/Menu"
 import { ArrowDownS } from "styled-icons/remix-line/ArrowDownS"
 import { Close } from "styled-icons/evil/Close"
+import theme from "../theme"
 
 const Container = styled.div`
 
@@ -82,14 +83,14 @@ const Grid = styled.div`
   padding: 15px 25px;
   box-shadow: 0 0px 4px 0 rgba(0,0,0,.75);
   span {
-    color: #440E5E;
+    color: ${theme.primaryColor};
     font-size: 30px;
     font-weight: bold;
   }
 `
 
 const ArrowDown = styled(ArrowDownS)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   width: 25px;
   height: 25px;
   float: right;
@@ -97,14 +98,14 @@ const ArrowDown = styled(ArrowDownS)`
 `
 
 const MenuIcon = styled(Menu)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   width: 50px;
   height: 50px;
   transition: all .4s ease;
 `
 
 const CloseIcon = styled(Close)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   width: 50px;
   height: 50px;
   justify-self: right;

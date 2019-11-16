@@ -5,6 +5,7 @@ import { Plus as qPlus } from "styled-icons/boxicons-regular/Plus"
 import { Plus } from "styled-icons/evil/Plus"
 import { Cart } from "styled-icons/evil/Cart"
 import { CloseO } from "styled-icons/evil/CloseO"
+import theme from "../theme"
 
 const Grid = styled.div`
   display: grid;
@@ -57,7 +58,7 @@ const Item = styled.div`
 `
 
 const PlusIcon = styled(Plus)`
-  color: #440E5E;
+  color: ${theme.secondaryColor};
   width: 35px;
   height: 35px;
   float: right;
@@ -91,10 +92,10 @@ const QuantityBoxMobile = styled.div`
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
-    background: #440E5E;
+    background: ${theme.secondaryColor};
     box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
     color: #FFF;
-    border: 1px solid #440E5E;
+    border: 1px solid ${theme.secondaryColor};
     :focus {
       outline: none !important;
     }
@@ -165,7 +166,7 @@ const Content = styled.div`
 `
 
 const QtyPlus = styled(qPlus)`
-  color: #440E5E;
+  color: ${theme.secondaryColor};
   width: 20px;
   height: 20px;
   position: absolute;
@@ -175,7 +176,7 @@ const QtyPlus = styled(qPlus)`
 `
 
 const QtyMinus = styled(Minus)`
-  color: #440E5E;
+  color: ${theme.secondaryColor};
   width: 20px;
   height: 20px;
   position: absolute;
@@ -212,10 +213,10 @@ const QuantityBox = styled.div`
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
-    background: #440E5E;
+    background: ${theme.secondaryColor};
     box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
     color: #FFF;
-    border: 1px solid #440E5E;
+    border: 1px solid ${theme.secondaryColor};
     :focus {
       outline: none !important;
     }
@@ -283,7 +284,7 @@ const TextInput = styled.input`
   display: block;
   width: 100%;
   padding: 0.5rem 2.5rem;
-  border: 3px solid #440E5E;
+  border: 3px solid ${theme.primaryColor};
   border-radius: 4px;
   font-family: inherit;
   outline: none;
@@ -297,7 +298,7 @@ const TextInput = styled.input`
 `
 
 const SearchIcon = styled(Search)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   position: absolute;
   width: 25px;
   height: 25px;

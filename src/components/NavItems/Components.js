@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { ArrowDownS } from "styled-icons/remix-line/ArrowDownS"
+import theme from "../theme"
 
 const Container = styled.div`
   box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
@@ -16,8 +17,8 @@ const NavItems = styled.nav`
   align-items: center;
   a {
     text-decoration: none;
-    color: #440E5E;
-    font-weight: 600
+    color: ${theme.primaryColor};
+    font-weight: 600;
   }
   box-sizing: border-box;
   @media only screen 
@@ -30,7 +31,7 @@ const Item = styled.div`
   padding: 20px 0;
   position: relative;
   span {
-    color: #440E5E;
+    color: ${theme.primaryColor};
     font-weight: 600;
     cursor: pointer;
   }
@@ -66,7 +67,7 @@ const Grid = styled.div`
 `
 
 const ArrowDown = styled(ArrowDownS)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   width: 20px;
   height: 20px;
   transition: all .4s ease;

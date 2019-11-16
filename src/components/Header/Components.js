@@ -2,13 +2,14 @@ import styled from "styled-components"
 import { Cart } from "styled-icons/evil/Cart"
 import { User } from "styled-icons/evil/User"
 import { UserCheck } from "styled-icons/boxicons-solid/UserCheck"
+import theme from "../theme"
 
 const Header = styled.header`
   margin: 1rem auto;
   width: 1120px;
   max-width: 80%;
   display: grid;
-  grid-template-columns: 100px auto 200px;
+  grid-template-columns: 50px auto 200px;
   grid-gap: 50px;
   align-items: center;
   box-sizing: border-box;
@@ -28,7 +29,7 @@ const Container = styled.div`
     position: absolute;
     top: 1px;
     right: 14px;
-    background: #e8104a;
+    background: ${theme.secondaryColor};
     color: #FFF;
     border-radius: 100%;
     width: 20px;
@@ -79,19 +80,19 @@ const Grid = styled.div`
 `
 
 const CartIcon = styled(Cart)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   width: 50px;
   height: 50px;
 `
 
 const GuestIcon = styled(User)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   width: 50px;
   height: 50px;
 `
 
 const AuthUser = styled(UserCheck)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   width: 50px;
   height: 50px;
 `
@@ -111,7 +112,7 @@ const Menu = styled.div`
   box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
   border-radius: 5px;
   a {
-    color: #440E5E;
+    color: ${theme.primaryColor};
     text-decoration: none;
   }
 `

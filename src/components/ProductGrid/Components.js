@@ -4,6 +4,7 @@ import { Minus } from "styled-icons/boxicons-regular/Minus"
 import { Plus as qPlus } from "styled-icons/boxicons-regular/Plus"
 import { Cart } from "styled-icons/evil/Cart"
 import { CloseO } from "styled-icons/evil/CloseO"
+import theme from "../theme"
 
 const Grid = styled.div`
   display: grid;
@@ -59,7 +60,7 @@ const Item = styled.div`
 `
 
 const PlusIcon = styled(Plus)`
-  color: #440E5E;
+  color: ${theme.secondaryColor};
   width: 35px;
   height: 35px;
   float: right;
@@ -93,10 +94,10 @@ const QuantityBoxMobile = styled.div`
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
-    background: #440E5E;
+    background: ${theme.secondaryColor};
     box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
     color: #FFF;
-    border: 1px solid #440E5E;
+    border: 1px solid ${theme.secondaryColor};
     :focus {
       outline: none !important;
     }
@@ -161,7 +162,7 @@ const Content = styled.div`
     margin-bottom: 0;
   }
   span.price {
-    color: #440E5E;
+    color: ${theme.primaryColor};
     font-size: 22px;
     font-weight: bold;
     display: inline-block;
@@ -170,7 +171,7 @@ const Content = styled.div`
 `
 
 const QtyPlus = styled(qPlus)`
-  color: #440E5E;
+  color: ${theme.secondaryColor};
   width: 20px;
   height: 20px;
   position: absolute;
@@ -180,7 +181,7 @@ const QtyPlus = styled(qPlus)`
 `
 
 const QtyMinus = styled(Minus)`
-  color: #440E5E;
+  color: ${theme.secondaryColor};
   width: 20px;
   height: 20px;
   position: absolute;
@@ -217,10 +218,10 @@ const QuantityBox = styled.div`
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
-    background: #440E5E;
+    background: ${theme.secondaryColor};
     box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
     color: #FFF;
-    border: 1px solid #440E5E;
+    border: 1px solid ${theme.secondaryColor};
     :focus {
       outline: none !important;
     }
@@ -236,7 +237,7 @@ const CartIcon = styled(Cart)`
 `
 
 const CloseIcon = styled(CloseO)`
-  color: #440E5E;
+  color: ${theme.primaryColor};
   width: 45px;
   height: 45px;
   position: absolute;
