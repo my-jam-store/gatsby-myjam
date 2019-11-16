@@ -111,6 +111,7 @@ const Menu = styled.div`
   grid-template-columns: 1fr;
   box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
   border-radius: 5px;
+  z-index: 2;
   a {
     color: ${theme.primaryColor};
     text-decoration: none;

@@ -8,10 +8,12 @@ const Customer = () => {
   useEffect(() => {
     if (typeof window !== "undefined" && window.Snipcart) {
 
-      const user = window.Snipcart.api.user.current()
-      if(!!user) {
-        setCustomerStatus(true)
-      }
+      setTimeout(() => {
+        const user = window.Snipcart.api.user.current()
+        if(!!user) {
+          setCustomerStatus(true)
+        }
+      }, 750)
 
       window.Snipcart.subscribe('authentication.success', (email) => {
         setCustomerStatus(true)
