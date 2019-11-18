@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import theme from "./components/theme"
 
 export default function HTML(props) {
   return (
@@ -33,7 +34,7 @@ export default function HTML(props) {
             "options": {
               "widgetType": "VideoThumbnailExtraLarge",
               "text": "Talk to me",
-              "backgroundColor": "#440E5E",
+              "backgroundColor": "${theme.secondaryColor}",
               "position": "bottom-left"
             }
           }

@@ -663,6 +663,18 @@ input[type=number]::-webkit-outer-spin-button {
   right: 8px;
 }
 
+body > button {
+  width: 112px !important;
+  height: 112px !important;
+}
+
+body > button div:nth-child(1),
+body > button div:nth-child(2),
+body > button div:nth-child(3) {
+  width: 100px !important;
+  height: 100px !important;
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
