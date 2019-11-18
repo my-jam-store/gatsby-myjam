@@ -4,7 +4,7 @@ import { Minus } from "styled-icons/boxicons-regular/Minus"
 import { Plus as qPlus } from "styled-icons/boxicons-regular/Plus"
 import { Cart } from "styled-icons/evil/Cart"
 import { CloseO } from "styled-icons/evil/CloseO"
-import theme from "../theme"
+import theme from "../../theme"
 
 const Grid = styled.div`
   display: grid;

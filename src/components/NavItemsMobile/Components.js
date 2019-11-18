@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Menu } from "styled-icons/feather/Menu"
 import { ArrowDownS } from "styled-icons/remix-line/ArrowDownS"
 import { Close } from "styled-icons/evil/Close"
-import theme from "../theme"
+import theme from "../../theme"
 
 const Container = styled.div`
 

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { ArrowDownS } from "styled-icons/remix-line/ArrowDownS"
-import theme from "../theme"
+import theme from "../../theme"
 
 const Container = styled.div`
   box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);

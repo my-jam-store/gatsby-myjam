@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Cart } from "styled-icons/evil/Cart"
 import { User } from "styled-icons/evil/User"
 import { UserCheck } from "styled-icons/boxicons-solid/UserCheck"
-import theme from "../theme"
+import theme from "../../theme"
 
 const Header = styled.header`
   margin: 1rem auto;
