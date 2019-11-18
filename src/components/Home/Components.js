@@ -4,12 +4,13 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   margin-top: 40px;
-  grid-gap: 15px;
+  grid-gap: 25px;
 `
 
 const Wrapper = styled.div`
   position: relative;
   border-radius: 10px;
+  box-shadow: 0 1px 6px 3px rgba(133,123,123,.75);
   img {
     border-radius: 10px;
   }

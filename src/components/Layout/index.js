@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactNotification from "react-notifications-component"
 import Header from "../Header"
+import Footer from "../Footer"
 import { Main } from "./Components"
 import "./layout.css"
 
@@ -17,14 +18,8 @@ const Index = ({ children, categories }) => {
     <>
       <ReactNotification />
       <Header categories={categories || []} />
-      <div>
-        <Main>{children}</Main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <Main>{children}</Main>
+      <Footer />
     </>
   )
 }
