@@ -43,6 +43,7 @@ const Container = styled.div`
   }
   @media only screen 
   and (max-device-width: 768px) {
+    padding: 0 20px;
     #navMobile {
       display: block;
     }

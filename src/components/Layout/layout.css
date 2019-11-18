@@ -669,13 +669,6 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 
-@media only screen
-and (max-device-width: 768px) {
-  body {
-    padding: 0 20px;
-  }
-}
-
 body .snip-layout {
   font-family: 'Nunito' !important;
 }

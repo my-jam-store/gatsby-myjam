@@ -311,7 +311,7 @@ const Div = styled.div`
   position: absolute;
   padding: 0 50px 50px;
   left: 0;
-  top: 100px;
+  top: 86px;
   background-color: #EAEAEA;
   z-index: 2;
   @media only screen 
