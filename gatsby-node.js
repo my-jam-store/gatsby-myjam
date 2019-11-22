@@ -32,6 +32,17 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
         
+        stores: allAirtable(filter: {table: {eq: "Stores"}}) {
+          totalCount
+          nodes {
+            recordId
+            data {
+              name
+              storeCode
+            }
+          }
+        }
+        
         products: allAirtable(filter: {table: {eq: "Products"} }, sort: { fields: [data___productId] }) {
           totalCount
           nodes {
@@ -45,6 +56,7 @@ exports.createPages = ({ graphql, actions }) => {
               price
               categories
               cuisines
+              stores
             }
           }
         }
@@ -55,11 +67,48 @@ exports.createPages = ({ graphql, actions }) => {
       console.log(`Error retrieving categories data`, result.errors)
     }
 
-    const { categories, products, cuisines } = result.data
+    const { categories, products, cuisines, stores } = result.data
 
     const categoryTemplate = path.resolve(`./src/templates/category.js`)
     const cuisineTemplate  = path.resolve(`./src/templates/cuisine.js`)
+    const storeTemplate    = path.resolve(`./src/templates/store.js`)
     const countProductsPerPage = 30
+
+    for(let i = 0; i < stores.totalCount; i++) {
+      const totalProductsPerStore = products.nodes.filter((product) => (
+        product.data.stores.indexOf(stores.nodes[i].recordId)) !== -1
+      )
+
+      if(totalProductsPerStore.length === 0) continue
+
+      const countPages = Math.ceil(totalProductsPerStore.length / countProductsPerPage)
+
+      for(let currentPage = 1; currentPage <= countPages; currentPage++) {
+        const pathSuffix = currentPage > 1 ? currentPage : ""
+
+        const startIndexInclusive = countProductsPerPage * (currentPage - 1)
+        const endIndexExclusive = startIndexInclusive + countProductsPerPage
+        const pageProducts = totalProductsPerStore.slice(startIndexInclusive, endIndexExclusive)
+
+        const pageData = {
+          filePath: `/${pathSuffix}`,
+          path: `/store/${stores.nodes[i].data.storeCode.substr(3).replace(/\./g,'-')}/${pathSuffix}`,
+          component: storeTemplate,
+          context: {
+            name: stores.nodes[i].data.name,
+            pageProducts: pageProducts,
+            currentPage: currentPage,
+            countPages: countPages,
+            slug: stores.nodes[i].data.storeCode.replace(/\./g,'-'),
+            recordId: stores.nodes[i].recordId,
+            id: stores.nodes[i].recordId
+          }
+        }
+
+        createJSON(pageData)
+        createPage(pageData)
+      }
+    }
 
     for(let i = 0; i < cuisines.totalCount; i++) {
       if(cuisines.nodes[i].slug === 'default') continue

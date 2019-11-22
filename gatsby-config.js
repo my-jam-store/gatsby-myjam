@@ -31,6 +31,10 @@ module.exports = {
           {
             baseId: `${process.env.AIRTABLE_BASE_ID}`,
             tableName: `Cuisines`
+          },
+          {
+            baseId: `${process.env.AIRTABLE_BASE_ID}`,
+            tableName: `Stores`
           }
         ]
       }
