@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import View from "../components/Category"
 
-const cuisinePage = ({ data, pageContext }) => {
+const storePage = ({ data, pageContext }) => {
   const { allCategories } = data
 
   return (
@@ -15,7 +15,7 @@ const cuisinePage = ({ data, pageContext }) => {
   )
 }
 
-export default cuisinePage
+export default storePage
 
 export const pageQuery = graphql`
     query{

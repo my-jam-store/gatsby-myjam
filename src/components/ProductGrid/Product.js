@@ -1,8 +1,10 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { Item, PlusIcon, QuantityBoxMobile, CartIcon, QtyMinus, QtyPlus } from "./Components"
+import AppContext from "../../store/context"
 
 const Product = React.memo(({ js, item }) => {
   const [ quantity, setQuantity ] = useState(1)
+  const { state } = useContext(AppContext)
 
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value)
@@ -59,6 +61,7 @@ const Product = React.memo(({ js, item }) => {
                 data-item-price={item.data.price}
                 data-item-quantity={quantity}
                 data-item-url={`https://zen-colden-f5dbb1.netlify.com/products`}
+                data-item-metadata={JSON.stringify({"shop":state.store})}
               >
                 <CartIcon/>
                 <span>

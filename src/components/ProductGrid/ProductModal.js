@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import Modal from "react-modal"
 import { Content, QuantityBox, QtyPlus, QtyMinus, CartIcon, CloseIcon } from "./Components"
+import AppContext from "../../store/context"
 
 const ProductModal = ({ isOpen, item, handleClose }) => {
   const [ qty, setQty ] = useState(1)
+  const { state } = useContext(AppContext)
 
   const handleQuantityChange = (e) => {
     setQty(e.target.value)
@@ -62,6 +64,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
                 data-item-price={item.price}
                 data-item-quantity={qty}
                 data-item-url={`https://zen-colden-f5dbb1.netlify.com/products`}
+                data-item-metadata={JSON.stringify({"shop":state.store})}
               >
                 <CartIcon/>
                 <span>

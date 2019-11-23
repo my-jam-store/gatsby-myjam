@@ -1,11 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
+import AppContext from "../store/context"
 
 const IndexPage = ({ data }) => {
   const { nodes } = data.allAirtable
+  const { state } = useContext(AppContext)
 
   return (
     <Layout categories={[]}>
@@ -25,7 +27,9 @@ const IndexPage = ({ data }) => {
               data-item-name={data.name}
               data-item-price={data.price}
               data-item-url="https://a888cd7c.ngrok.io/products"
-              data-item-description="">
+              data-item-description=""
+              data-item-metadata={JSON.stringify({"shop":state.store})}
+            >
               Add To Cart
             </a>
           </div>
