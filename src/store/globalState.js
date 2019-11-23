@@ -1,8 +1,10 @@
 import React, { useReducer } from "react"
 import AppContext from "./context"
 
-const initialState = { store: null }
-const reducer      = (state, action) => {
+const initialState =  typeof window !== "undefined" && !!localStorage.getItem('globalStore')
+  ? JSON.parse(localStorage.getItem('globalStore')) : { store: null }
+
+const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_STORE':
       return {

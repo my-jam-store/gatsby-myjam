@@ -6,6 +6,7 @@ import AppContext from "../../store/context"
 const View = (props) => {
   const [ cursor, setCursor ] = useState(0)
   const [ pages, setPages ]   = useState({})
+  const [ store, setStore ]   = useState('')
   const { state, dispatch }   = useContext(AppContext)
 
   const isInitializing = () => cursor === 0
@@ -33,6 +34,7 @@ const View = (props) => {
   useEffect(() => {
     if(props.pageContext.type === 'store') {
       dispatch({ type: 'SET_STORE', storeName: props.pageContext.name })
+      setStore(props.pageContext.name)
     }
 
     const pageKey = "page" + props.pageContext.currentPage
@@ -43,6 +45,12 @@ const View = (props) => {
       [pageKey]: props.pageContext.pageProducts
     })
   }, [])
+
+  useEffect(() => {
+    if(!!store) {
+      localStorage.setItem('globalStore', JSON.stringify(state))
+    }
+  }, [store])
 
   const pageContext = props.pageContext
 
