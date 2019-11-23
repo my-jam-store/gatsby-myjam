@@ -101,7 +101,8 @@ exports.createPages = ({ graphql, actions }) => {
             countPages: countPages,
             slug: stores.nodes[i].data.storeCode.replace(/\./g,'-'),
             recordId: stores.nodes[i].recordId,
-            id: stores.nodes[i].recordId
+            id: stores.nodes[i].recordId,
+            type: 'store'
           }
         }
 
@@ -139,7 +140,8 @@ exports.createPages = ({ graphql, actions }) => {
             countPages: countPages,
             slug: cuisines.nodes[i].data.slug,
             recordId: cuisines.nodes[i].recordId,
-            id: cuisines.nodes[i].data.recordId
+            id: cuisines.nodes[i].recordId,
+            type: 'cuisine'
           }
         }
 
@@ -173,7 +175,8 @@ exports.createPages = ({ graphql, actions }) => {
             countPages: countPages,
             slug: categories.nodes[i].data.slug,
             recordId: categories.nodes[i].recordId,
-            id: categories.nodes[i].data.categoryId
+            id: categories.nodes[i].data.categoryId,
+            type: 'category'
           }
         }
 

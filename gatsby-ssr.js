@@ -4,4 +4,9 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-// You can delete this file if you're not using it
+const React = require("react")
+const GlobalStore = require("./src/store/globalState").default
+
+exports.wrapRootElement = ({ element }) => {
+  return <GlobalStore>{element}</GlobalStore>
+}
