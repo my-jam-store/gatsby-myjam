@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { InfiniteScroll } from "./InfiniteScroll"
 import ProductGrid from "../ProductGrid"
+import AppContext from "../../store/context"
 
 const View = (props) => {
   const [ cursor, setCursor ] = useState(0)
   const [ pages, setPages ]   = useState({})
+  const { state, dispatch }   = useContext(AppContext)
 
   const isInitializing = () => cursor === 0
 
@@ -29,6 +31,10 @@ const View = (props) => {
   }
 
   useEffect(() => {
+    if(props.pageContext.type === 'store') {
+      dispatch({ type: 'SET_STORE', storeName: props.pageContext.name })
+    }
+
     const pageKey = "page" + props.pageContext.currentPage
 
     setCursor(props.pageContext.currentPage + 1)
