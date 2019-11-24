@@ -8,11 +8,12 @@ const Footer = styled.footer`
   a {
     color: #FAFAFA;
     text-decoration: none;
-    font-size: 19px;
+    font-size: 16px;
   }
   p {
     color: #FAFAFA;
-    font-size: 19px;
+    font-size: 16px;
+    margin: 0;
   }
   @media only screen 
   and (max-device-width: 768px) {
@@ -29,11 +30,11 @@ const Footer = styled.footer`
 
 const Grid = styled.div`
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   width: 1120px;
   max-width: 80%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: max-content max-content;
   grid-gap: 30px;
   align-items: center;
   box-sizing: border-box;
@@ -50,7 +51,7 @@ const Grid = styled.div`
 
 const Links = styled.div`
   display: grid;
-  grid-template-columns: 120px;
+  grid-template-columns: repeat(3, max-content);
   grid-gap: 20px;
   @media only screen 
   and (max-device-width: 768px) {
