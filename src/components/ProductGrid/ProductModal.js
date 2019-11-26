@@ -63,7 +63,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
                 data-item-name={item.name}
                 data-item-price={item.price}
                 data-item-quantity={qty}
-                data-item-url={`https://zen-colden-f5dbb1.netlify.com/products`}
+                data-item-url={`https://myjam.store/products`}
                 data-item-metadata={JSON.stringify({"shop":state.store})}
               >
                 <CartIcon/>
