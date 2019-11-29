@@ -21,6 +21,7 @@ const Hits = connectHits(({ hits }) => {
         name: item.getAttribute('data-name'),
         price: item.getAttribute('data-price'),
         sku: item.getAttribute('data-sku'),
+        unitType: item.getAttribute('data-unit-type'),
         description: item.getAttribute('data-description'),
       })
     }

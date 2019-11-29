@@ -28,7 +28,7 @@ const IndexPage = ({ data }) => {
               data-item-price={data.price}
               data-item-url={`https://myjam.store/products`}
               data-item-description=""
-              data-item-metadata={JSON.stringify({"shop":state.store})}
+              data-item-metadata={JSON.stringify({"shop":state.store, "unitType": data.unitType})}
             >
               Add To Cart
             </a>

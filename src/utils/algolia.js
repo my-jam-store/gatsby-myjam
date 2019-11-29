@@ -9,6 +9,7 @@ const ProductsQuery = `{
         sku
         description
         price
+        unitType
         categories
       }
     }

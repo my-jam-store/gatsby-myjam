@@ -52,6 +52,7 @@ exports.createPages = ({ graphql, actions }) => {
               name
               slug
               sku
+              unitType
               description
               price
               categories

@@ -48,7 +48,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
           <p>{item.description}</p>
           <span className="price">&#163;{item.price}</span>
           <br/>
-          <span>Quantity: (Kg)</span>
+          <span>Quantity: ({item.unitType})</span>
           <QuantityBox>
             <div>
               <input type="number" value={qty} onChange={handleQuantityChange} />
@@ -64,7 +64,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
                 data-item-price={item.price}
                 data-item-quantity={qty}
                 data-item-url={`https://myjam.store/products`}
-                data-item-metadata={JSON.stringify({"shop":state.store})}
+                data-item-metadata={JSON.stringify({"shop":state.store, "unitType": item.unitType})}
               >
                 <CartIcon/>
                 <span>

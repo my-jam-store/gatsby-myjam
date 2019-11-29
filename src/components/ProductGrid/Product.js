@@ -34,6 +34,7 @@ const Product = React.memo(({ js, item }) => {
           data-sku={item.data.sku}
           data-price={item.data.price}
           data-name={item.data.name}
+          data-unit-type={item.data.unitType}
           data-description={item.data.description}
         >
           <img
@@ -46,7 +47,7 @@ const Product = React.memo(({ js, item }) => {
           </h3>
           <span className="name">{item.data.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}</span>
           <QuantityBoxMobile>
-            <span>Quantity: (Kg)</span>
+            <span>Quantity: ({item.data.unitType})</span>
             <div>
               <input type="number" value={quantity} onChange={handleQuantityChange} />
               <QtyPlus onClick={handleQuantityIncrement} />
@@ -61,7 +62,7 @@ const Product = React.memo(({ js, item }) => {
                 data-item-price={item.data.price}
                 data-item-quantity={quantity}
                 data-item-url={`https://myjam.store/products`}
-                data-item-metadata={JSON.stringify({"shop":state.store})}
+                data-item-metadata={JSON.stringify({"shop":state.store, "unitType": item.data.unitType})}
               >
                 <CartIcon/>
                 <span>
