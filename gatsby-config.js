@@ -10,6 +10,19 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`,
+        head: false,
+        anonymize: true,
+        respectDNT: true,
+        exclude: ["/paginatedJson/**"],
+        pageTransitionDelay: 0,
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-snipcart',
       options: {
         apiKey: `${process.env.GATSBY_SNIPCART_API_KEY}`
