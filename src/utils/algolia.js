@@ -11,6 +11,9 @@ const ProductsQuery = `{
         price
         unitType
         categories
+        hogs_evenly_spring
+        slices_rise_added
+        dinner_tried_builds
       }
     }
   }

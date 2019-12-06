@@ -33,7 +33,11 @@ const View = (props) => {
 
   useEffect(() => {
     if(props.pageContext.type === 'store') {
-      dispatch({ type: 'SET_STORE', storeName: props.pageContext.name })
+      dispatch({
+        type: 'SET_STORE',
+        storeName: props.pageContext.name,
+        priceCode: props.pageContext.slug.substr(3).replace(/-/g,'_')
+      })
       setStore(props.pageContext.name)
     }
 

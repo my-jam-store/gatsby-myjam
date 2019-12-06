@@ -30,7 +30,7 @@ const Product = React.memo(({ item }) => {
     <Item
       data-id={item.recordId}
       data-sku={item.sku}
-      data-price={item.price}
+      data-price={!!item[state.priceCode] ? item[state.priceCode] : item.price}
       data-unit-type={item.unitType}
       data-name={item.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}
     >
@@ -39,7 +39,7 @@ const Product = React.memo(({ item }) => {
         alt={item.name}
       />
       <h3 className="price">
-        <span>&#163;{item.price}</span>
+        <span>&#163;{!!item[state.priceCode] ? item[state.priceCode] : item.price}</span>
         <PlusIcon />
       </h3>
       <span className="name">{item.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}</span>
@@ -56,7 +56,7 @@ const Product = React.memo(({ item }) => {
             className="snipcart-add-item"
             data-item-id={item.recordId}
             data-item-name={item.name}
-            data-item-price={item.price}
+            data-item-price={!!item[state.priceCode] ? item[state.priceCode] : item.price}
             data-item-quantity={quantity}
             data-item-url={`https://myjam.store/products`}
             data-item-metadata={JSON.stringify({"shop":state.store, "unitType": item.unitType})}
