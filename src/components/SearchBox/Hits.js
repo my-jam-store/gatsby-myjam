@@ -23,6 +23,7 @@ const Hits = connectHits(({ hits }) => {
         sku: item.getAttribute('data-sku'),
         unitType: item.getAttribute('data-unit-type'),
         description: item.getAttribute('data-description'),
+        url: item.getAttribute('data-url')
       })
     }
   }

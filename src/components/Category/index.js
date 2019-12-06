@@ -36,7 +36,7 @@ const View = (props) => {
       dispatch({
         type: 'SET_STORE',
         storeName: props.pageContext.name,
-        priceCode: props.pageContext.slug.substr(3).replace(/-/g,'_')
+        priceCode: props.pageContext.slug.replace(/-/g,'_')
       })
       setStore(props.pageContext.name)
     }

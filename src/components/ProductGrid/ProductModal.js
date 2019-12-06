@@ -63,7 +63,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
                 data-item-name={item.name}
                 data-item-price={item.price}
                 data-item-quantity={qty}
-                data-item-url={`https://myjam.store/products`}
+                data-item-url={item.url}
                 data-item-metadata={JSON.stringify({"shop":state.store, "unitType": item.unitType})}
               >
                 <CartIcon/>

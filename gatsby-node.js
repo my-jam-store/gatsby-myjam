@@ -103,7 +103,7 @@ exports.createPages = ({ graphql, actions }) => {
             pageProducts: pageProducts,
             currentPage: currentPage,
             countPages: countPages,
-            slug: stores.nodes[i].data.storeCode.replace(/\./g,'-'),
+            slug: stores.nodes[i].data.storeCode.substr(3).replace(/\./g,'-'),
             recordId: stores.nodes[i].recordId,
             id: stores.nodes[i].recordId,
             type: 'store'
@@ -113,6 +113,19 @@ exports.createPages = ({ graphql, actions }) => {
         createJSON(pageData)
         createPage(pageData)
       }
+
+      const storePageData = {
+        path: `/store/${stores.nodes[i].data.storeCode.substr(3).replace(/\./g,'-')}/products`,
+        component: path.resolve(`./src/templates/storeProducts.js`),
+        context: {
+          name: stores.nodes[i].data.name,
+          pageProducts: totalProductsPerStore,
+          slug: stores.nodes[i].data.storeCode.substr(3).replace(/\./g,'_'),
+          recordId: stores.nodes[i].recordId,
+          id: stores.nodes[i].recordId,
+        }
+      }
+      createPage(storePageData)
     }
 
     for(let i = 0; i < cuisines.totalCount; i++) {

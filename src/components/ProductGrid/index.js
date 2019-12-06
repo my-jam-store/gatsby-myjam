@@ -51,6 +51,7 @@ const ProductGrid = (props) => {
         unitType: item.getAttribute('data-unit-type'),
         sku: item.getAttribute('data-sku'),
         description: item.getAttribute('data-description'),
+        url: item.getAttribute('data-url')
       })
     }
   }
