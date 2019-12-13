@@ -115,7 +115,7 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       const storePageData = {
-        path: `/store/${stores.nodes[i].data.storeCode.substr(3).replace(/\./g,'-')}/products`,
+        path: `/store/${stores.nodes[i].data.storeCode.substr(3).replace(/\./g,'_')}/products`,
         component: path.resolve(`./src/templates/storeProducts.js`),
         context: {
           name: stores.nodes[i].data.name,

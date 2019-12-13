@@ -33,7 +33,7 @@ const Product = React.memo(({ item }) => {
       data-price={!!item[state.priceCode] ? item[state.priceCode] : item.price}
       data-unit-type={item.unitType}
       data-name={item.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}
-      data-url={!!item[state.priceCode] ? `https://myjam.store/products` : `https://myjam.store/store/${state.priceCode}/products`}
+      data-url={!!item[state.priceCode] ? `https://myjam.store/store/${state.priceCode}/products` : `https://myjam.store/products`}
     >
       <img
         src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${item.sku}.jpg`}
@@ -59,7 +59,7 @@ const Product = React.memo(({ item }) => {
             data-item-name={item.name}
             data-item-price={!!item[state.priceCode] ? item[state.priceCode] : item.price}
             data-item-quantity={quantity}
-            data-item-url={!!item[state.priceCode] ? `https://myjam.store/products` : `https://myjam.store/store/${state.priceCode}/products`}
+            data-item-url={!!item[state.priceCode] ? `https://myjam.store/store/${state.priceCode}/products` : `https://myjam.store/products`}
             data-item-metadata={JSON.stringify({"shop":state.store, "unitType": item.unitType})}
           >
             <CartIcon/>
