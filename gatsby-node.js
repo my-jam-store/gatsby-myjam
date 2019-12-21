@@ -64,6 +64,19 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        
+        pages: allMarkdownRemark(
+          sort: { order: DESC, fields: [frontmatter___date] }
+          limit: 1000
+        ) {
+          edges {
+            node {
+              frontmatter {
+                path
+              }
+            }
+          }
+        }
       }
     `
   ).then(result => {
@@ -71,7 +84,15 @@ exports.createPages = ({ graphql, actions }) => {
       console.log(`Error retrieving categories data`, result.errors)
     }
 
-    const { categories, products, cuisines, stores } = result.data
+    const { categories, products, cuisines, stores, pages } = result.data
+
+    pages.edges.forEach(({ node }) => {
+      createPage({
+        path: node.frontmatter.path,
+        component: path.resolve(`./src/templates/page.js`),
+        context: {},
+      })
+    })
 
     const categoryTemplate = path.resolve(`./src/templates/category.js`)
     const cuisineTemplate  = path.resolve(`./src/templates/cuisine.js`)

@@ -7,8 +7,6 @@ import View from "../components/Category"
 const storeProductsPage = ({ pageContext }) => {
   const { pageProducts, slug } = pageContext
 
-  console.log(slug);
-
   return (
     <Layout categories={[]}>
       <SEO title="Home" />
