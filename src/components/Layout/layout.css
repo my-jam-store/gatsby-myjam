@@ -686,7 +686,31 @@ body .snip-layout {
 }
 
 body .snip-layout .snip-header, body .snip-layout .snip-footer {
-  background-color: #440E5E;
+  background-color: #EAEAEA;
+}
+
+#snipcart-title {
+  display: none;
+}
+
+.snip-layout .snip-layout__close {
+  color: #000 !important;
+}
+
+@media only screen and (min-width: 48em) {
+  .snip-layout .snip-header {
+    height: 60px !important;
+  }
+  .snip-layout .snip-header__total {
+    margin-top: 0.6rem !important;
+  }
+  .snip-layout .snip-layout__close {
+    font-size: 2rem !important;
+  }
+  #billing-address-container .snip-col.snip-col--full,
+  #shipping-address-container .snip-col.snip-col--full {
+    width: 50% !important;
+  }
 }
 
 body .snip-layout .snip-header__total {
@@ -695,6 +719,11 @@ body .snip-layout .snip-header__total {
 
 body .snip-layout .snip-footer__copyright {
   color: #FFF;
+  visibility: hidden;
+}
+
+.snip-layout .snip-product__remove {
+  color: #EC407A !important;
 }
 
 body .snip-layout .snip-header__total-label, body .snip-layout #snipcart-amount {
@@ -716,8 +745,8 @@ body .snip-layout .snip-quantity-trigger__text {
 }
 
 body .snip-layout .snip-quantity-trigger__btn:hover {
-  background-color: #440E5E;
-  color: #FFF;
+  background-color: transparent;
+  color: #000;
 }
 
 body .snip-layout .snip-actions__link {
@@ -725,8 +754,17 @@ body .snip-layout .snip-actions__link {
   color: #333;
 }
 
+.snip-layout .snip-table td,
+.snip-layout .snip-table tr:last-child {
+  border-bottom: none !important;
+}
+
+.snip-layout .snip-step__item.js-active {
+  border-top: 1px solid #BBBBBB;
+}
+
 body .snip-layout .snip-btn--highlight {
-  background-color: #440E5E;
+  background-color: #EC407A;
   color: #FFF;
   letter-spacing: 2px;
   font-size: 14px;
@@ -742,32 +780,71 @@ body .snip-layout .snip-btn--left {
 }
 
 body .snip-layout .snip-btn--highlight:hover {
-  background-color: #440E5E;
+  background-color: #EC407A;
 }
 
 body .snip-layout .snip-step__item {
   background-color: #EAEAEA;
+  border-top: 1px solid transparent;
 }
 
-body .snip-layout input[type=password],
-body .snip-layout input[type=text],
-body .snip-layout select {
-  box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
-  border: none;
-}
-
-body .snip-layout input:focus,
-body .snip-layout input:hover,
-body .snip-layout select:focus,
-body .snip-layout select:hover {
-  box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
-  border: none;
+.snip-layout .snip-loader--bar:before {
+  background-color: #EC407A !important;
 }
 
 body .snip-layout .snip-col .snip-form__label {
   color: #000;
 }
 
+#snipcart-sub-content .snip-actions .js-submit {
+  padding: 5px 15px !important;
+}
+
+#snipcart-login-submit, #snipcart-newaccount-submit {
+  background-color: #EC407A;
+}
+
+#snipcart-current-user, .snip-header__back {
+  display: none !important;
+}
+
+#snipcart-sub-content {
+  margin-top: 20px !important;
+}
+
+.snip-layout .snip-col+.snip-col {
+  border: none !important;
+}
+
+.snip-form__container {
+  position: relative !important;
+}
+
+.snip-layout .snip-form__error {
+  background: none !important;
+  color: #FF0000 !important;
+  font-size: 15px !important;
+  padding: 0 !important;
+  text-align: center;
+  position: absolute !important;
+  right: 10px;
+  top: 30px;
+}
+
 body .snip-layout {
   color: #000;
+}
+
+@media only screen and (max-width: 48em) {
+  .snip-layout .snip-header {
+    padding: 1.5rem !important;
+  }
+  .snip-layout .snip-layout__close {
+    font-size: 28px !important;
+    right: 10px !important;
+    top: 7px !important;
+  }
+  .snip-layout .snip-form--discount {
+    position: relative;
+  }
 }
