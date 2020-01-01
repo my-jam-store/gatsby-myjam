@@ -64,7 +64,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
                 data-item-price={item.price}
                 data-item-quantity={qty}
                 data-item-url={item.url}
-                data-item-metadata={JSON.stringify({"shop":state.store, "unitType": item.unitType})}
+                data-item-metadata={item.metaData}
               >
                 <CartIcon/>
                 <span>

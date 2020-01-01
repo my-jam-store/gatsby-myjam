@@ -19,10 +19,11 @@ const Hits = connectHits(({ hits }) => {
       setItem({
         recordId: item.getAttribute('data-id'),
         name: item.getAttribute('data-name'),
-        price: item.getAttribute('data-price'),
         sku: item.getAttribute('data-sku'),
         unitType: item.getAttribute('data-unit-type'),
         description: item.getAttribute('data-description'),
+        price: item.getAttribute('data-price'),
+        metaData: item.getAttribute('data-meta'),
         url: item.getAttribute('data-url')
       })
     }

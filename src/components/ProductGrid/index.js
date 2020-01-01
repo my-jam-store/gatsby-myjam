@@ -47,10 +47,11 @@ const ProductGrid = (props) => {
       setItem({
         recordId: item.getAttribute('data-id'),
         name: item.getAttribute('data-name'),
-        price: item.getAttribute('data-price'),
-        unitType: item.getAttribute('data-unit-type'),
         sku: item.getAttribute('data-sku'),
+        unitType: item.getAttribute('data-unit-type'),
+        price: item.getAttribute('data-price'),
         description: item.getAttribute('data-description'),
+        metaData: item.getAttribute('data-meta'),
         url: item.getAttribute('data-url')
       })
     }
