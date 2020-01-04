@@ -9,7 +9,6 @@ const ProductsQuery = `{
         sku
         description
         price
-        unitType
         categories
         hogs_evenly_spring
         slices_rise_added

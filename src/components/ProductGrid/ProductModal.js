@@ -48,7 +48,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
           <p>{item.description}</p>
           <span className="price">&#163;{item.price}</span>
           <br/>
-          <span>Quantity: ({item.unitType})</span>
+          <span>Quantity</span>
           <QuantityBox>
             <div>
               <input type="number" value={qty} onChange={handleQuantityChange} />

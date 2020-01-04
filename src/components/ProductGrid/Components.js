@@ -124,7 +124,7 @@ const QuantityBoxMobile = styled.div`
     display: grid;
     margin-top: 0.5rem;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 50px;
+    grid-template-rows: 50px;
     grid-gap: 0.75rem;
     justify-content: center;
     align-content: center;

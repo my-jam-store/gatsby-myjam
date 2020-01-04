@@ -34,12 +34,10 @@ const Product = React.memo(({ js, item }) => {
           data-price={!!item.data[state.priceCode] ? item.data[state.priceCode] : item.data.price}
           data-name={item.data.name}
           data-sku={item.data.sku}
-          data-unit-type={item.data.unitType}
           data-description={item.data.description}
           data-url={!!item.data[state.priceCode] ? `https://myjam.store/store/${state.priceCode}/products` : `https://myjam.store/products`}
           data-meta={JSON.stringify({
             shop:state.store,
-            unitType: item.data.unitType,
             sku: item.data.sku,
             inStore: !!item.data[state.priceCode]
           })}
@@ -54,7 +52,6 @@ const Product = React.memo(({ js, item }) => {
           </h3>
           <span className="name">{item.data.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}</span>
           <QuantityBoxMobile>
-            <span>Quantity: ({item.data.unitType})</span>
             <div>
               <input type="number" value={quantity} onChange={handleQuantityChange} />
               <QtyPlus onClick={handleQuantityIncrement} />
@@ -71,7 +68,6 @@ const Product = React.memo(({ js, item }) => {
                 data-item-url={!!item.data[state.priceCode] ? `https://myjam.store/store/${state.priceCode}/products` : `https://myjam.store/products`}
                 data-item-metadata={JSON.stringify({
                   shop:state.store,
-                  unitType: item.data.unitType,
                   sku: item.data.sku,
                   inStore: !!item.data[state.priceCode]
                 })}
