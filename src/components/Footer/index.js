@@ -6,9 +6,10 @@ export default () => (
   <Footer>
     <Grid>
       <Links>
-        <Link to={'/terms'}>Terms</Link>
-        <Link to={'/privacy'}>Privacy</Link>
-        <Link to={'/returns'}>Returns</Link>
+        <Link to={'/terms-of-service'}>Terms</Link>
+        <Link to={'/privacy-policy'}>Privacy</Link>
+        <Link to={'/returns-policy'}>Returns</Link>
+        <Link to={'/cookie-policy'}>Cookie Policy</Link>
       </Links>
       <p>Myjam is a registered UK company. Registration number: 701938</p>
     </Grid>

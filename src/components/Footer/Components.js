@@ -51,12 +51,15 @@ const Grid = styled.div`
 
 const Links = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(4, max-content);
   grid-gap: 20px;
   @media only screen 
   and (max-device-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
+    a:last-child {
+      grid-column-start: 2;
+    }
   }
 `
 
