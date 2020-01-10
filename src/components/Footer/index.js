@@ -6,12 +6,12 @@ export default () => (
   <Footer>
     <Grid>
       <Links>
-        <Link to={'/terms-of-service'}>Terms</Link>
-        <Link to={'/privacy-policy'}>Privacy</Link>
-        <Link to={'/returns-policy'}>Returns</Link>
-        <Link to={'/cookie-policy'}>Cookie Policy</Link>
+        <Link to={"/terms-of-service"}>Terms</Link>
+        <Link to={"/privacy-policy"}>Privacy</Link>
+        <Link to={"/returns-policy"}>Returns</Link>
+        <Link to={"/cookie-policy"}>Cookie Policy</Link>
       </Links>
-      <p>All rights reserved @2020</p>
+      <p>All rights reserved @2020.</p>
     </Grid>
   </Footer>
 )
