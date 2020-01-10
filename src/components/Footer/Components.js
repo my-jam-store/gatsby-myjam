@@ -13,6 +13,7 @@ const Footer = styled.footer`
   p {
     color: #FAFAFA;
     font-size: 16px;
+    text-align:right;
     margin: 0;
   }
   @media only screen 
@@ -34,7 +35,7 @@ const Grid = styled.div`
   width: 1120px;
   max-width: 80%;
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: max-content auto;
   grid-gap: 30px;
   align-items: center;
   box-sizing: border-box;

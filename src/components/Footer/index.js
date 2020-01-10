@@ -11,7 +11,7 @@ export default () => (
         <Link to={'/returns-policy'}>Returns</Link>
         <Link to={'/cookie-policy'}>Cookie Policy</Link>
       </Links>
-      <p>Myjam is a registered UK company. Registration number: 701938</p>
+      <p>All rights reserved @2020</p>
     </Grid>
   </Footer>
 )
