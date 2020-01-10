@@ -57,9 +57,8 @@ exports.createPages = ({ graphql, actions }) => {
               categories
               cuisines
               stores
-              hogs_evenly_spring
-              slices_rise_added
-              dinner_tried_builds
+              simply_jazz_mental
+              valve_brass_statue
             }
           }
         }
