@@ -3,8 +3,8 @@ const queries = require("./src/utils/algolia")
 module.exports = {
   siteMetadata: {
     title: `My Jam`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `An exotic grocery marketplace.`,
+    author: `@myJam`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
