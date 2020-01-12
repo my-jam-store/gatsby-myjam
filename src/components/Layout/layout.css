@@ -770,6 +770,7 @@ body .snip-layout .snip-btn--highlight {
   font-size: 14px;
   padding: 5px 25px;
   box-sizing: content-box;
+  margin: 0;
 }
 
 body .snip-layout .snip-btn--left {
@@ -846,5 +847,12 @@ body .snip-layout {
   }
   .snip-layout .snip-form--discount {
     position: relative;
+  }
+  #snipcart-previous, #snipcart-next, #snipcart-paymentmethod-pay,
+  .snip-actions .js-back, .snip-actions .js-submit {
+    display: block !important;
+    margin: 0.7em auto !important;
+    text-align: center !important;
+    float: none !important;
   }
 }
