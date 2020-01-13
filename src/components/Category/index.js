@@ -22,7 +22,7 @@ const View = (props) => {
             ["page"+pageNum]: res
           })
         },
-        error => this.setState({ useInfiniteScroll: false })
+        error => console.log(error)
       )
   }
 
@@ -63,7 +63,7 @@ const View = (props) => {
       <InfiniteScroll
         cursor={cursor}
         throttle={300}
-        threshold={1000}
+        threshold={600}
         hasMore={hasMore(pageContext.countPages)}
         pageContext={pageContext}
         onLoadMore={loadMore}
