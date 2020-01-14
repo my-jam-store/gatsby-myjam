@@ -12,7 +12,6 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153502608-1"></script>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
@@ -39,10 +38,6 @@ export default function HTML(props) {
               "position": "bottom-left"
             }
           }
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${process.env.GOOGLE_ANALYTICS_TRACKING_ID}');
         `,
           }}
         />
