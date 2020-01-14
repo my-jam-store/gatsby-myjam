@@ -3,7 +3,7 @@ const queries = require("./src/utils/algolia")
 module.exports = {
   siteMetadata: {
     title: `My Jam`,
-    description: `An exotic grocery marketplace.`,
+    description: `A marketplace for exotic grocery.`,
     author: `@myJam`,
   },
   plugins: [
@@ -23,10 +23,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-snipcart',
+      resolve: "gatsby-plugin-snipcart",
       options: {
-        apiKey: `${process.env.GATSBY_SNIPCART_API_KEY}`
-      }
+        apiKey: `${process.env.GATSBY_SNIPCART_API_KEY}`,
+      },
     },
     {
       resolve: `gatsby-source-airtable`,
@@ -35,22 +35,22 @@ module.exports = {
         tables: [
           {
             baseId: `${process.env.AIRTABLE_BASE_ID}`,
-            tableName: `Products`
+            tableName: `Products`,
           },
           {
             baseId: `${process.env.AIRTABLE_BASE_ID}`,
-            tableName: `Categories`
+            tableName: `Categories`,
           },
           {
             baseId: `${process.env.AIRTABLE_BASE_ID}`,
-            tableName: `Cuisines`
+            tableName: `Cuisines`,
           },
           {
             baseId: `${process.env.AIRTABLE_BASE_ID}`,
-            tableName: `Stores`
-          }
-        ]
-      }
+            tableName: `Stores`,
+          },
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-algolia`,
