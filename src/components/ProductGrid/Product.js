@@ -26,12 +26,17 @@ const Product = React.memo(({ js, item }) => {
     setTimeout(() => setQuantity(1), 500)
   }
 
+  const getFormattedPrice = (item) => {
+    const price = !!item.data[state.priceCode] ? item.data[state.priceCode] : item.data.price;
+    return Math.round(price * 100)/100;
+  }
+
   return (
     <>
       {js && (
         <Item
           data-id={item.recordId}
-          data-price={!!item.data[state.priceCode] ? item.data[state.priceCode] : item.data.price}
+          data-price={getFormattedPrice(item)}
           data-name={item.data.name}
           data-sku={item.data.sku}
           data-description={item.data.description}
@@ -47,7 +52,7 @@ const Product = React.memo(({ js, item }) => {
             alt={item.data.name}
           />
           <h3 className="price">
-            <span>&#163;{!!item.data[state.priceCode] ? item.data[state.priceCode] : item.data.price}</span>
+            <span>&#163;{getFormattedPrice(item)}</span>
             <PlusIcon />
           </h3>
           <span className="name">{item.data.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}</span>
@@ -63,7 +68,7 @@ const Product = React.memo(({ js, item }) => {
                 className="snipcart-add-item"
                 data-item-id={item.recordId}
                 data-item-name={item.data.name}
-                data-item-price={!!item.data[state.priceCode] ? item.data[state.priceCode] : item.data.price}
+                data-item-price={getFormattedPrice(item)}
                 data-item-quantity={quantity}
                 data-item-url={!!item.data[state.priceCode] ? `https://myjam.store/store/${state.priceCode}/products` : `https://myjam.store/products`}
                 data-item-metadata={JSON.stringify({
