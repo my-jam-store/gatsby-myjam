@@ -28,7 +28,7 @@ const Product = React.memo(({ item }) => {
 
   const getFormattedPrice = (item) => {
     const price = !!item[state.priceCode] ? item[state.priceCode] : item.price;
-    return Math.round(price * 100)/100;
+    return (price).toFixed(2);
   }
 
   return (
