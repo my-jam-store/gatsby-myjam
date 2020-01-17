@@ -230,7 +230,7 @@ function createJSON(pageData) {
   if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
   }
-  const filePath = `${dir}${pageData.context.slug}${pathSuffix}.json`;
+  const filePath = `${dir}${pageData.context.type}-${pageData.context.slug}${pathSuffix}.json`;
   const dataToSave = JSON.stringify(pageData.context.pageProducts);
   fs.writeFile(filePath, dataToSave, function(err) {
     if(err) {

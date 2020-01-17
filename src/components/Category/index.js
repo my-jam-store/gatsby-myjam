@@ -13,7 +13,7 @@ const View = (props) => {
 
   const loadMore = (pageContext, pageNum) => {
     setCursor(pageNum + 1)
-    fetch(`${__PATH_PREFIX__}/paginationJson/${pageContext.slug}${pageNum}.json`)
+    fetch(`${__PATH_PREFIX__}/paginationJson/${pageContext.type}-${pageContext.slug}${pageNum}.json`)
       .then(res => res.json())
       .then(
         res => {
