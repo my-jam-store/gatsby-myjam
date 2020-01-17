@@ -10,11 +10,11 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: `gatsby-plugin-gtag`,
       options: {
-        id: `${process.env.GOOGLE_TAGMANAGER_ID}`,
-        includeInDevelopment: false,
-        defaultDataLayer: { platform: "gatsby" },
+        trackingId: `${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`,
+        head: true,
+        anonymize: true,
       },
     },
     {
