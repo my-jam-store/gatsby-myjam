@@ -8,6 +8,7 @@ const View = (props) => {
   const [ pages, setPages ]   = useState({})
   const [ store, setStore ]   = useState('')
   const { state, dispatch }   = useContext(AppContext)
+  const { pageContext } = props
 
   const isInitializing = () => cursor === 0
 
@@ -32,21 +33,21 @@ const View = (props) => {
   }
 
   useEffect(() => {
-    if(props.pageContext.type === 'store') {
+    if(pageContext.type === 'store') {
       dispatch({
         type: 'SET_STORE',
-        storeName: props.pageContext.name,
-        priceCode: props.pageContext.slug.replace(/-/g,'_')
+        storeName: pageContext.name,
+        priceCode: pageContext.slug.replace(/-/g,'_')
       })
-      setStore(props.pageContext.name)
+      setStore(pageContext.name)
     }
 
-    const pageKey = "page" + props.pageContext.currentPage
+    const pageKey = "page" + pageContext.currentPage
 
-    setCursor(props.pageContext.currentPage + 1)
+    setCursor(pageContext.currentPage + 1)
     setPages({
       ...pages,
-      [pageKey]: props.pageContext.pageProducts
+      [pageKey]: pageContext.pageProducts
     })
   }, [])
 
@@ -56,7 +57,13 @@ const View = (props) => {
     }
   }, [store])
 
-  const pageContext = props.pageContext
+  useEffect(() => {
+    console.log(cursor, pageContext.countPages)
+  }, [cursor])
+
+  useEffect(() => {
+    console.log(Object.keys(pages))
+  }, [pages])
 
   return (
     <>
