@@ -44,11 +44,13 @@ const View = (props) => {
 
     const pageKey = "page" + pageContext.currentPage
 
-    setCursor(pageContext.currentPage + 1)
     setPages({
       ...pages,
       [pageKey]: pageContext.pageProducts
     })
+    setTimeout(() => {
+      setCursor(pageContext.currentPage + 1)
+    }, 1000)
   }, [])
 
   useEffect(() => {
@@ -56,14 +58,6 @@ const View = (props) => {
       localStorage.setItem('globalStore', JSON.stringify(state))
     }
   }, [store])
-
-  useEffect(() => {
-    console.log(cursor, pageContext.countPages)
-  }, [cursor])
-
-  useEffect(() => {
-    console.log(Object.keys(pages))
-  }, [pages])
 
   return (
     <>
