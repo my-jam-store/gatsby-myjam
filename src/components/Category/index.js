@@ -73,7 +73,6 @@ const View = (props) => {
           globalState={{
             cursor,
             ...pages,
-            isInitialized: isInitializing()
           }}
         />
       </InfiniteScroll>

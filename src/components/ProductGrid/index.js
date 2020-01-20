@@ -14,7 +14,7 @@ const ProductGrid = (props) => {
 
   let i = 0, j = 0 , numberOfItemsOnLatestPage = 0
 
-  const js = !g.isInitialized
+  const js = true
   const items = []
 
   const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
