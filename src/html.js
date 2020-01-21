@@ -26,22 +26,12 @@ export default function HTML(props) {
         />
         {props.postBodyComponents}
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.VIDEOASK_EMBED_CONFIG = {
-            "kind": "widget",
-            "url": "https://www.videoask.com/f71gdblja",
-            "options": {
-              "widgetType": "VideoThumbnailExtraLarge",
-              "text": "Talk to me",
-              "backgroundColor": "${theme.secondaryColor}",
-              "position": "bottom-left"
-            }
-          }
-        `,
-          }}
-        />
-        <script src="https://www.videoask.com/embed/embed.js"></script>
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="//js.hs-scripts.com/6298776.js"
+        ></script>
       </body>
     </html>
   )
