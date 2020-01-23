@@ -71,5 +71,3 @@ yarn-error.log
 .idea
 .env.development
 
-#Google analytics
-static/googleb0d2ad9ea10e2c10.html
