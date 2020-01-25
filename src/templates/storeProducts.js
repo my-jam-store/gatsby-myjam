@@ -1,8 +1,6 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import View from "../components/Category"
 
 const storeProductsPage = ({ pageContext }) => {
   const { pageProducts, slug } = pageContext

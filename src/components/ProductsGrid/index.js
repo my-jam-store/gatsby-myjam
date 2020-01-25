@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import { Grid, Title } from "./Components"
-import GridItem from "./Product"
+import Product from "./Product"
 import ProductModal from "./ProductModal"
 import InfiniteScroll from "react-infinite-scroll-component"
 
@@ -66,7 +66,7 @@ const ProductGrid = ({ products, pagesCounts, title, type, slug }) => {
         loader={<h4>Loading...</h4>}
       >
         <Grid onClick={handleProductModal}>
-          {items.map((item) => (<GridItem js={true} item={item} key={item.recordId} />))}
+          {items.map((item) => (<Product js={true} item={item} key={item.recordId} />))}
         </Grid>
       </InfiniteScroll>
       <ProductModal

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import ProductGrid from "../ProductGrid"
+import ProductsGrid from "../ProductsGrid"
 import AppContext from "../../store/context"
 import { setStoreAction } from "../../store/actions"
 
@@ -14,7 +14,7 @@ const View = (props) => {
   }, [])
 
   return (
-    <ProductGrid
+    <ProductsGrid
       products={pageContext.pageProducts}
       pagesCounts={pageContext.countPages}
       title={pageContext.name}
