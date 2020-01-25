@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react"
-import { InfiniteScroll } from "./InfiniteScroll"
 import ProductGrid from "../ProductGrid"
 import AppContext from "../../store/context"
 
 const View = (props) => {
 
-  const [ store, setStore ]   = useState('')
-  const { state, dispatch }   = useContext(AppContext)
+  const [ store, setStore ] = useState('')
+  const { state, dispatch } = useContext(AppContext)
   const { pageContext } = props
 
   useEffect(() => {
@@ -27,7 +26,13 @@ const View = (props) => {
   }, [store])
 
   return (
-    <ProductGrid pagesCounts={pageContext.countPages} title={pageContext.name} />
+    <ProductGrid
+      products={pageContext.pageProducts}
+      pagesCounts={pageContext.countPages}
+      title={pageContext.name}
+      type={pageContext.type}
+      slug={pageContext.slug}
+    />
   )
 }
 

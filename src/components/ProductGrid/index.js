@@ -4,9 +4,10 @@ import GridItem from "./Product"
 import ProductModal from "./ProductModal"
 import InfiniteScroll from "react-infinite-scroll-component"
 
-const ProductGrid = ({ pagesCounts, title }) => {
-  const [ item, setItem ]   = useState({})
-  const [ items, setItems ] = useState([])
+const ProductGrid = ({ products, pagesCounts, title, type, slug }) => {
+  const [ item, setItem ] = useState({})
+  const [ pageNum, setPageNum ] = useState(1)
+  const [ items, setItems ] = useState([...products])
   const [ hasMore, setHasMore ] = useState(true)
   const [ showModal, setModalState ] = useState(false)
 
@@ -33,12 +34,20 @@ const ProductGrid = ({ pagesCounts, title }) => {
   const handleCloseModal = () => setModalState(false)
 
   const fetchMoreData = () => {
-    if(items.length >= pagesCounts) {
+    if(pageNum >= pagesCounts) {
       setHasMore(false)
       return;
     }
 
-    //TODO fetch items....
+    fetch(`${__PATH_PREFIX__}/paginationJson/${type}-${slug}${pageNum+1}.json`)
+      .then(res => res.json())
+      .then(
+        res => {
+          setPageNum(pageNum + 1)
+          setItems(items.concat(res))
+        },
+        error => console.log(error)
+      )
   };
 
   useEffect(() => {
@@ -50,16 +59,16 @@ const ProductGrid = ({ pagesCounts, title }) => {
   return (
     <>
       <Title>{title}</Title>
-      <Grid onClick={handleProductModal}>
-        <InfiniteScroll
-          dataLength={items.length}
-          next={fetchMoreData}
-          hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
-        >
-          {items}
-        </InfiniteScroll>
-      </Grid>
+      <InfiniteScroll
+        dataLength={items.length}
+        next={fetchMoreData}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+      >
+        <Grid onClick={handleProductModal}>
+          {items.map((item) => (<GridItem js={true} item={item} key={item.recordId} />))}
+        </Grid>
+      </InfiniteScroll>
       <ProductModal
         isOpen={showModal}
         item={item}

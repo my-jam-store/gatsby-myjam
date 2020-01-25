@@ -836,6 +836,10 @@ body .snip-layout {
   color: #000;
 }
 
+.infinite-scroll-component__outerdiv .infinite-scroll-component {
+  overflow: inherit !important;
+}
+
 @media only screen and (max-width: 48em) {
   .snip-layout .snip-header {
     padding: 1.5rem !important;
