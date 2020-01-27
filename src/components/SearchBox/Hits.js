@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { connectHits } from "react-instantsearch-dom"
 import { Grid, Title, Div } from "./Components"
-import ProductModal from "../ProductGrid/ProductModal"
+import ProductModal from "../ProductsGrid/ProductModal"
 import Product from "./Product"
 
 const Hits = connectHits(({ hits }) => {

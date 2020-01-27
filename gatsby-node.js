@@ -92,7 +92,22 @@ exports.createPages = ({ graphql, actions }) => {
     const categoryTemplate = path.resolve(`./src/templates/category.js`)
     const cuisineTemplate  = path.resolve(`./src/templates/cuisine.js`)
     const storeTemplate    = path.resolve(`./src/templates/store.js`)
+    const productTemplate  = path.resolve(`./src/templates/product.js`)
     const countProductsPerPage = 30
+
+    for(let i = 0; i < products.totalCount; i++) {
+      const pageData = {
+        path: `/product/${products.nodes[i].data.slug}/`,
+        component: productTemplate,
+        context: {
+          item: products.nodes[i].data,
+          recordId: products.nodes[i].recordId,
+          type: 'product'
+        }
+      }
+
+      createPage(pageData)
+    }
 
     for(let i = 0; i < stores.totalCount; i++) {
       const totalProductsPerStore = products.nodes.filter((product) => (
