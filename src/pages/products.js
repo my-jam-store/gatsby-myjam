@@ -37,7 +37,7 @@ export default IndexPage
 
 export const productsQuery = graphql`
     {
-        allAirtable(filter: { table: { eq: "MarketProducts" }}) {
+        allAirtable(filter: { table: { eq: "Products" }}) {
             nodes {
                 recordId
                 data {
@@ -45,8 +45,9 @@ export const productsQuery = graphql`
                     name
                     slug
                     sku
+                    description
                     price
-                    categories
+                    stores
                 }
             }
         }

@@ -5,8 +5,8 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(
     `
-      { 
-        stores: allAirtable(filter: {table: {eq: "MarketStores"}}) {
+      {
+        stores: allAirtable(filter: {table: {eq: "Stores"}}) {
           totalCount
           nodes {
             recordId
@@ -17,7 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
         
-        products: allAirtable(filter: {table: {eq: "MarketProducts"} }, sort: { fields: [data___productId] }) {
+        products: allAirtable(filter: {table: {eq: "Products"} }, sort: { fields: [data___productId] }) {
           totalCount
           nodes {
             recordId
@@ -29,7 +29,7 @@ exports.createPages = ({ graphql, actions }) => {
               description
               price
               stores
-              4GPM_75_bedford
+              GPM_75_bedford
             }
           }
         }
