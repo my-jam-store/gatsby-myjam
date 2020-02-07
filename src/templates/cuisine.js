@@ -1,14 +1,12 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import View from "../components/Category"
 
-const cuisinePage = ({ data, pageContext }) => {
-  const { allCategories } = data
+const cuisinePage = ({ pageContext }) => {
 
   return (
-    <Layout categories={allCategories.nodes}>
+    <Layout categories={[]}>
       <SEO title={pageContext.name} />
       <View pageContext={pageContext} />
     </Layout>
@@ -16,20 +14,3 @@ const cuisinePage = ({ data, pageContext }) => {
 }
 
 export default cuisinePage
-
-export const pageQuery = graphql`
-    query{
-        allCategories: allAirtable(filter: { table: { eq: "Categories" }}) {
-            nodes {
-                recordId
-                data {
-                    categoryId
-                    mainCategory
-                    subCategories
-                    name
-                    slug
-                }
-            }
-        }
-    }
-`

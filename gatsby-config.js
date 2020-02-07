@@ -1,5 +1,3 @@
-const queries = require("./src/utils/algolia")
-
 module.exports = {
   siteMetadata: {
     title: `My Jam`,

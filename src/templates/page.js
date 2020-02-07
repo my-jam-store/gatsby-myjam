@@ -4,10 +4,10 @@ import SEO from "../components/seo"
 import Layout from "../components/Layout"
 
 export default function Template({ data }) {
-  const { categories, page } = data
+  const { page } = data
   const { frontmatter, html } = page
   return (
-    <Layout categories={categories.nodes}>
+    <Layout categories={[]}>
       <SEO title={frontmatter.title} />
       <div>
         <div
@@ -21,19 +21,6 @@ export default function Template({ data }) {
 
 export const pageQuery = graphql`
     query($path: String!) {
-        categories: allAirtable(filter: { table: { eq: "Categories" }}) {
-            nodes {
-                recordId
-                data {
-                    categoryId
-                    mainCategory
-                    subCategories
-                    name
-                    slug
-                }
-            }
-        }
-        
         page: markdownRemark(frontmatter: { path: { eq: $path } }) {
             html
             frontmatter {

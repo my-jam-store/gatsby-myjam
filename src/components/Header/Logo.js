@@ -1,7 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Div = styled.div`
@@ -9,8 +8,8 @@ const Div = styled.div`
   @media only screen 
     and (max-device-width: 768px) {
     width: 50px;
-    justify-self: center;
-    grid-column-start: 2;
+    justify-self: left;
+    grid-column-start: 1;
   }
 `
 
@@ -29,9 +28,7 @@ const Logo = () => {
 
   return (
     <Div>
-      <Link to={`/`}>
-        <Img fluid={data.placeholderImage.childImageSharp.fluid} alt={`My Jam Store`} />
-      </Link>
+      <Img fluid={data.placeholderImage.childImageSharp.fluid} alt={`My Jam Store`} />
     </Div>
   )
 }

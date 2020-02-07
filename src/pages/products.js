@@ -15,10 +15,6 @@ const IndexPage = ({ data }) => {
       <div>
         {nodes.map(({data, recordId}) => (
           <div key={recordId}>
-            <img
-              src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${data.sku}.jpg`}
-              alt={data.name}
-            />
             <h3>{data.name}</h3>
             <span>{data.price}</span>
             <a
@@ -26,7 +22,7 @@ const IndexPage = ({ data }) => {
               data-item-id={recordId}
               data-item-name={data.name}
               data-item-price={data.price}
-              data-item-url={`https://myjam.store/products`}
+              data-item-url={`https://markets.myjam.store/products`}
             >
               Add To Cart
             </a>
@@ -41,7 +37,7 @@ export default IndexPage
 
 export const productsQuery = graphql`
     {
-        allAirtable(filter: { table: { eq: "Products" }}) {
+        allAirtable(filter: { table: { eq: "MarketProducts" }}) {
             nodes {
                 recordId
                 data {

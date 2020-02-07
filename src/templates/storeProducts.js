@@ -24,7 +24,7 @@ const storeProductsPage = ({ pageContext }) => {
               data-item-id={recordId}
               data-item-name={data.name}
               data-item-price={data[slug]}
-              data-item-url={`https://myjam.store/products`}
+              data-item-url={`https://markets.myjam.store/products`}
               data-item-description=""
             >
               Add To Cart

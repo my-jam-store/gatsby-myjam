@@ -5,7 +5,8 @@ import { UserCheck } from "styled-icons/boxicons-solid/UserCheck"
 import theme from "../../theme"
 
 const Header = styled.header`
-  margin: 1rem auto;
+  margin: 0 auto;
+  padding: 1rem 0;
   width: 1120px;
   max-width: 80%;
   display: grid;
@@ -13,10 +14,15 @@ const Header = styled.header`
   grid-gap: 50px;
   align-items: center;
   box-sizing: border-box;
+  .home-title {
+    margin: 0;
+    letter-spacing: 1px;
+    font-size: 28px;
+  }
   @media only screen 
   and (max-device-width: 768px) {
     grid-gap: 20px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
     max-width: 100%;
   }
@@ -25,6 +31,8 @@ const Header = styled.header`
 const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
+  background-color: #FFF;
+  box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
   .snipcart-total-items {
     position: absolute;
     top: 1px;
@@ -77,6 +85,7 @@ const Grid = styled.div`
   @media only screen 
   and (max-device-width: 768px) {
     justify-items: right;
+    grid-column-start: 3;
   }
 `
 
