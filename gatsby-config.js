@@ -24,6 +24,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Nunito', 'sans-serif']
+        }
+      }
+    },
+    {
       resolve: `gatsby-source-airtable`,
       options: {
         apiKey: `${process.env.AIRTABLE_API_KEY}`,
