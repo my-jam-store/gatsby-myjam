@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
         {nodes.map(({data, recordId}) => (
           <div key={recordId}>
             <img
-              src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${data.sku}.jpg`}
+              src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/v1/my-jam/${data.sku}.jpg`}
               alt={data.name}
             />
             <h3>{data.name}</h3>
