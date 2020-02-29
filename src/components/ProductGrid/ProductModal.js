@@ -39,7 +39,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
       <Content>
         <div>
           <img
-            src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/v1/my-jam/${item.sku}.jpg`}
+            src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/v1/market/${item.sku}.jpg`}
             alt={item.name}
           />
         </div>
