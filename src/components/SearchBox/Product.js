@@ -46,7 +46,7 @@ const Product = React.memo(({ item }) => {
       })}
     >
       <img
-        src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/v1/markets/${item.sku}.jpg`}
+        src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/markets/${item.sku}.jpg`}
         alt={item.name}
       />
       <h3 className="price">
