@@ -5,7 +5,6 @@ import NavItems from "../NavItems"
 import NavItemsMobile from "../NavItemsMobile"
 import Logo from "./Logo"
 import MiniCart from "./MiniCart"
-import Customer from "./Customer"
 
 export default ({ categories }) => {
   const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
@@ -22,7 +21,7 @@ export default ({ categories }) => {
         <Logo />
         <SearchBox />
         <Grid>
-          <Customer />
+          <div></div>
           <MiniCart />
         </Grid>
       </Header>

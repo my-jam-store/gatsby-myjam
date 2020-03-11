@@ -5,32 +5,6 @@ const Customer = () => {
   const [ isOpen, setDashboardStatus ]      = useState(false)
   const [ authCustomer, setCustomerStatus ] = useState(false)
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.Snipcart) {
-
-      setTimeout(() => {
-        const user = window.Snipcart.api.user.current()
-        if(!!user) {
-          setCustomerStatus(true)
-        }
-      }, 750)
-
-      window.Snipcart.subscribe('authentication.success', (email) => {
-        setCustomerStatus(true)
-      })
-
-      window.Snipcart.subscribe('user.loggedout', () => {
-        setCustomerStatus(false)
-        setDashboardStatus(false)
-      })
-    }
-
-    return () => {
-      window.Snipcart.unsubscribe('authentication.success')
-      window.Snipcart.unsubscribe('user.loggedout')
-    }
-  }, [])
-
   const handleOpenMenu = () => {
     setDashboardStatus(!isOpen)
   }
