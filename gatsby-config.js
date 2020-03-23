@@ -94,6 +94,47 @@ module.exports = {
         display: `standalone`,
       },
     },
+    {
+      resolve: "gatsby-plugin-csv-feed",
+      options: {
+        feeds: [
+          {
+            query: `
+              {
+                allAirtable(filter: {table: {eq: "Products"} }, sort: { fields: [data___productId] }) 
+                {
+                  nodes {
+                    recordId
+                    data {
+                      productId
+                      name
+                      slug
+                      sku
+                      description
+                      price
+                    }
+                  }
+                }
+              }
+            `,
+            serialize: ({ query: { allAirtable } }) => {
+              return allAirtable.nodes.map(node => {
+                return {
+                  "ID": node.recordId,
+                  "Item title": node.data.name,
+                  "Item description": `${node.data.name} Description`,
+                  "Image URL": `${node.data.name} ImgUrl`,
+                  "Price": "35",
+                  "Item Category": `${node.data.name} Category`,
+                  "Final URL": `${node.data.slug}`,
+                };
+              });
+            },
+            output: "/product-feed.csv",
+          },
+        ],
+      },
+    },
     `gatsby-plugin-offline`
   ],
 }
