@@ -120,13 +120,13 @@ module.exports = {
             serialize: ({ query: { allAirtable } }) => {
               return allAirtable.nodes.slice(150,170).map(node => {
                 return {
-                  "ID": `prod_v3_${node.recordId}`,
-                  "sku": `sku_v3_${node.recordId}`,
-                  "title": `Title ${node.data.name} V3`,
-                  "name": `Product ${node.data.name} V3`,
-                  "product_name": `Product ${node.data.name} V3`,
-                  "attributes": `name`,
-                  "inventory": `Infinite`,
+                  "id": `sku_v4_${node.recordId}`,
+                  "item_group_id": `prod_v4_${node.recordId}`,
+                  "sku": `sku_v4_${node.recordId}`,
+                  "title": `Title ${node.data.name} V4`,
+                  "name": `Product ${node.data.name} V4`,
+                  "product_name": `Product ${node.data.name} V4`,
+                  "inventory": `infinite`,
                   "description": `${node.data.name} Description`,
                   "link": `https://zen-colden-f5dbb1.netlify.com/products`,
                   "image_link": `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`,
