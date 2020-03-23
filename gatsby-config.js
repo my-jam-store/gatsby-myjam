@@ -120,7 +120,7 @@ module.exports = {
             serialize: ({ query: { allAirtable } }) => {
               return allAirtable.nodes.slice(0,100).map(node => {
                 return {
-                  "ID": node.recordId,
+                  "ID": `id_v1_${node.recordId}`,
                   "name": `Product ${node.data.name} V1`,
                   "description": `${node.data.name} Description`,
                   "link": `https://zen-colden-f5dbb1.netlify.com/products`,
