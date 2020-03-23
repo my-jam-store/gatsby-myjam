@@ -121,12 +121,14 @@ module.exports = {
               return allAirtable.nodes.map(node => {
                 return {
                   "ID": node.recordId,
-                  "Item title": node.data.name,
-                  "Item description": `${node.data.name} Description`,
-                  "Image URL": `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`,
-                  "Price": "35 USD",
-                  "Item Category": `${node.data.name} Category`,
-                  "Final URL": `${node.data.slug}`,
+                  "title": `${node.data.name}`,
+                  "description": `${node.data.name} Description`,
+                  "link": `https://myjam.store`,
+                  "image_link": `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`,
+                  "price": `${node.data.price} GBP`,
+                  "availability": "in stock",
+                  "item_category": `${node.data.name} Category`,
+                  "final_url": `${node.data.slug}`,
                 };
               });
             },
