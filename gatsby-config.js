@@ -121,6 +121,7 @@ module.exports = {
               return allAirtable.nodes.slice(120,140).map(node => {
                 return {
                   "ID": `${node.recordId}`,
+                  "title": `Title ${node.data.name} V1`,
                   "name": `Product ${node.data.name} V1`,
                   "description": `${node.data.name} Description`,
                   "link": `https://zen-colden-f5dbb1.netlify.com/products`,
