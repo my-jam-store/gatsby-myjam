@@ -123,8 +123,8 @@ module.exports = {
                   "ID": node.recordId,
                   "Item title": node.data.name,
                   "Item description": `${node.data.name} Description`,
-                  "Image URL": `${node.data.name} ImgUrl`,
-                  "Price": "35",
+                  "Image URL": `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`,
+                  "Price": "35 USD",
                   "Item Category": `${node.data.name} Category`,
                   "Final URL": `${node.data.slug}`,
                 };
