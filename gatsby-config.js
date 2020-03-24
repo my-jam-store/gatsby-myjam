@@ -118,19 +118,18 @@ module.exports = {
               }
             `,
             serialize: ({ query: { allAirtable } }) => {
-              return allAirtable.nodes.slice(500,520).map(node => {
+              return allAirtable.nodes.slice(0,20).map(node => {
                 return {
                   "ID": `sku_v7_${node.recordId}`,
                   "item_group_id": `prod_v7_${node.recordId}`,
-                  "title": `Title ${node.data.name} V7`,
+                  "title": node.data.name,
                   "inventory": `infinite`,
-                  "description": `${node.data.name} Description`,
+                  "description": `Description`,
                   "link": `https://zen-colden-f5dbb1.netlify.com/products`,
                   "image_link": `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`,
                   "price": `${node.data.price} GBP`,
                   "availability": "in stock",
                   "item_category": `${node.data.name} Category`,
-                  "final_url": `${node.data.slug}`,
                 };
               });
             },
