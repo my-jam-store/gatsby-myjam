@@ -123,7 +123,6 @@ module.exports = {
                   "ID": `sku_v7_${node.recordId}`,
                   "item_group_id": `prod_v7_${node.recordId}`,
                   "title": `Title ${node.data.name} V7`,
-                  "name": `Product ${node.data.name} V7`,
                   "inventory": `infinite`,
                   "description": `${node.data.name} Description`,
                   "link": `https://zen-colden-f5dbb1.netlify.com/products`,
