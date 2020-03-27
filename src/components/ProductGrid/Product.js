@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react"
 import { Item, PlusIcon, QuantityBoxMobile, CartIcon, QtyMinus, QtyPlus } from "./Components"
 import AppContext from "../../store/context"
-
 const Product = React.memo(({ js, item }) => {
   const [ quantity, setQuantity ] = useState(1)
   const { state } = useContext(AppContext)
