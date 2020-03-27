@@ -120,16 +120,16 @@ module.exports = {
             serialize: ({ query: { allAirtable } }) => {
               return allAirtable.nodes.slice(100,105).map(node => {
                 return {
-                  "ID": `sku_id_1v_${node.recordId}`,
-                  "product": `prod_id_1v_${node.recordId}`,
-                  "title": node.data.name,
+                  "ID": `sku_id_v_55_${node.recordId}`,
+                  // "item_group_id": `sku_id_v_55_${node.recordId}`,
+                  "item_group_id": "prod_id_849031",
+                  // "title": node.data.name,
                   "name": node.data.name,
-                  "size": "X Small",
                   // "inventory.type": "infinite",
-                  "description": `Description`,
-                  "link": `https://zen-colden-f5dbb1.netlify.com/products`,
+                  // "description": `Description`,
+                  // "link": `https://zen-colden-f5dbb1.netlify.com/products`,
                   "image_link": `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`,
-                  "price": `99.99 GBP`,
+                  "price": `${node.data.price} GBP`,
                   "availability": "in stock",
                   "item_category": `${node.data.name} Category`,
                 };
