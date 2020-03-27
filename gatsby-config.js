@@ -101,7 +101,7 @@ module.exports = {
           {
             query: `
               {
-                allAirtable(filter: {table: {eq: "Products"} }, sort: { fields: [data___productId] }) 
+                allAirtable(filter: {table: {eq: "Products"} }, sort: { fields: [data___productId] })
                 {
                   nodes {
                     recordId
@@ -118,10 +118,10 @@ module.exports = {
               }
             `,
             serialize: ({ query: { allAirtable } }) => {
-              return allAirtable.nodes.slice(500,550).map(node => {
+              return allAirtable.nodes.slice(1000,1050).map(node => {
                 return {
-                  "ID": node.data.sku,
-                  "item_group_id": `prod_vx_${node.recordId}`,
+                  "ID": `sku_id_${node.recordId}`,
+                  "item_group_id": `prod_id_${node.recordId}`,
                   "title": node.data.name,
                   "inventory": `infinite`,
                   "description": `Description`,
@@ -133,7 +133,7 @@ module.exports = {
                 };
               });
             },
-            output: "/products-feed.csv",
+            output: "/product-feed.csv",
           },
         ],
       },
