@@ -28,7 +28,7 @@ const Product = React.memo(({ js, item }) => {
 
   const getFormattedPrice = (item) => {
     const price = !!item.data[state.priceCode] ? item.data[state.priceCode] : item.data.price;
-    return (price).toFixed(2);
+    return (price || 1).toFixed(2);
   }
 
   return (

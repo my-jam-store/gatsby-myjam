@@ -118,7 +118,7 @@ module.exports = {
               }
             `,
             serialize: ({ query: { allAirtable } }) => {
-              return allAirtable.nodes.slice(1000,1050).map(node => {
+              return allAirtable.nodes.slice(0,20).map(node => {
                 return {
                   "ID": `sku_id_${node.recordId}`,
                   "item_group_id": `prod_id_${node.recordId}`,
