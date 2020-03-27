@@ -123,7 +123,7 @@ module.exports = {
                   "ID": `sku_id_v_${node.recordId}`,
                   "item_group_id": `prod_id_v_${node.recordId}`,
                   // "item_group_id": "prod_id_849031",
-                  // "title": node.data.name,
+                  "title": node.data.name,
                   "name": node.data.name,
                   // "description": `Description`,
                   // "link": `https://zen-colden-f5dbb1.netlify.com/products`,
