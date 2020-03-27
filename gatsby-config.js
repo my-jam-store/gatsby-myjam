@@ -120,10 +120,10 @@ module.exports = {
             serialize: ({ query: { allAirtable } }) => {
               return allAirtable.nodes.slice(100,105).map(node => {
                 return {
-                  "ID": `sku_id_v_55_${node.recordId}`,
-                  "item_group_id": `sku_id_v_55_${node.recordId}`,
+                  "ID": `sku_id_ve1_${node.recordId}`,
+                  "item_group_id": `prod_id_ve1_${node.recordId}`,
                   // "item_group_id": "prod_id_849031",
-                  // "title": node.data.name,
+                  "title": node.data.name,
                   "name": node.data.name,
                   // "inventory.type": "infinite",
                   // "description": `Description`,
