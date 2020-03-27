@@ -128,7 +128,7 @@ module.exports = {
                   "description": `Description`,
                   "link": `https://zen-colden-f5dbb1.netlify.com/products`,
                   "image_link": `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`,
-                  "price": `${node.data.price} GBP`,
+                  "price": `33.99 GBP`,
                   "availability": "in stock",
                   "item_category": `${node.data.name} Category`,
                 };
