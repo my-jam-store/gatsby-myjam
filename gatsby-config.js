@@ -120,10 +120,10 @@ module.exports = {
             serialize: ({ query: { allAirtable } }) => {
               return allAirtable.nodes.slice(100,102).map(node => {
                 return {
-                  "ID": `sku_id_ve33_${node.recordId}`,
-                  "item_group_id": `prod_id_ve3_${node.recordId}`,
+                  "ID": `sku_id_v_${node.recordId}`,
+                  "item_group_id": `prod_id_v_${node.recordId}`,
                   // "item_group_id": "prod_id_849031",
-                  "title": node.data.name,
+                  // "title": node.data.name,
                   "name": node.data.name,
                   // "description": `Description`,
                   // "link": `https://zen-colden-f5dbb1.netlify.com/products`,
