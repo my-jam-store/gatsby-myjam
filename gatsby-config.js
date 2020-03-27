@@ -120,8 +120,8 @@ module.exports = {
             serialize: ({ query: { allAirtable } }) => {
               return allAirtable.nodes.slice(50,60).map(node => {
                 return {
-                  "ID": `sku_id_v45_${node.recordId}`,
-                  "item_group_id": `prod_id_98712312`,
+                  "ID": `sku_id_v54_${node.recordId}`,
+                  "product": `prod_id_849031`,
                   "name": node.data.name,
                   "title": node.data.name,
                   "description": `Description`,
