@@ -89,6 +89,45 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
+    const dir = "public/product-feed/"
+    if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir);
+    }
+    const filePath = `${dir}stripe.json`
+    let dataToSave = products.nodes.slice(109,110).map(node => {
+      return {
+        id: `prod_id_v_${node.recordId}`,
+        name: node.data.name,
+        type: 'good',
+        description: `${node.data.name} Description`,
+        attributes: ['size', 'gender', 'name'],
+        "availability": "in stock",
+        "link": `https://zen-colden-f5dbb1.netlify.com/products`,
+        "images": [`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`],
+      }
+    })
+
+    dataToSave = dataToSave.concat(products.nodes.slice(109,110).map(node => {
+      return {
+        id: `sku_id_v_${node.recordId}`,
+        attributes: {
+          name: node.data.name,
+          size: 'Medium',
+          gender: 'Unisex',
+        },
+        price: 150,
+        currency: 'gbp',
+        inventory: {type: 'infinite'},
+        product: `prod_id_v_${node.recordId}`,
+        }
+    }))
+
+    fs.writeFile(filePath, JSON.stringify(dataToSave), function(err) {
+      if(err) {
+        return console.log(err);
+      }
+    })
+
     const categoryTemplate = path.resolve(`./src/templates/category.js`)
     const cuisineTemplate  = path.resolve(`./src/templates/cuisine.js`)
     const storeTemplate    = path.resolve(`./src/templates/store.js`)
