@@ -118,7 +118,7 @@ module.exports = {
               }
             `,
             serialize: ({ query: { allAirtable } }) => {
-              return allAirtable.nodes.slice(100,101).map(node => {
+              return allAirtable.nodes.slice(105,106).map(node => {
                 return {
                   "ID": `sku_id_v_${node.recordId}`,
                   "item_group_id": `prod_id_v_${node.recordId}`,
@@ -127,8 +127,12 @@ module.exports = {
                   "name": "test name",
                   "size": "Small",
                   "attributes": "name,size",
-                  // "description": `Description`,
-                  // "link": `https://zen-colden-f5dbb1.netlify.com/products`,
+                  "inventory": {
+                    "type": "infinite"
+                  },
+                  "availability": "infinite",
+                  "description": `Description`,
+                  "link": `https://zen-colden-f5dbb1.netlify.com/products`,
                   "image_link": `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${node.data.sku}.jpg`,
                   "price": `${node.data.price} GBP`,
                   "item_category": `${node.data.name} Category`,
