@@ -118,18 +118,16 @@ module.exports = {
               }
             `,
             serialize: ({ query: { allAirtable } }) => {
-              return allAirtable.nodes.slice(105,106).map(node => {
+              return allAirtable.nodes.slice(107,108).map(node => {
                 return {
                   "ID": `sku_id_v_${node.recordId}`,
                   "item_group_id": `prod_id_v_${node.recordId}`,
                   // "item_group_id": "prod_id_849031",
                   "title": node.data.name,
-                  "name": "test name",
+                  "name_attribute": "test name",
                   "size": "Small",
                   "attributes": "name,size",
-                  "inventory": {
-                    "type": "infinite"
-                  },
+                  "inventory": "infinite",
                   "availability": "in stock",
                   "description": `Description`,
                   "link": `https://zen-colden-f5dbb1.netlify.com/products`,
