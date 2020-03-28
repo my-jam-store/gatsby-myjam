@@ -124,7 +124,7 @@ module.exports = {
                   "item_group_id": `prod_id_v_${node.recordId}`,
                   // "item_group_id": "prod_id_849031",
                   "title": node.data.name,
-                  "name": node.data.name,
+                  "name": "test name",
                   "size": "Small",
                   "attributes": "name,size",
                   // "description": `Description`,
