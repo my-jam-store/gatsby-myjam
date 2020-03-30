@@ -46,7 +46,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
         <div className="product-info">
           <h3 className="name">{item.name}</h3>
           <p>{item.description}</p>
-          <span className="price">&#163;{item.price}</span>
+          <span className="price">&#36;{item.price}</span>
           <br/>
           <span>Quantity</span>
           <QuantityBox>

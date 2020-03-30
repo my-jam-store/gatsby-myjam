@@ -50,7 +50,7 @@ const Product = React.memo(({ item }) => {
         alt={item.name}
       />
       <h3 className="price">
-        <span>&#163;{getFormattedPrice(item)}</span>
+        <span>&#36;{getFormattedPrice(item)}</span>
         <PlusIcon />
       </h3>
       <span className="name">{item.name.split(' ').map( word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}</span>
