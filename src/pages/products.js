@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
               data-item-id={recordId}
               data-item-name={data.name}
               data-item-price={data.price}
-              data-item-url={`https://myjam.store/products`}
+              data-item-url={`https://us.myjam.store/products`}
             >
               Add To Cart
             </a>
