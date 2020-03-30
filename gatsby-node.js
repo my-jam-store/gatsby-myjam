@@ -57,8 +57,7 @@ exports.createPages = ({ graphql, actions }) => {
               categories
               cuisines
               stores
-              simply_jazz_mental
-              valve_brass_statue
+              PFJX_88_Westside
             }
           }
         }
