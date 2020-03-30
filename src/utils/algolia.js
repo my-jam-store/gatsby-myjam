@@ -10,8 +10,7 @@ const ProductsQuery = `{
         description
         price
         categories
-        simply_jazz_mental
-        valve_brass_statue
+        PFJX_88_Westside
       }
     }
   }
