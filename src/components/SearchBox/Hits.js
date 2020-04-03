@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import { connectHits } from "react-instantsearch-dom"
 import { Grid, Title, Div } from "./Components"
 import ProductModal from "../ProductGrid/ProductModal"
 import Product from "./Product"
+import AppContext from "../../store/context"
 
 const Hits = connectHits(({ hits }) => {
   const [ item, setItem ] = useState({})
   const [ showModal, setModalState ] = useState(false)
+  const { state } = useContext(AppContext)
 
   const componentMounted = useRef(false)
 
@@ -52,9 +54,10 @@ const Hits = connectHits(({ hits }) => {
     <Div id="searchResult">
       <Title>Search Result</Title>
       <Grid onClick={handleProductModal}>
-        {hits.map((hit) => (
-          <Product key={hit.recordId} js={true} item={hit} />
-        ))}
+        {
+          hits.filter((product) => (product.stores.indexOf(state.storeId || '') !== -1))
+          .map((hit) => (<Product key={hit.recordId} js={true} item={hit} />))
+        }
       </Grid>
       <ProductModal
         isOpen={showModal}
