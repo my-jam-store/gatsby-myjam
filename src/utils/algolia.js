@@ -7,9 +7,9 @@ const ProductsQuery = `{
         name
         slug
         sku
+        stores
         description
         price
-        categories
         simply_jazz_mental
         valve_brass_statue
       }
