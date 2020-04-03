@@ -12,8 +12,11 @@ const View = (props) => {
     if(pageContext.type === 'store') {
       dispatch({
         type: 'SET_STORE',
-        storeName: pageContext.name,
-        priceCode: pageContext.slug.replace(/-/g,'_')
+        payload: {
+          storeName: pageContext.name,
+          storeCode: pageContext.slug.replace(/-/g,'_'),
+          storeId: pageContext.id
+        }
       })
       setStore(pageContext.name)
     }
