@@ -2,18 +2,15 @@ import React, { useReducer } from "react"
 import AppContext from "./context"
 
 const initialState =  typeof window !== "undefined" && !!localStorage.getItem('globalStore')
-  ? JSON.parse(localStorage.getItem('globalStore')) : { store: null, priceCode: null }
+  ? JSON.parse(localStorage.getItem('globalStore')) : { storeName: null, storeCode: null, storeId: null }
 
 const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_STORE':
-      return {
-        store: action.storeName,
-        priceCode: action.priceCode
-      }
-    default:
-      return state
+  const { type, payload } = action
+  if(type === 'SET_STORE') {
+    return { ...payload }
   }
+
+  return state
 }
 
 const GlobalStore = (props) => {
