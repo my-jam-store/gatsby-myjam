@@ -26,6 +26,10 @@ const NavItems = styled.nav`
   and (max-device-width: 768px) {
     max-width: 100%;
   }
+  h2 {
+    margin: 0;
+    padding: 20px 0;
+  }
 `
 
 const Item = styled.div`
