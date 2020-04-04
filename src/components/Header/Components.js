@@ -77,6 +77,9 @@ const Grid = styled.div`
   @media only screen 
   and (max-device-width: 768px) {
     justify-items: right;
+    div:last-child {
+      grid-column-start: -1;
+    }
   }
 `
 

@@ -18,11 +18,11 @@ export default ({ categories }) => {
   return (
     <Container>
       <Header>
-        <NavItemsMobile categories={categories} />
+        {isMobile() && (<Customer />)}
         <Logo />
         <SearchBox />
         <Grid>
-          <Customer />
+          {!isMobile() && (<Customer />)}
           <MiniCart />
         </Grid>
       </Header>
