@@ -27,7 +27,7 @@ const Product = React.memo(({ js, item }) => {
   }
 
   const getFormattedPrice = (item) => {
-    const price = !!item.data[state.priceCode] ? item.data[state.priceCode] : item.data.price;
+    const price = !!item.data[state.storeCode] ? item.data[state.storeCode] : item.data.price;
     return (price).toFixed(2);
   }
 
@@ -40,11 +40,11 @@ const Product = React.memo(({ js, item }) => {
           data-name={item.data.name}
           data-sku={item.data.sku}
           data-description={item.data.description}
-          data-url={!!item.data[state.priceCode] ? `https://myjam.store/store/${state.priceCode}/products` : `https://myjam.store/products`}
+          data-url={!!item.data[state.storeCode] ? `https://myjam.store/store/${state.storeCode}/products` : `https://myjam.store/products`}
           data-meta={JSON.stringify({
             shop:state.store,
             sku: item.data.sku,
-            inStore: !!item.data[state.priceCode]
+            inStore: !!item.data[state.storeCode]
           })}
         >
           <img
@@ -70,11 +70,11 @@ const Product = React.memo(({ js, item }) => {
                 data-item-name={item.data.name}
                 data-item-price={getFormattedPrice(item)}
                 data-item-quantity={quantity}
-                data-item-url={!!item.data[state.priceCode] ? `https://myjam.store/store/${state.priceCode}/products` : `https://myjam.store/products`}
+                data-item-url={!!item.data[state.storeCode] ? `https://myjam.store/store/${state.storeCode}/products` : `https://myjam.store/products`}
                 data-item-metadata={JSON.stringify({
                   shop:state.store,
                   sku: item.data.sku,
-                  inStore: !!item.data[state.priceCode]
+                  inStore: !!item.data[state.storeCode]
                 })}
               >
                 <CartIcon/>
