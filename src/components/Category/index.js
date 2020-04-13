@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import ProductGrid from "../ProductGrid"
 import AppContext from "../../store/context"
+import { SET_STORE } from "../../store/constants"
+import { setStoreAction } from "../../store/actions"
 
 const View = (props) => {
 
@@ -10,11 +12,7 @@ const View = (props) => {
 
   useEffect(() => {
     if(pageContext.type === 'store') {
-      dispatch({
-        type: 'SET_STORE',
-        storeName: pageContext.name,
-        priceCode: pageContext.slug.replace(/-/g,'_')
-      })
+      dispatch(setStoreAction(pageContext.name, pageContext.slug.replace(/-/g,'_')))
       setStore(pageContext.name)
     }
   }, [])

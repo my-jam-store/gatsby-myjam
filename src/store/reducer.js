@@ -5,8 +5,8 @@ export default (state, action) => {
   if(type === SET_STORE) {
     return {
       ...state,
-      store: action.storeName,
-      priceCode: action.priceCode
+      storeName: payload.storeName,
+      storeCode: payload.storeCode
     }
   }
 

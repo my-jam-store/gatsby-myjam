@@ -2,7 +2,7 @@ import { SET_STORE, ADD_ITEM_TO_CART, UPDATE_ITEM_QTY, REMOVE_ITEM_FROM_CART } f
 
 export const setStoreAction = (storeName, storeCode) => ({
   type: SET_STORE,
-  payload: { storeName, storeCode}
+  payload: { storeName, storeCode }
 })
 
 export const addItemAction = (id, qty) => ({
