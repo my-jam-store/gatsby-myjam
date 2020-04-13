@@ -1,23 +1,12 @@
 import React, { useReducer } from "react"
 import AppContext from "./context"
+import redcuer from "./reducer"
 
 const initialState =  typeof window !== "undefined" && !!localStorage.getItem('globalStore')
-  ? JSON.parse(localStorage.getItem('globalStore')) : { store: null, priceCode: null }
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_STORE':
-      return {
-        store: action.storeName,
-        priceCode: action.priceCode
-      }
-    default:
-      return state
-  }
-}
+  ? JSON.parse(localStorage.getItem('globalStore')) : { storeName: null, storeCode: null, items: [] }
 
 const GlobalStore = (props) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(redcuer, initialState)
   return (
     <AppContext.Provider value={{state, dispatch}}>
       {props.children}
