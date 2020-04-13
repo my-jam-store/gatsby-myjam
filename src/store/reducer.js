@@ -1,6 +1,6 @@
 import { SET_STORE, ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART, UPDATE_ITEM_QTY } from "./actions"
 
-export const reducer = (state, action) => {
+export default (state, action) => {
   const { type, payload } = action
   if(type === SET_STORE) {
     return {
