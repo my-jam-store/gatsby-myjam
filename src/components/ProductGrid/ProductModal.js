@@ -2,10 +2,12 @@ import React, { useContext, useState } from "react"
 import Modal from "react-modal"
 import { Content, QuantityBox, QtyPlus, QtyMinus, CartIcon, CloseIcon } from "./Components"
 import AppContext from "../../store/context"
+import { addItemAction } from "../../store/actions"
 
 const ProductModal = ({ isOpen, item, handleClose }) => {
   const [ qty, setQty ] = useState(1)
-  const { state } = useContext(AppContext)
+  const [ err, setErr ] = useState(null)
+  const { dispatch } = useContext(AppContext)
 
   const handleQuantityChange = (e) => {
     setQty(e.target.value)
@@ -25,7 +27,19 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
 
   const handleCloseModal = () => {
     handleClose()
-    setTimeout(() => setQty(1), 500)
+    setTimeout(() => {
+      setQty(1)
+      setErr('')
+    }, 500)
+  }
+
+  const addItemToCart = () => {
+    if(qty > 0) {
+      dispatch(addItemAction(item.recordId, Number.parseInt(qty), item.price))
+      handleCloseModal()
+    } else {
+      setErr('invalid quantity value')
+    }
   }
   
   return (
@@ -56,22 +70,14 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
               <QtyMinus onClick={handleQuantityDecrement} />
             </div>
             <div>
-              <button
-                onClick={handleCloseModal}
-                className="snipcart-add-item"
-                data-item-id={item.recordId}
-                data-item-name={item.name}
-                data-item-price={item.price}
-                data-item-quantity={qty}
-                data-item-url={item.url}
-                data-item-metadata={item.metaData}
-              >
+              <button onClick={addItemToCart}>
                 <CartIcon/>
                 <span>
                   Add To Cart
                 </span>
               </button>
             </div>
+            {!!err && (<p style={{gridColumn:'1/-1', color: 'orangered'}}>{err}</p>)}
           </QuantityBox>
         </div>
         <CloseIcon onClick={handleCloseModal} />

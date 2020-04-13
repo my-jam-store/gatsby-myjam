@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react"
 import { Item, PlusIcon, QuantityBoxMobile, CartIcon, QtyMinus, QtyPlus } from "./Components"
 import AppContext from "../../store/context"
+import { addItemAction } from "../../store/actions"
 
 const Product = React.memo(({ item }) => {
   const [ quantity, setQuantity ] = useState(1)
-  const { state } = useContext(AppContext)
+  const [ err, setErr ] = useState(null)
+  const { state, dispatch } = useContext(AppContext)
 
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value)
@@ -22,13 +24,21 @@ const Product = React.memo(({ item }) => {
     }
   }
 
-  const handleRestQty = () => {
-    setTimeout(() => setQuantity(1), 500)
-  }
-
   const getFormattedPrice = (item) => {
     const price = !!item[state.storeCode] ? item[state.storeCode] : item.price;
     return (price).toFixed(2);
+  }
+
+  const addItemToCart = () => {
+    if(quantity > 0) {
+      dispatch(addItemAction(item.recordId, Number.parseInt(quantity), getFormattedPrice(item)))
+      setTimeout(() => {
+        setQuantity(1)
+        setErr('')
+      }, 500)
+    } else {
+      setErr('invalid quantity value')
+    }
   }
 
   return (
@@ -38,12 +48,6 @@ const Product = React.memo(({ item }) => {
       data-name={item.name}
       data-sku={item.sku}
       data-description={item.description}
-      data-url={!!item[state.storeCode] ? `https://myjam.store/store/${state.storeCode}/products` : `https://myjam.store/products`}
-      data-meta={JSON.stringify({
-        shop:state.store,
-        sku: item.sku,
-        inStore: !!item[state.storeCode]
-      })}
     >
       <img
         src={`https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/q_auto,f_auto/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${item.sku}.jpg`}
@@ -61,24 +65,12 @@ const Product = React.memo(({ item }) => {
           <QtyMinus onClick={handleQuantityDecrement} />
         </div>
         <div>
-          <button
-            onClick={handleRestQty}
-            className="snipcart-add-item"
-            data-item-id={item.recordId}
-            data-item-name={item.name}
-            data-item-price={getFormattedPrice(item)}
-            data-item-quantity={quantity}
-            data-item-url={!!item[state.storeCode] ? `https://myjam.store/store/${state.storeCode}/products` : `https://myjam.store/products`}
-            data-item-metadata={JSON.stringify({
-              shop:state.store,
-              sku: item.sku,
-              inStore: !!item[state.storeCode]
-            })}
-          >
+          <button onClick={addItemToCart}>
             <CartIcon/>
             <span>Add To Cart</span>
           </button>
         </div>
+        {!!err && (<p style={{gridColumn:'1/-1', color: 'orangered', marginBottom: '0px'}}>{err}</p>)}
       </QuantityBoxMobile>
     </Item>
   )
