@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import ProductGrid from "../ProductGrid"
 import AppContext from "../../store/context"
-import { SET_STORE } from "../../store/constants"
 import { setStoreAction } from "../../store/actions"
 
 const View = (props) => {
