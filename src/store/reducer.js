@@ -3,35 +3,41 @@ import { SET_STORE, ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART, UPDATE_ITEM_QTY } f
 export default (state, action) => {
   const { type, payload } = action
   if(type === SET_STORE) {
-    return {
+    const updatedState = { 
       ...state,
       storeName: payload.storeName,
       storeCode: payload.storeCode
     }
+    localStorage.setItem('globalStore', JSON.stringify(updatedState))
+    return updatedState
   }
-
   if(type === ADD_ITEM_TO_CART) {
-    return {
+    const updatedState = {
       ...state,
       items: state.items.concat(payload)
     }
+    localStorage.setItem('globalStore', JSON.stringify(updatedState))
+    return updatedState
   }
 
   if(type === REMOVE_ITEM_FROM_CART) {
-    return {
+    const updatedState = {
       ...state,
       items: state.items.filter(({id}) => id !== payload.itemId)
     }
+    localStorage.setItem('globalStore', JSON.stringify(updatedState))
+    return updatedState
   }
 
   if(type === UPDATE_ITEM_QTY) {
-    return {
+    const updatedState = {
       ...state,
       items: state.items.map((item) => (
         item.id !== payload.itemId ? (item) : ({ ...item, qty: payload.qty })
       ))
     }
+    localStorage.setItem('globalStore', JSON.stringify(updatedState))
+    return updatedState
   }
-
   return state
 }
