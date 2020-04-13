@@ -12,10 +12,11 @@ export default (state, action) => {
     return updatedState
   }
   if(type === ADD_ITEM_TO_CART) {
-    const updatedState = {
-      ...state,
-      items: state.items.concat(payload)
-    }
+    const found = state.items.find(({ id }) => payload.id === id)
+    const items = !found ? state.items.concat(payload) : state.items.map((item) => (
+      item.id !== payload.id ? (item) : ({ ...item, qty: item.qty + payload.qty })
+    ))
+    const updatedState = { ...state, items }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }

@@ -5,9 +5,9 @@ export const setStoreAction = (storeName, storeCode) => ({
   payload: { storeName, storeCode }
 })
 
-export const addItemAction = (id, qty) => ({
+export const addItemAction = (id, qty, price) => ({
   type: ADD_ITEM_TO_CART,
-  payload: { id, qty }
+  payload: { id, qty, price }
 })
 
 export const removeItemAction = (itemId) => ({
