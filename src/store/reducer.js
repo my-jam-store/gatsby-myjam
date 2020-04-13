@@ -1,4 +1,4 @@
-import { SET_STORE, ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART, UPDATE_ITEM_QTY } from "./actions"
+import { SET_STORE, ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART, UPDATE_ITEM_QTY } from "./constants"
 
 export default (state, action) => {
   const { type, payload } = action
