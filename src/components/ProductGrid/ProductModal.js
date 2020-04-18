@@ -3,6 +3,7 @@ import Modal from "react-modal"
 import { Content, QuantityBox, QtyPlus, QtyMinus, CartIcon, CloseIcon } from "./Components"
 import AppContext from "../../store/context"
 import { addItemAction } from "../../store/actions"
+import { showMessage } from "../../utils/notification"
 
 const ProductModal = ({ isOpen, item, handleClose }) => {
   const [ qty, setQty ] = useState(1)
@@ -36,6 +37,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
   const addItemToCart = () => {
     if(qty > 0) {
       dispatch(addItemAction(item.recordId, Number.parseInt(qty), item.price))
+      showMessage('Item added to cart successfully', 'success')
       handleCloseModal()
     } else {
       setErr('invalid quantity value')

@@ -11,6 +11,7 @@ import ReactNotification from "react-notifications-component"
 import Header from "../Header"
 import Footer from "../Footer"
 import { Main } from "./Components"
+import "react-notifications-component/dist/theme.css"
 import "./layout.css"
 
 const Index = ({ children, categories }) => {

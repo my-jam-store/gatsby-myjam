@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import { Item, PlusIcon, QuantityBoxMobile, CartIcon, QtyMinus, QtyPlus } from "./Components"
 import AppContext from "../../store/context"
 import { addItemAction } from "../../store/actions"
+import { showMessage } from "../../utils/notification"
 
 const Product = React.memo(({ js, item }) => {
   const [ quantity, setQuantity ] = useState(1)
@@ -32,6 +33,7 @@ const Product = React.memo(({ js, item }) => {
   const addItemToCart = () => {
     if(quantity > 0) {
       dispatch(addItemAction(item.recordId, Number.parseInt(quantity), getFormattedPrice(item)))
+      showMessage('Item added to cart successfully', 'success')
       setTimeout(() => {
         setQuantity(1)
         setErr('')
