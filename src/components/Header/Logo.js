@@ -29,9 +29,7 @@ const Logo = () => {
 
   return (
     <Div>
-      <Link to={`/`}>
-        <Img fluid={data.placeholderImage.childImageSharp.fluid} alt={`My Jam Store`} />
-      </Link>
+      <Img fluid={data.placeholderImage.childImageSharp.fluid} alt={`My Jam Store`} />
     </Div>
   )
 }
