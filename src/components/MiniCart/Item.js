@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
-import { MinusIcon, PlusIcon, Qty, Text, Track, Wrapper } from "./Components"
+import { MinusIcon, PlusIcon, Qty, Text, Track, Wrapper, CloseIcon } from "./Components"
 import AppContext from "../../store/context"
-import { updateItemQtyAction } from "../../store/actions"
+import { removeItemAction, updateItemQtyAction } from "../../store/actions"
 
 const Item = ({ item }) => {
   const { state, dispatch } = useContext(AppContext)
@@ -18,6 +18,10 @@ const Item = ({ item }) => {
 
   const handleQtyInc = () => {
     dispatch(updateItemQtyAction(item.id, item.qty+1))
+  }
+
+  const handleItemRemove = () => {
+    dispatch(removeItemAction(item.id))
   }
 
   return (
@@ -37,6 +41,7 @@ const Item = ({ item }) => {
       </Track>
       <Track>
         <Text>&#163;{getItemTotal()}</Text>
+        <CloseIcon onClick={handleItemRemove} />
       </Track>
     </Wrapper>
   )

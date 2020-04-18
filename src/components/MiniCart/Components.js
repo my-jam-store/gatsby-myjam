@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { Cart } from "styled-icons/evil/Cart"
 import { Plus } from "styled-icons/boxicons-regular/Plus"
 import { Minus } from "styled-icons/boxicons-regular/Minus"
+import { Close } from "styled-icons/evil/Close"
 import theme from "../../theme"
 
 export const Content = styled.div`
@@ -26,6 +27,7 @@ export const Title = styled.h3`
 export const Wrapper = styled.div`
   display: grid;
   grid-gap: 0 20px;
+  position: relative;
   grid-template-columns: 3fr 1fr 1fr 1fr;
   align-items: center;
   border-bottom: 1px solid #EAEAEA;
@@ -83,6 +85,18 @@ export const PlusIcon = styled(Plus)`
   :active {
     transform: scale(0.8)
   }
+`
+
+export const CloseIcon = styled(Close)`
+  width: 20px;
+  height: 20px;
+  transition: all .2s ease;
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 `
 
 export const MinusIcon = styled(Minus)`
