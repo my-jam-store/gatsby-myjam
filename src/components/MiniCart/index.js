@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useContext } from "react"
 import { CartIcon } from "./Components"
 import AppContext from "../../store/context"
-import Modal from "react-modal"
 import MiniCartModal from "./MiniCartModal"
 
 const MiniCart = () => {
-  const { state, dispatch } = useContext(AppContext)
+  const { state } = useContext(AppContext)
   const [showModal, setModalState] = useState(false)
 
   const renderCartQuantity = () => {
@@ -19,9 +18,10 @@ const MiniCart = () => {
     }
   }
 
-  const showMiniCart = () => setModalState(true)
-
-  const handleCloseModal = () => setModalState(false)
+  const showMiniCart = () => {
+    // TODO handle miniCart menu on mobile.
+    setModalState(true)
+  }
 
   return (
     <>
@@ -31,7 +31,7 @@ const MiniCart = () => {
       </div>
       <MiniCartModal
         isOpen={showModal}
-        handleClose={handleCloseModal}
+        handleClose={() => {setModalState(false)}}
       />
     </>
   )

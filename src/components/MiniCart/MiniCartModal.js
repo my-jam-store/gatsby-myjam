@@ -1,5 +1,6 @@
 import React from "react"
 import Modal from "react-modal"
+import CartContent from "./Content"
 
 const MiniCartModal = ({isOpen, handleClose}) => {
   const closeModal = () => handleClose()
@@ -11,7 +12,7 @@ const MiniCartModal = ({isOpen, handleClose}) => {
       ariaHideApp={false}
       className="modal"
     >
-      <h1>Content</h1>
+      <CartContent/>
     </Modal>
   )
 }
