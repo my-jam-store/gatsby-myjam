@@ -36,7 +36,12 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
 
   const addItemToCart = () => {
     if(qty > 0) {
-      dispatch(addItemAction(item.recordId, Number.parseInt(qty), item.price))
+      dispatch(addItemAction(
+        item.name,
+        item.recordId,
+        Number.parseInt(qty),
+        item.price))
+
       showMessage('Item added to cart successfully', 'success')
       handleCloseModal()
     } else {

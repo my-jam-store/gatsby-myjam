@@ -32,7 +32,12 @@ const Product = React.memo(({ item }) => {
 
   const addItemToCart = () => {
     if(quantity > 0) {
-      dispatch(addItemAction(item.recordId, Number.parseInt(quantity), getFormattedPrice(item)))
+      dispatch(addItemAction(
+        item.name,
+        item.recordId,
+        Number.parseInt(quantity),
+        getFormattedPrice(item)))
+
       showMessage('Item added to cart successfully', 'success')
       setTimeout(() => {
         setQuantity(1)
