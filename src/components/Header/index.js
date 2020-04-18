@@ -4,7 +4,7 @@ import SearchBox from "../SearchBox"
 import NavItems from "../NavItems"
 import NavItemsMobile from "../NavItemsMobile"
 import Logo from "./Logo"
-import MiniCart from "./MiniCart"
+import MiniCart from "../MiniCart"
 import Customer from "./Customer"
 
 export default ({ categories }) => {
