@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Content, Title, Container, Wrapper, TextHeader, Track, Button } from "./Components"
+import { Content, EmptyContent, Title, Container, Wrapper, TextHeader, Track, Button } from "./Components"
 import Item from "./Item"
 import AppContext from "../../store/context"
 
@@ -33,7 +33,13 @@ const CartContent = () => {
     </>
   )
 
-  return (
+  const renderEmptyCart = () => (
+    <EmptyContent>
+      <h2>The cart is now empty. Select some products to buy before checking out.</h2>
+    </EmptyContent>
+  )
+
+  const renderCartContent = () => (
     <Content>
       <Title>Cart Summary</Title>
       <Container>
@@ -56,6 +62,8 @@ const CartContent = () => {
       </Container>
     </Content>
   )
+
+  return state.items.length > 0 ? renderCartContent() : renderEmptyCart()
 }
 
 export default CartContent

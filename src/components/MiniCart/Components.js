@@ -14,6 +14,16 @@ export const Content = styled.div`
   overflow-y: scroll;
 `
 
+export const EmptyContent = styled.div`
+  background-color: #FBFCFF;
+  box-shadow: 0 1px 6px 3px rgba(0,0,0,.5);
+  padding: 50px 25px;
+  border-radius: 5px;
+  h2 {
+    font-weight: 500;
+  }
+`
+
 export const Title = styled.h3`
   background-color: #EAEAEA;
   text-align: center;
