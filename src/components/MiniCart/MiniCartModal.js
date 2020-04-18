@@ -12,7 +12,7 @@ const MiniCartModal = ({isOpen, handleClose}) => {
       ariaHideApp={false}
       className="modal"
     >
-      <CartContent/>
+      <CartContent />
     </Modal>
   )
 }

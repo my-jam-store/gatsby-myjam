@@ -19,7 +19,7 @@ const CartContent = () => {
         <Track></Track>
         <Track></Track>
         <Track>
-          <TextHeader>&#163;{amount/100}</TextHeader>
+          <TextHeader>&#163;{Number(amount/100).toFixed(2)}</TextHeader>
         </Track>
       </Wrapper>
     )
