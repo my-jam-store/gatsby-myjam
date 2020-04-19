@@ -38,6 +38,7 @@ export const Wrapper = styled.div`
   display: grid;
   grid-gap: 0 20px;
   position: relative;
+  padding: 0 10px;
   grid-template-columns: 3fr 1fr 1fr 1fr;
   align-items: center;
   border-bottom: 1px solid #EAEAEA;

@@ -1,11 +1,15 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { CartIcon } from "./Components"
 import AppContext from "../../store/context"
 import MiniCartModal from "./MiniCartModal"
+import { Container } from "../NavItemsMobile/Components"
+import Menu from "./Menu"
 
 const MiniCart = () => {
   const { state } = useContext(AppContext)
-  const [showModal, setModalState] = useState(false)
+  const [ isOpen, setMenuStatus ] = useState(false)
+
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
 
   const renderCartQuantity = () => {
     if(!!state && !!state.items) {
@@ -18,21 +22,24 @@ const MiniCart = () => {
     }
   }
 
-  const showMiniCart = () => {
-    // TODO handle miniCart menu on mobile.
-    setModalState(true)
-  }
-
   return (
     <>
-      <div onClick={showMiniCart}>
-        <CartIcon />
+      <Container>
+        <CartIcon onClick={() => {setMenuStatus(true)}} />
         {renderCartQuantity()}
-      </div>
-      <MiniCartModal
-        isOpen={showModal}
-        handleClose={() => {setModalState(false)}}
-      />
+      </Container>
+      { isMobile() ?
+        (
+          <Menu
+            isOpen={isOpen}
+            handleClose={() => {setMenuStatus(false)}}
+          />
+        ) : (
+        <MiniCartModal
+          isOpen={isOpen}
+          handleClose={() => {setMenuStatus(false)}}
+        />
+      )}
     </>
   )
 }

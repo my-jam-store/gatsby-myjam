@@ -56,23 +56,10 @@ const Container = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  justify-items: right;
   align-items: center;
   div {
-    position: relative;
     cursor: pointer;
-  }
-  div:first-child div {
-    visibility:hidden;
-    overflow:hidden;
-    transform-origin: top;
-    transform: scaleY(0)  translate(-50%, 0);
-    transition:all .2s ease;
-  }
-  div:first-child div.active {
-    visibility: visible;
-    transition: all .2s ease;
-    transform:scaleY(1) translate(-50%, 0);
   }
   @media only screen 
   and (max-device-width: 768px) {

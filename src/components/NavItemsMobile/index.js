@@ -18,7 +18,10 @@ export default ({ categories }) => {
   useEffect(() => {
     if(isOpen) {
       document.querySelector('html').style.overflowY = 'hidden'
+      document.querySelector('html').style.height    = '100vh'
       document.querySelector('body').style.overflowY = 'hidden'
+      document.querySelector('body').style.height    = '100vh'
+      document.querySelector('body').style.position  = 'relative'
       const blackLayer = document.createElement("div")
       blackLayer.classList.add('black-layer')
       blackLayer.style.width = "100%"
@@ -44,7 +47,7 @@ export default ({ categories }) => {
   }, [])
 
   return (
-    <Container id="navMobile">
+    <div id="navMobile">
       <MenuIcon onClick={handleMenuOpen} />
       <Wrapper style={{
         left: leftVal
@@ -64,6 +67,6 @@ export default ({ categories }) => {
           )))}
         </NavItems>
       </Wrapper>
-    </Container>
+    </div>
   )
 }

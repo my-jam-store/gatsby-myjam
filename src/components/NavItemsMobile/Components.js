@@ -5,7 +5,7 @@ import { Close } from "styled-icons/evil/Close"
 import theme from "../../theme"
 
 const Container = styled.div`
-
+  position: relative;
 `
 
 const NavItems = styled.nav`
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   background: #FFF;
   top: 0;
   left: -80%;
-  width: 75%;
+  width: 80%;
   z-index: 9;
   box-shadow: 0 0px 8px 0 rgba(133,123,123,.75);
   transition: all 0.3s ease-in-out;
@@ -77,7 +77,7 @@ const List = styled.div`
 `
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 50px;
   justify-items: left;
   align-items: center;
   padding: 15px 25px;

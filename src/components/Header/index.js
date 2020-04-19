@@ -22,7 +22,7 @@ export default ({ categories }) => {
         <Logo />
         <SearchBox />
         <Grid>
-          <Customer />
+          <div></div>
           <MiniCart />
         </Grid>
       </Header>
