@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
-import { MinusIcon, PlusIcon, Qty, Text, Track, Wrapper, CloseIcon } from "./Components"
+import { MinusIcon, PlusIcon, Qty, Text, RemoveIcon, Div } from "./Components"
 import AppContext from "../../store/context"
 import { removeItemAction, updateItemQtyAction } from "../../store/actions"
 
-const Item = ({ item }) => {
+const MenuItems = ({ item }) => {
   const { dispatch } = useContext(AppContext)
 
   const getItemTotal = () => {
@@ -26,26 +26,19 @@ const Item = ({ item }) => {
   }
 
   return (
-    <Wrapper>
-      <Track>
-        <Text>{item.name}</Text>
-      </Track>
-      <Track>
+    <Div key={item.id}>
+      <h4>{item.name}</h4>
+      <h4>&#163;{getItemTotal()}</h4>
+      <div>
         <MinusIcon onClick={handleQtyDec} />
         <Qty>
           <Text>{item.qty}</Text>
         </Qty>
         <PlusIcon onClick={handleQtyInc} />
-      </Track>
-      <Track>
-        <Text>&#163;{item.price}</Text>
-      </Track>
-      <Track>
-        <Text>&#163;{getItemTotal()}</Text>
-        <CloseIcon onClick={handleItemRemove} />
-      </Track>
-    </Wrapper>
+      </div>
+      <RemoveIcon onClick={handleItemRemove} />
+    </Div>
   )
 }
 
-export default Item
+export default MenuItems

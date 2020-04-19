@@ -3,6 +3,8 @@ import { Cart } from "styled-icons/evil/Cart"
 import { Plus } from "styled-icons/boxicons-regular/Plus"
 import { Minus } from "styled-icons/boxicons-regular/Minus"
 import { Close } from "styled-icons/evil/Close"
+import { TrashAlt } from "styled-icons/fa-solid/TrashAlt"
+import { ShoppingBag } from "styled-icons/feather/ShoppingBag"
 import theme from "../../theme"
 
 export const Content = styled.div`
@@ -17,10 +19,12 @@ export const Content = styled.div`
 export const EmptyContent = styled.div`
   background-color: #FBFCFF;
   box-shadow: 0 1px 6px 3px rgba(0,0,0,.5);
-  padding: 50px 25px;
+  padding: 35px;
   border-radius: 5px;
   h2 {
     font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
   }
 `
 
@@ -83,6 +87,11 @@ export const Qty = styled.div`
   box-shadow: 0 1px 5px rgba(0,0,0,.2);
   display: inline-block;
   border-radius: 4px;
+  @media only screen 
+  and (max-device-width: 768px) {
+    padding: 5px 25px;
+    margin: 0 15px;
+  }
 `
 
 export const PlusIcon = styled(Plus)`
@@ -94,7 +103,19 @@ export const PlusIcon = styled(Plus)`
     color: ${theme.secondaryColor};
   }
   :active {
-    transform: scale(0.8)
+    transform: scale(0.8);
+  }
+  @media only screen
+  and (max-device-width: 768px) {
+    width: 23px;
+    height: 23px;
+    :hover {
+      color: inherit;
+    }
+    :active {
+      transform: scale(0.8);
+      color: ${theme.secondaryColor};
+    }
   }
 `
 
@@ -119,13 +140,29 @@ export const MinusIcon = styled(Minus)`
     color: ${theme.secondaryColor};
   }
   :active {
-    transform: scale(0.8)
+    transform: scale(0.8);
   }
+  @media only screen
+  and (max-device-width: 768px) {
+    width: 23px;
+    height: 23px;
+    :hover {
+      color: inherit;
+    }
+    :active {
+      transform: scale(0.8);
+      color: ${theme.secondaryColor};
+    }
+  }
+`
+
+export const BtnBlock = styled.div`
+  padding: 20px 40px;
+  margin: 10px 0 150px;
 `
 
 export const Button = styled.button`
   width: 100%;
-  height: 100%;
   text-transform: uppercase;
   font-size: 15px;
   letter-spacing: 1px;
@@ -139,4 +176,67 @@ export const Button = styled.button`
   :focus {
     outline: none !important;
   }
+`
+
+export const RemoveIcon = styled(TrashAlt)`
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  color: ${theme.secondaryColor};
+  right: 25px;
+  bottom: 30px;
+`;
+
+export const MenuContainer = styled.div`
+  position: absolute;
+  height: 100%;
+  background: #FFF;
+  top: 0;
+  left: -80%;
+  width: 80%;
+  z-index: 9;
+  box-shadow: 0 0px 8px 0 rgba(133,123,123,.75);
+  transition: all 0.3s ease-in-out;
+  & > div:last-child {
+    overflow-y: scroll;
+    height: 100%;
+  }
+  & h2 {
+    font-weight: normal;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+`
+
+export const EmptyCartIcon = styled(ShoppingBag)`
+  color: ${theme.secondaryColor};
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 80px auto 20px;
+`
+
+export const Div = styled.div`
+  position: relative;
+  padding: 25px;
+  h4 {
+    font-weight: normal;
+    font-size: 19px;
+  }
+  border-bottom: 1px solid #EAEAEA;
+`
+
+export const SubTotalBlock = styled.div`
+  padding: 25px;
+  h4 {
+    font-weight: 700;
+    font-size: 25px;
+    margin: 0;
+  }
+  span {
+    float: right;
+  }
+  border-bottom: 1px solid #EAEAEA;
 `

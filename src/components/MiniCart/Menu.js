@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { CloseIcon, Grid, Wrapper } from "../NavItemsMobile/Components"
+import React, { useContext, useEffect, useState } from "react"
+import { CloseIcon, Grid } from "../NavItemsMobile/Components"
+import { MenuContainer, EmptyCartIcon } from "./Components"
+import MenuContent from "./MenuContent"
+import AppContext from "../../store/context"
 
 const Menu = ({ isOpen, handleClose }) => {
+  const { state } = useContext(AppContext)
 
   const handleMenuClose = () => {
     removeBlackLayer()
@@ -42,20 +46,24 @@ const Menu = ({ isOpen, handleClose }) => {
     document.querySelector('body').removeAttribute('style')
   }
 
-  if(isOpen) {
+  if(isOpen && !document.querySelector('.black-layer')) {
     addBlackLayer()
   }
 
   return (
     <div>
-      <Wrapper style={{ left: isOpen ? '0%' : '-80%' }}>
+      <MenuContainer style={{ left: isOpen ? '0%' : '-80%' }}>
         <Grid>
           <span>Cart</span>
           <CloseIcon onClick={handleMenuClose} />
         </Grid>
-        <h4>Mini Cart Content</h4>
-      </Wrapper>
-
+        {state.items.length > 0 ? <MenuContent /> : (
+          <>
+            <EmptyCartIcon />
+            <h2>Empty Cart.</h2>
+          </>
+        )}
+      </MenuContainer>
     </div>
   )
 }
