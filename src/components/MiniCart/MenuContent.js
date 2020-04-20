@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import AppContext from "../../store/context"
 import MenuItems from "./MenuItems"
 import { Button, BtnBlock, SubTotalBlock } from "./Components"
+import Checkout from "./Checkout"
 
 const MenuContent = () => {
   const { state } = useContext(AppContext)
@@ -25,7 +26,7 @@ const MenuContent = () => {
       ))}
       {renderCartAmountBlock()}
       <BtnBlock>
-        <Button>Checkout</Button>
+        <Checkout />
       </BtnBlock>
     </div>
   )

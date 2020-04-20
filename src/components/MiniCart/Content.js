@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import { Content, EmptyContent, Title, Container, Wrapper, TextHeader, Track, Button } from "./Components"
 import Item from "./Item"
 import AppContext from "../../store/context"
+import Checkout from "./Checkout"
 
 const CartContent = () => {
   const { state } = useContext(AppContext)
@@ -56,7 +57,7 @@ const CartContent = () => {
           <Track></Track>
           <Track></Track>
           <Track>
-            <Button>Checkout</Button>
+            <Checkout />
           </Track>
         </Wrapper>
       </Container>

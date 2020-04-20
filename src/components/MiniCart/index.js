@@ -24,8 +24,8 @@ const MiniCart = () => {
 
   return (
     <>
-      <Container>
-        <CartIcon onClick={() => {setMenuStatus(true)}} />
+      <Container onClick={() => {setMenuStatus(true)}}>
+        <CartIcon />
         {renderCartQuantity()}
       </Container>
       { isMobile() ?
