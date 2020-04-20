@@ -1,4 +1,4 @@
-import { SET_STORE, ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART, UPDATE_ITEM_QTY } from "./constants"
+import { SET_STORE, ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART, UPDATE_ITEM_QTY, SET_SESSION_ID } from "./constants"
 
 export default (state, action) => {
   const { type, payload } = action
@@ -37,6 +37,12 @@ export default (state, action) => {
         item.id !== payload.itemId ? (item) : ({ ...item, qty: payload.qty })
       ))
     }
+    localStorage.setItem('globalStore', JSON.stringify(updatedState))
+    return updatedState
+  }
+
+  if(type === SET_SESSION_ID) {
+    const updatedState = { ...state, sessionId: payload.sessionId }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }

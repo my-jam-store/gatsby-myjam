@@ -3,7 +3,8 @@ import AppContext from "./context"
 import reducer from "./reducer"
 
 const initialState =  typeof window !== "undefined" && !!localStorage.getItem('globalStore')
-  ? JSON.parse(localStorage.getItem('globalStore')) : { storeName: null, storeCode: null, items: [] }
+  ? JSON.parse(localStorage.getItem('globalStore'))
+  : { storeName: null, storeCode: null, items: [], sessionId: null }
 
 const GlobalStore = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState)
