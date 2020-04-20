@@ -3,6 +3,7 @@ import { Button, LoaderIcon } from "./Components"
 import AppContext from "../../store/context"
 import * as Stripe from "../../utils/stripe"
 import { showMessage } from "../../utils/notification"
+import { setSessionId } from "../../store/actions"
 
 
 const Checkout = () => {
@@ -26,12 +27,12 @@ const Checkout = () => {
   }
 
   const handleCheckout = async () => {
-    // TODO maintain sessionId in globalStore
     if(state.items.length === 0) {
       return showMessage('Please add items to cart', 'warning')
     }
 
     const { sessionId } = await Stripe.generateCheckoutSession(state.items)
+    dispatch(setSessionId(sessionId))
     const { error } = await Stripe.goToCheckout(stripe, sessionId)
     if(error) {
       // TODO handle error
