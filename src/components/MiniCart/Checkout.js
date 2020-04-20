@@ -35,7 +35,7 @@ const Checkout = () => {
     dispatch(setSessionId(sessionId))
     const { error } = await Stripe.goToCheckout(stripe, sessionId)
     if(error) {
-      // TODO handle error
+      showMessage(error.message, 'danger')
     }
   }
 
