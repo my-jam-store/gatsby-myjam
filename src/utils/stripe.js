@@ -20,10 +20,5 @@ export const generateCheckoutSession = async (items) => {
 
 export const goToCheckout = async (stripe, sessionId) => {
   const { error } = await stripe.redirectToCheckout({ sessionId })
-  // TODO handle valid error message.
   return error
-}
-
-export const validateSessionId = async (sessionId) => {
-  //TODO working on sessionId validation
 }
