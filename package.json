@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@stripe/stripe-js": "^1.4.0",
     "algoliasearch": "^3.35.0",
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.19.32",
