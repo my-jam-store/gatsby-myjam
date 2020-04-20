@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { Button } from "./Components"
+import { Button, LoaderIcon } from "./Components"
 import AppContext from "../../store/context"
 import * as Stripe from "../../utils/stripe"
 import { showMessage } from "../../utils/notification"
@@ -7,11 +7,23 @@ import { showMessage } from "../../utils/notification"
 
 const Checkout = () => {
   const [ stripe, setStripe ] = useState('')
+  const [ loading, setLoading ] = useState(false)
   const { state, dispatch } = useContext(AppContext)
 
   useEffect(() => {
     Stripe.getStripeInstance().then((stripeInstance) => setStripe(stripeInstance))
   }, [])
+
+  const renderBlockEle = () => {
+    const blackLayer = document.createElement("div")
+    blackLayer.style.width = "100%"
+    blackLayer.style.height = "100vh"
+    blackLayer.style.zIndex = "9999"
+    blackLayer.style.position = "fixed"
+    blackLayer.style.top = "0"
+    blackLayer.style.left = "0"
+    document.querySelector('body').appendChild(blackLayer)
+  }
 
   const handleCheckout = async () => {
     // TODO maintain sessionId in globalStore
@@ -27,8 +39,18 @@ const Checkout = () => {
   }
 
   return (
-    // TODO add loader
-    <Button onClick={handleCheckout}>Checkout</Button>
+    <>
+      <Button onClick={handleCheckout} disabled={loading}>
+        {loading ? (
+          <>
+            <span>loading</span> <LoaderIcon />
+          </>
+        ):(
+          <span>checkout</span>
+        )}
+      </Button>
+      {loading && renderBlockEle()}
+    </>
   )
 }
 

@@ -5,6 +5,7 @@ import { Minus } from "styled-icons/boxicons-regular/Minus"
 import { Close } from "styled-icons/evil/Close"
 import { TrashAlt } from "styled-icons/fa-solid/TrashAlt"
 import { ShoppingBag } from "styled-icons/feather/ShoppingBag"
+import { Loader4 } from "styled-icons/remix-fill/Loader4"
 import theme from "../../theme"
 
 export const Content = styled.div`
@@ -162,19 +163,27 @@ export const BtnBlock = styled.div`
 `
 
 export const Button = styled.button`
-  width: 100%;
+  width: 220px;
   text-transform: uppercase;
+  text-align: center;
   font-size: 15px;
   letter-spacing: 1px;
   border-radius: 3px;
   cursor: pointer;
-  padding: 10px 26px;
+  padding: 10px 0;
   background: ${theme.secondaryColor};
   box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
   color: #FFF;
   border: 1px solid ${theme.secondaryColor};
   :focus {
     outline: none !important;
+  }
+  span {
+    display: inline-block;
+  }
+  :disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 `
 
@@ -239,4 +248,19 @@ export const SubTotalBlock = styled.div`
     float: right;
   }
   border-bottom: 1px solid #EAEAEA;
+`
+
+export const LoaderIcon = styled(Loader4)`
+  color: #FFF;
+  width: 20px;
+  height: 20px;
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  animation: rotation 1.5s linear infinite;
 `
