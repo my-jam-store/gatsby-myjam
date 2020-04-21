@@ -31,6 +31,7 @@ const Checkout = () => {
       return showMessage('Please add items to cart', 'warning')
     }
 
+    setLoading(true)
     const { sessionId } = await Stripe.generateCheckoutSession(state.items)
     dispatch(setSessionId(sessionId))
     const { error } = await Stripe.goToCheckout(stripe, sessionId)
