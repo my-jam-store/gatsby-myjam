@@ -35,6 +35,7 @@ const Product = React.memo(({ item }) => {
       dispatch(addItemAction(
         item.name,
         item.recordId,
+        item.sku,
         Number.parseInt(quantity),
         getFormattedPrice(item)))
 

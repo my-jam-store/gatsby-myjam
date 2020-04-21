@@ -39,6 +39,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
       dispatch(addItemAction(
         item.name,
         item.recordId,
+        item.sku,
         Number.parseInt(qty),
         item.price))
 

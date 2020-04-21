@@ -35,6 +35,7 @@ const Product = React.memo(({ js, item }) => {
       dispatch(addItemAction(
         item.data.name,
         item.recordId,
+        item.data.sku,
         Number.parseInt(quantity),
         getFormattedPrice(item)))
       showMessage('Item added to cart successfully', 'success')

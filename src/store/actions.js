@@ -5,10 +5,13 @@ export const setStoreAction = (storeName, storeCode) => ({
   payload: { storeName, storeCode }
 })
 
-export const addItemAction = (name, id, qty, price) => ({
-  type: ADD_ITEM_TO_CART,
-  payload: { name, id, qty, price }
-})
+export const addItemAction = (name, id, sku, qty, price) => {
+  const image = getImageUrl(sku)
+  return {
+    type: ADD_ITEM_TO_CART,
+    payload: { name, id, image, qty, price }
+  }
+}
 
 export const removeItemAction = (itemId) => ({
   type: REMOVE_ITEM_FROM_CART,
@@ -24,3 +27,8 @@ export const setSessionId = (sessionId) => ({
   type: SET_SESSION_ID,
   payload: { sessionId }
 })
+
+
+const getImageUrl = (sku) => (
+  `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/q_auto,f_auto/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${sku}.jpg`
+)
