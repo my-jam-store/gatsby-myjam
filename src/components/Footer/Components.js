@@ -5,6 +5,7 @@ const Footer = styled.footer`
   width: 100%;
   background-color: ${theme.primaryColor};
   box-sizing: border-box;
+  ${props => props.stickyFooter && `position: absolute; bottom: 0;`}
   a {
     color: #FAFAFA;
     text-decoration: none;

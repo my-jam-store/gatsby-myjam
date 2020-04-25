@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import { Footer, Grid, Links } from "./Components"
 
-export default () => (
-  <Footer>
+export default ({ stickyFooter }) => (
+  <Footer stickyFooter={stickyFooter}>
     <Grid>
       <Links>
         <Link to={"/terms-of-service"}>Terms</Link>

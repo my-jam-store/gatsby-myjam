@@ -14,13 +14,13 @@ import { Main } from "./Components"
 import "react-notifications-component/dist/theme.css"
 import "./layout.css"
 
-const Index = ({ children, categories }) => {
+const Index = ({ children, categories, stickyFooter }) => {
   return (
     <>
       <ReactNotification />
       <Header categories={categories || []} />
       <Main>{children}</Main>
-      <Footer />
+      <Footer stickyFooter={stickyFooter} />
     </>
   )
 }
