@@ -1,4 +1,11 @@
-import { SET_STORE, ADD_ITEM_TO_CART, UPDATE_ITEM_QTY, REMOVE_ITEM_FROM_CART, SET_SESSION_ID } from "./constants"
+import {
+  SET_STORE,
+  ADD_ITEM_TO_CART,
+  UPDATE_ITEM_QTY,
+  REMOVE_ITEM_FROM_CART,
+  SET_SESSION_ID,
+  CLEAR_CART,
+} from "./constants"
 
 export const setStoreAction = (storeName, storeCode) => ({
   type: SET_STORE,
@@ -26,6 +33,11 @@ export const updateItemQtyAction = (itemId, qty) => ({
 export const setSessionId = (sessionId) => ({
   type: SET_SESSION_ID,
   payload: { sessionId }
+})
+
+export const clearCart = () => ({
+  type: CLEAR_CART,
+  payload: {}
 })
 
 
