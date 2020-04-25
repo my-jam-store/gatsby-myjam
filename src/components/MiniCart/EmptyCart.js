@@ -1,12 +1,18 @@
 import React, { useContext, useEffect } from "react"
 import AppContext from "../../store/context"
 import { clearCart } from "../../store/actions"
+import { navigate } from "gatsby"
 
 const EmptyCart = () => {
-  const { dispatch } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
 
   useEffect(() => {
-    dispatch(clearCart())
+    const sessionId = window.location.search.replace('?session_id=', '');
+    if(state.sessionId === sessionId) {
+      dispatch(clearCart())
+    } else {
+      navigate("/404")
+    }
   }, [])
 
   return (
