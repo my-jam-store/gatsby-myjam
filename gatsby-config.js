@@ -18,12 +18,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-snipcart",
-      options: {
-        apiKey: `${process.env.GATSBY_SNIPCART_API_KEY}`,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
