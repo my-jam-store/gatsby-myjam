@@ -9,7 +9,7 @@ const CartContent = () => {
 
   const renderCartAmountBlock = () => {
     const amount = state.items.reduce((total, item) => {
-      return total + (item.qty * Number(item.price) * 100)
+      return total + (item.quantity * Number(item.price) * 100)
     }, 0)
 
     return (

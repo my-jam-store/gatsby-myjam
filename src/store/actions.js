@@ -12,11 +12,11 @@ export const setStoreAction = (storeName, storeCode) => ({
   payload: { storeName, storeCode }
 })
 
-export const addItemAction = (name, id, sku, qty, price) => {
+export const addItemAction = (name, id, sku, quantity, price) => {
   const image = getImageUrl(sku)
   return {
     type: ADD_ITEM_TO_CART,
-    payload: { name, id, image, qty, price }
+    payload: { name, id, image, quantity, price }
   }
 }
 
@@ -25,9 +25,9 @@ export const removeItemAction = (itemId) => ({
   payload: { itemId }
 })
 
-export const updateItemQtyAction = (itemId, qty) => ({
+export const updateItemQtyAction = (itemId, quantity) => ({
   type: UPDATE_ITEM_QTY,
-  payload: { itemId, qty }
+  payload: { itemId, quantity }
 })
 
 export const setSessionId = (sessionId) => ({

@@ -14,7 +14,7 @@ const MiniCart = () => {
   const renderCartQuantity = () => {
     if(!!state && !!state.items) {
       const qty = state.items.reduce((totalQty, item) => {
-        return totalQty + item.qty
+        return totalQty + item.quantity
       }, 0)
       return qty > 0 ? (<span className="snipcart-total-items">{qty}</span>) : (<></>)
     } else {

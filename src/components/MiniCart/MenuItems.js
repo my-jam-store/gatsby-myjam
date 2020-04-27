@@ -7,18 +7,18 @@ const MenuItems = ({ item }) => {
   const { dispatch } = useContext(AppContext)
 
   const getItemTotal = () => {
-    const amount = Number(item.price) * 100 * item.qty;
+    const amount = Number(item.price) * 100 * item.quantity;
     return (amount/100).toFixed(2);
   }
 
   const handleQtyDec = () => {
-    if(item.qty > 1) {
-      dispatch(updateItemQtyAction(item.id, item.qty-1))
+    if(item.quantity > 1) {
+      dispatch(updateItemQtyAction(item.id, item.quantity-1))
     }
   }
 
   const handleQtyInc = () => {
-    dispatch(updateItemQtyAction(item.id, item.qty+1))
+    dispatch(updateItemQtyAction(item.id, item.quantity+1))
   }
 
   const handleItemRemove = () => {
@@ -32,7 +32,7 @@ const MenuItems = ({ item }) => {
       <div>
         <MinusIcon onClick={handleQtyDec} />
         <Qty>
-          <Text>{item.qty}</Text>
+          <Text>{item.quantity}</Text>
         </Qty>
         <PlusIcon onClick={handleQtyInc} />
       </div>
