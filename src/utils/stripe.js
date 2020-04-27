@@ -1,7 +1,6 @@
 import { loadStripe } from '@stripe/stripe-js';
 
 export const getStripeInstance = async () => {
-  console.log(process.env.GATSBY_STRIPE_PUBLIC_KEY, process.env.GATSBY_CREATE_CHECKOUT_SESSION_API);
   const stripe = await loadStripe(process.env.GATSBY_STRIPE_PUBLIC_KEY)
   return stripe
 }
