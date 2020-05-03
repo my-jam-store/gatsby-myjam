@@ -5,6 +5,7 @@ import {
   REMOVE_ITEM_FROM_CART,
   SET_SESSION_ID,
   CLEAR_CART,
+  SET_TIP_AMOUNT
 } from "./constants"
 
 export const setStoreAction = (storeName, storeCode) => ({
@@ -38,6 +39,11 @@ export const setSessionId = (sessionId) => ({
 export const clearCart = () => ({
   type: CLEAR_CART,
   payload: {}
+})
+
+export const addTipAmount = (tipAmount) => ({
+  type: SET_TIP_AMOUNT,
+  payload: { tipAmount }
 })
 
 

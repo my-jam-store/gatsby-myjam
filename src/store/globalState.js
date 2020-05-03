@@ -4,7 +4,13 @@ import reducer from "./reducer"
 
 const initialState =  typeof window !== "undefined" && !!localStorage.getItem('globalStore')
   ? JSON.parse(localStorage.getItem('globalStore'))
-  : { storeName: null, storeCode: null, items: [], sessionId: null }
+  : {
+      storeName: null,
+      storeCode: null,
+      sessionId: null,
+      tipAmount: 0,
+      items: []
+    }
 
 const GlobalStore = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState)

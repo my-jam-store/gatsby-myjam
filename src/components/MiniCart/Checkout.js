@@ -32,7 +32,11 @@ const Checkout = () => {
     }
 
     setLoading(true)
-    const { sessionId } = await Stripe.generateCheckoutSession(state.items)
+    const { sessionId } = await Stripe.generateCheckoutSession({
+      line_items: state.items,
+      tip: state.tipAmount
+    })
+
     dispatch(setSessionId(sessionId))
     const { error } = await Stripe.goToCheckout(stripe, sessionId)
     if(error) {

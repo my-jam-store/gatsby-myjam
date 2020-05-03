@@ -5,12 +5,12 @@ export const getStripeInstance = async () => {
   return stripe
 }
 
-export const generateCheckoutSession = async (items) => {
+export const generateCheckoutSession = async (data) => {
   const url = process.env.GATSBY_CREATE_CHECKOUT_SESSION_API
   const options = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(items)
+    body: JSON.stringify({ ...data })
   }
 
   const response = await fetch(url, options)

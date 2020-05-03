@@ -5,6 +5,7 @@ import {
   UPDATE_ITEM_QTY,
   SET_SESSION_ID,
   CLEAR_CART,
+  SET_TIP_AMOUNT
 } from "./constants"
 
 export default (state, action) => {
@@ -55,9 +56,16 @@ export default (state, action) => {
   }
 
   if(type === CLEAR_CART) {
-    const updatedState = { ...state, sessionId: null, items: [] }
+    const updatedState = { ...state, sessionId: null, tipAmount: 0, items: [] }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }
+
+  if(type === SET_TIP_AMOUNT) {
+    const updatedState = { ...state, tipAmount: payload.tipAmount }
+    localStorage.setItem('globalStore', JSON.stringify(updatedState))
+    return updatedState
+  }
+
   return state
 }

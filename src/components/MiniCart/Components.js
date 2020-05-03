@@ -264,3 +264,82 @@ export const LoaderIcon = styled(Loader4)`
   }
   animation: rotation 1.5s linear infinite;
 `
+
+export const EnableTip = styled.input`
+  display: none;
+  & ~ label:after {
+    background-color: transparent;
+  }
+  
+  &:checked ~ label:after {
+    background-color: ${theme.secondaryColor} !important;
+  }
+`
+
+export const Label = styled.label`
+  padding: 0 20px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  &:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 2px solid ${theme.secondaryColor};
+    background-color: #FFF;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 2px;
+  }
+  &:after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0px;
+    animation: all .5s ease;
+  }
+`;
+
+export const TipInput = styled.input`
+  border: none;
+  border-bottom: 1px solid #333;
+  animation: all 1.5s ease;
+  padding: 0;
+  margin: 0 4px;
+  text-align: center;
+  background: #FFF;
+  width: 35px;
+  :disabled {
+    border-bottom: 1px solid #EAEAEA;
+    background: transparent;
+    box-shadow: none;
+  }
+`
+
+export const TipBlock = styled.div`
+  padding: 25px 0px 10px 25px;
+  & label {
+    font-size: 20px;
+    padding-left: 25px;
+    padding-right: 10px;
+  }
+  & label:before {
+    width: 18px;
+    height: 18px;
+  }
+  & label:after {
+    width: 6px;
+    height: 6px;
+    left: 6px;
+  }
+`
