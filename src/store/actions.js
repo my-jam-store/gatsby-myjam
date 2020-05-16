@@ -3,11 +3,9 @@ import {
   ADD_ITEM_TO_CART,
   UPDATE_ITEM_QTY,
   REMOVE_ITEM_FROM_CART,
-  SET_SESSION_ID,
   CLEAR_CART,
-  SET_TIP_AMOUNT,
-  SET_SHIPPING_CHARGE,
-  SET_CART_AMOUNT,
+  SET_PAYMENT_INTENT,
+  SET_PAYMENT_INTENT_VALUE
 } from "./constants"
 
 export const setStoreAction = (storeName, storeCode) => ({
@@ -33,29 +31,19 @@ export const updateItemQtyAction = (itemId, quantity) => ({
   payload: { itemId, quantity }
 })
 
-export const setSessionId = (sessionId) => ({
-  type: SET_SESSION_ID,
-  payload: { sessionId }
-})
-
 export const clearCart = () => ({
   type: CLEAR_CART,
   payload: {}
 })
 
-export const addTipAmount = (tipAmount) => ({
-  type: SET_TIP_AMOUNT,
-  payload: { tipAmount }
+export const setPaymentIntent = ( id, amount, shipping, coupon, discount) => ({
+  type: SET_PAYMENT_INTENT,
+  payload: { paymentIntent: { id, amount, shipping, coupon, discount } }
 })
 
-export const setShippingCharge = () => ({
-  type: SET_SHIPPING_CHARGE,
-  payload: { charge: process.env.GATSBY_SHIPPING_CHARGE }
-})
-
-export const setCartAmount = (amount) => ({
-  type: SET_CART_AMOUNT,
-  payload: { amount }
+export const setPaymentIntentValue = (key, value) => ({
+  type: SET_PAYMENT_INTENT_VALUE,
+  payload: { key, value }
 })
 
 const getImageUrl = (sku) => (

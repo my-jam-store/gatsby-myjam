@@ -3,11 +3,9 @@ import {
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
   UPDATE_ITEM_QTY,
-  SET_SESSION_ID,
   CLEAR_CART,
-  SET_TIP_AMOUNT,
-  SET_SHIPPING_CHARGE,
-  SET_CART_AMOUNT,
+  SET_PAYMENT_INTENT,
+  SET_PAYMENT_INTENT_VALUE
 } from "./constants"
 
 export default (state, action) => {
@@ -51,33 +49,28 @@ export default (state, action) => {
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }
-
-  if(type === SET_SESSION_ID) {
-    const updatedState = { ...state, sessionId: payload.sessionId }
-    localStorage.setItem('globalStore', JSON.stringify(updatedState))
-    return updatedState
-  }
-
+  
   if(type === CLEAR_CART) {
-    const updatedState = { ...state, sessionId: null, tipAmount: 0, items: [] }
+    const updatedState = { ...state,  items: [], paymentIntent: null }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }
 
-  if(type === SET_TIP_AMOUNT) {
-    const updatedState = { ...state, tipAmount: payload.tipAmount }
+  if(type === SET_PAYMENT_INTENT) {
+    const updatedState = { ...state, paymentIntent: { ...payload } }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }
 
-  if(type === SET_SHIPPING_CHARGE) {
-    const updatedState = { ...state, shipping: payload.charge }
-    localStorage.setItem('globalStore', JSON.stringify(updatedState))
-    return updatedState
-  }
-
-  if(type === SET_CART_AMOUNT) {
-    const updatedState = { ...state, amount: payload.amount }
+  if(type === SET_PAYMENT_INTENT_VALUE) {
+    const { paymentIntent } = state
+    const updatedState = {
+      ...state,
+      paymentIntent: {
+        ...paymentIntent,
+        [payload.key]: payload.value
+      }
+    }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }

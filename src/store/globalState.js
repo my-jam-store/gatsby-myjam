@@ -7,10 +7,7 @@ const initialState =  typeof window !== "undefined" && !!localStorage.getItem('g
   : {
       storeName: null,
       storeCode: null,
-      sessionId: null,
-      tipAmount: 0,
-      shipping: 0,
-      amount: 0,
+      paymentIntent: null,
       items: []
     }
 
