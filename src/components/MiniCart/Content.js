@@ -12,7 +12,7 @@ import {
   TipInput } from "./Components"
 import Item from "./Item"
 import AppContext from "../../store/context"
-import Checkout from "./Checkout"
+import CheckoutButton from "./CheckoutButton"
 import { addTipAmount } from "../../store/actions"
 
 const CartContent = () => {
@@ -112,7 +112,7 @@ const CartContent = () => {
           <Track></Track>
           <Track></Track>
           <Track>
-            <Checkout />
+            <CheckoutButton />
           </Track>
         </Wrapper>
       </Container>

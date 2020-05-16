@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import AppContext from "../../store/context"
 import MenuItems from "./MenuItems"
-import { TipBlock, BtnBlock, SubTotalBlock, EnableTip, Label, TipInput, Track } from "./Components"
-import Checkout from "./Checkout"
+import { TipBlock, BtnBlock, SubTotalBlock, EnableTip, Label, TipInput } from "./Components"
+import CheckoutButton from "./CheckoutButton"
 import { addTipAmount } from "../../store/actions"
 
 const MenuContent = () => {
@@ -72,7 +72,7 @@ const MenuContent = () => {
         />
       </TipBlock>
       <BtnBlock>
-        <Checkout />
+        <CheckoutButton />
       </BtnBlock>
     </div>
   )
