@@ -6,9 +6,15 @@
 
 import React from "react"
 import GlobalStore from "./src/store/globalState"
+import { Elements } from "@stripe/react-stripe-js"
+import { loadStripe } from "@stripe/stripe-js"
+
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLIC_KEY);
 
 export const wrapRootElement = ({ element }) => (
-  <GlobalStore>
-    {element}
-  </GlobalStore>
+  <Elements stripe={stripePromise}>
+    <GlobalStore>
+      {element}
+    </GlobalStore>
+  </Elements>
 )
