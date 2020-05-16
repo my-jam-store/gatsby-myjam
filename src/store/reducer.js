@@ -5,7 +5,9 @@ import {
   UPDATE_ITEM_QTY,
   SET_SESSION_ID,
   CLEAR_CART,
-  SET_TIP_AMOUNT
+  SET_TIP_AMOUNT,
+  SET_SHIPPING_CHARGE,
+  SET_CART_AMOUNT,
 } from "./constants"
 
 export default (state, action) => {
@@ -19,6 +21,7 @@ export default (state, action) => {
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }
+
   if(type === ADD_ITEM_TO_CART) {
     const found = state.items.find(({ id }) => payload.id === id)
     const items = !found ? state.items.concat(payload) : state.items.map((item) => (
@@ -63,6 +66,18 @@ export default (state, action) => {
 
   if(type === SET_TIP_AMOUNT) {
     const updatedState = { ...state, tipAmount: payload.tipAmount }
+    localStorage.setItem('globalStore', JSON.stringify(updatedState))
+    return updatedState
+  }
+
+  if(type === SET_SHIPPING_CHARGE) {
+    const updatedState = { ...state, shipping: payload.charge }
+    localStorage.setItem('globalStore', JSON.stringify(updatedState))
+    return updatedState
+  }
+
+  if(type === SET_CART_AMOUNT) {
+    const updatedState = { ...state, amount: payload.amount }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }

@@ -5,7 +5,9 @@ import {
   REMOVE_ITEM_FROM_CART,
   SET_SESSION_ID,
   CLEAR_CART,
-  SET_TIP_AMOUNT
+  SET_TIP_AMOUNT,
+  SET_SHIPPING_CHARGE,
+  SET_CART_AMOUNT,
 } from "./constants"
 
 export const setStoreAction = (storeName, storeCode) => ({
@@ -17,7 +19,7 @@ export const addItemAction = (name, id, sku, quantity, price) => {
   const image = getImageUrl(sku)
   return {
     type: ADD_ITEM_TO_CART,
-    payload: { name, id, image, quantity, price }
+    payload: { name, id, sku, image, quantity, price }
   }
 }
 
@@ -46,6 +48,15 @@ export const addTipAmount = (tipAmount) => ({
   payload: { tipAmount }
 })
 
+export const setShippingCharge = () => ({
+  type: SET_SHIPPING_CHARGE,
+  payload: { charge: process.env.GATSBY_SHIPPING_CHARGE }
+})
+
+export const setCartAmount = (amount) => ({
+  type: SET_CART_AMOUNT,
+  payload: { amount }
+})
 
 const getImageUrl = (sku) => (
   `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/q_auto,f_auto/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${sku}.jpg`
