@@ -1,19 +1,16 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
+import { navigate } from "gatsby-link"
 import { Button, LoaderIcon } from "./Components"
 import AppContext from "../../store/context"
 import * as Stripe from "../../utils/stripe"
 import { showMessage } from "../../utils/notification"
-import { setSessionId } from "../../store/actions"
+import { setPaymentIntent } from "../../store/actions"
+import { formatPayload } from "../../utils/helper"
 
 
-const Checkout = () => {
-  const [ stripe, setStripe ] = useState('')
+const CheckoutButton = () => {
   const [ loading, setLoading ] = useState(false)
   const { state, dispatch } = useContext(AppContext)
-
-  useEffect(() => {
-    Stripe.getStripeInstance().then((stripeInstance) => setStripe(stripeInstance))
-  }, [])
 
   const renderBlockEle = () => {
     const blackLayer = document.createElement("div")
@@ -30,18 +27,24 @@ const Checkout = () => {
     if(state.items.length === 0) {
       return showMessage('Please add items to cart', 'warning')
     }
-
     setLoading(true)
-    const { sessionId } = await Stripe.generateCheckoutSession({
-      line_items: state.items,
-      tip: state.tipAmount
-    })
 
-    dispatch(setSessionId(sessionId))
-    const { error } = await Stripe.goToCheckout(stripe, sessionId)
-    if(error) {
-      showMessage(error.message, 'danger')
-    }
+    const payload = formatPayload(state.items)
+
+    const { amount, id, metadata } = state.paymentIntent ?
+        await Stripe.updatePaymentIntent(payload, state.paymentIntent.id)
+      : await Stripe.generatePaymentIntent(payload)
+
+    const { shipping, coupon_code, coupon_discount } = metadata
+    dispatch(setPaymentIntent(
+      id,
+      Number(amount/100),
+      shipping,
+      coupon_code,
+      coupon_discount
+    ))
+
+    navigate('/checkout')
   }
 
   return (
@@ -60,4 +63,4 @@ const Checkout = () => {
   )
 }
 
-export default Checkout
+export default CheckoutButton

@@ -41,11 +41,6 @@ export const setPaymentIntent = ( id, amount, shipping, coupon, discount) => ({
   payload: { paymentIntent: { id, amount, shipping, coupon, discount } }
 })
 
-export const setPaymentIntentValue = (key, value) => ({
-  type: SET_PAYMENT_INTENT_VALUE,
-  payload: { key, value }
-})
-
 const getImageUrl = (sku) => (
   `https://res.cloudinary.com/${process.env.GATSBY_CLOUDINARY_KEY}/image/upload/q_auto,f_auto/${process.env.GATSBY_CLOUDINARY_PATH}/my-jam/${sku}.jpg`
 )

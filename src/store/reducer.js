@@ -49,7 +49,7 @@ export default (state, action) => {
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }
-  
+
   if(type === CLEAR_CART) {
     const updatedState = { ...state,  items: [], paymentIntent: null }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
@@ -58,19 +58,6 @@ export default (state, action) => {
 
   if(type === SET_PAYMENT_INTENT) {
     const updatedState = { ...state, paymentIntent: { ...payload } }
-    localStorage.setItem('globalStore', JSON.stringify(updatedState))
-    return updatedState
-  }
-
-  if(type === SET_PAYMENT_INTENT_VALUE) {
-    const { paymentIntent } = state
-    const updatedState = {
-      ...state,
-      paymentIntent: {
-        ...paymentIntent,
-        [payload.key]: payload.value
-      }
-    }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }
