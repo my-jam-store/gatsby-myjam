@@ -152,6 +152,8 @@ const Content = styled.div`
   .name {
     text-transform: capitalize;
     margin-bottom: 1rem;
+    line-height: 1.3;
+    font-weight: 500;
   }
   p {
     margin-bottom: 0;
