@@ -20,6 +20,7 @@ const CheckoutButton = () => {
     blackLayer.style.position = "fixed"
     blackLayer.style.top = "0"
     blackLayer.style.left = "0"
+    blackLayer.id = "loading-checkout"
     document.querySelector('body').appendChild(blackLayer)
   }
 
@@ -35,11 +36,11 @@ const CheckoutButton = () => {
         await Stripe.updatePaymentIntent(payload, state.paymentIntent.id)
       : await Stripe.generatePaymentIntent(payload)
 
-    const { shipping, coupon_code, coupon_discount } = metadata
+    const { shipping_amount, coupon_code = '', coupon_discount = 0 } = metadata
     dispatch(setPaymentIntent(
       id,
       Number(amount/100),
-      shipping,
+      Number(shipping_amount/100).toFixed(2),
       coupon_code,
       coupon_discount
     ))
