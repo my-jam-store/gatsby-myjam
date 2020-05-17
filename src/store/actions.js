@@ -4,8 +4,7 @@ import {
   UPDATE_ITEM_QTY,
   REMOVE_ITEM_FROM_CART,
   CLEAR_CART,
-  SET_PAYMENT_INTENT,
-  SET_PAYMENT_INTENT_VALUE
+  SET_PAYMENT_INTENT
 } from "./constants"
 
 export const setStoreAction = (storeName, storeCode) => ({

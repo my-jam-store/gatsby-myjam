@@ -2,17 +2,43 @@ import React, { useReducer } from "react"
 import AppContext from "./context"
 import reducer from "./reducer"
 
-const initialState =  typeof window !== "undefined" && !!localStorage.getItem('globalStore')
-  ? JSON.parse(localStorage.getItem('globalStore'))
-  : {
-      storeName: null,
-      storeCode: null,
-      paymentIntent: {},
-      items: []
+const getUpdatedState = () => {
+  const state = {}
+  const preState = JSON.parse(localStorage.getItem('globalStore'))
+  const nxtState = {
+    storeName: "",
+    storeCode: "",
+    paymentIntent: {},
+    items: [],
+  }
+  for(const key in nxtState) {
+    if(
+      preState[key] &&
+      (typeof preState[key] === typeof nxtState[key]) &&
+      (Array.isArray(preState[key]) === Array.isArray(nxtState[key])) &&
+      (!!preState[key] === nxtState[key])
+    ) {
+      state[key] = preState[key]
+    } else {
+      state[key] = nxtState[key]
     }
+  }
+
+  return state
+}
 
 const GlobalStore = (props) => {
+  const initialState =  typeof window !== "undefined" && !!localStorage.getItem('globalStore')
+    ? getUpdatedState()
+    : {
+      storeName: "",
+      storeCode: "",
+      paymentIntent: {},
+      items: [],
+    }
+
   const [state, dispatch] = useReducer(reducer, initialState)
+  localStorage.setItem('globalStore', JSON.stringify(state))
   return (
     <AppContext.Provider value={{state, dispatch}}>
       {props.children}
