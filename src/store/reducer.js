@@ -4,8 +4,7 @@ import {
   REMOVE_ITEM_FROM_CART,
   UPDATE_ITEM_QTY,
   CLEAR_CART,
-  SET_PAYMENT_INTENT,
-  SET_PAYMENT_INTENT_VALUE
+  SET_PAYMENT_INTENT
 } from "./constants"
 
 export default (state, action) => {

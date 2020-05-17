@@ -8,8 +8,7 @@ const EmptyCart = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const sessionId = window.location.search.replace('?session_id=', '');
-      if(state.sessionId === sessionId) {
+      if(state.paymentIntent) {
         dispatch(clearCart())
       } else {
         navigate("/404")
