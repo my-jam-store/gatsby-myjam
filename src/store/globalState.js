@@ -4,7 +4,8 @@ import reducer from "./reducer"
 
 const getUpdatedState = () => {
   const state = {}
-  const preState = JSON.parse(localStorage.getItem('globalStore'))
+  const preState = typeof window !== "undefined" ?
+    JSON.parse(localStorage.getItem('globalStore')) : {}
   const nxtState = {
     storeName: "",
     storeCode: "",
@@ -38,7 +39,9 @@ const GlobalStore = (props) => {
     }
 
   const [state, dispatch] = useReducer(reducer, initialState)
-  localStorage.setItem('globalStore', JSON.stringify(state))
+  if(typeof window !== "undefined") {
+    localStorage.setItem('globalStore', JSON.stringify(state))
+  }
   return (
     <AppContext.Provider value={{state, dispatch}}>
       {props.children}
