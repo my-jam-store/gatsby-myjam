@@ -1,26 +1,59 @@
-import { loadStripe } from '@stripe/stripe-js';
+import { getUrl } from "./helper"
 
-export const getStripeInstance = async () => {
-  const stripe = await loadStripe(process.env.GATSBY_STRIPE_PUBLIC_KEY, {
-    stripeAccount: process.env.GATSBY_STRIPE_CONNECT_ID
-  })
-  return stripe
-}
-
-export const generateCheckoutSession = async (data) => {
-  const url = process.env.GATSBY_CREATE_CHECKOUT_SESSION_API
+export const generatePaymentIntent = async (payload) => {
   const options = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...data })
+    body: JSON.stringify({ ...payload })
   }
-
-  const response = await fetch(url, options)
-  const json = await response.json()
-  return json
+  const response = await fetch(getUrl('cart'), options)
+  return await response.json()
 }
 
-export const goToCheckout = async (stripe, sessionId) => {
-  const { error } = await stripe.redirectToCheckout({ sessionId })
-  return error
+export const updatePaymentIntent = async (payload, cart_id) => {
+  const options = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ cart_id, ...payload })
+  }
+  const response = await fetch(getUrl('cart'), options)
+  return await response.json()
+}
+
+export const applyCoupon = async (coupon_code, cart_id) => {
+  const options = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ coupon_code, cart_id })
+  }
+  const response = await fetch(getUrl('coupon-code'), options)
+  return await response.json()
+}
+
+export const removeCoupon = async (coupon_code, cart_id) => {
+  const options = {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ coupon_code, cart_id })
+  }
+  const response = await fetch(getUrl('coupon-code'), options)
+  return await response.json()
+}
+
+export const sendOrderDetails = async (order_id, coupon_code, total, address) => {
+  const options = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      order_id,
+      details: {
+         ...address,
+        coupon_code,
+        total,
+        tip: 0
+      }
+    })
+  }
+
+  return await fetch(getUrl('order-details'), options)
 }
