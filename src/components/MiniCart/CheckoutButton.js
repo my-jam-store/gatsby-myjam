@@ -32,13 +32,14 @@ const CheckoutButton = () => {
 
     const payload = formatPayload(state.items)
 
-    const { amount, id, metadata } = state.paymentIntent ?
+    const { amount, id, metadata, client_secret } = state.paymentIntent ?
         await Stripe.updatePaymentIntent(payload, state.paymentIntent.id)
       : await Stripe.generatePaymentIntent(payload)
 
     const { shipping_amount, coupon_code = '', coupon_discount = 0 } = metadata
     dispatch(setPaymentIntent(
       id,
+      client_secret,
       Number(amount/100),
       Number(shipping_amount/100).toFixed(2),
       coupon_code,

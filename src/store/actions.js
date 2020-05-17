@@ -36,9 +36,9 @@ export const clearCart = () => ({
   payload: {}
 })
 
-export const setPaymentIntent = ( id, amount, shipping, coupon, discount) => ({
+export const setPaymentIntent = ( id, clientSecret, amount, shipping, coupon, discount) => ({
   type: SET_PAYMENT_INTENT,
-  payload: { id, amount, shipping, coupon, discount }
+  payload: { id, clientSecret, amount, shipping, coupon, discount }
 })
 
 const getImageUrl = (sku) => (
