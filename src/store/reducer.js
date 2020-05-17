@@ -50,7 +50,7 @@ export default (state, action) => {
   }
 
   if(type === CLEAR_CART) {
-    const updatedState = { ...state,  items: [], paymentIntent: null }
+    const updatedState = { ...state,  items: [], paymentIntent: {} }
     localStorage.setItem('globalStore', JSON.stringify(updatedState))
     return updatedState
   }
