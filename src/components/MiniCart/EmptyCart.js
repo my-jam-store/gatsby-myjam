@@ -8,7 +8,7 @@ const EmptyCart = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if(state.paymentIntent) {
+      if(state.paymentIntent && state.paymentIntent.id) {
         dispatch(clearCart())
       } else {
         navigate("/404")

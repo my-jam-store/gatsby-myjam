@@ -85,7 +85,7 @@ const Summary = () => {
     if(loading) {
       loading.remove()
     }
-    if(!state.paymentIntent) {
+    if(state.paymentIntent && !state.paymentIntent.id) {
       navigate("/404")
     }
 

@@ -6,7 +6,17 @@
 
 const React = require("react")
 const GlobalStore = require("./src/store/globalState").default
+const { Elements } = require("@stripe/react-stripe-js")
+const { loadStripe } = require("@stripe/stripe-js")
+
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLIC_KEY);
 
 exports.wrapRootElement = ({ element }) => {
-  return <GlobalStore>{element}</GlobalStore>
+  return (
+    <Elements stripe={stripePromise}>
+      <GlobalStore>
+        {element}
+      </GlobalStore>
+    </Elements>
+  )
 }
