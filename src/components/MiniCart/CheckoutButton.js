@@ -40,8 +40,8 @@ const CheckoutButton = () => {
     dispatch(setPaymentIntent(
       id,
       client_secret,
-      Number(amount/100),
-      Number(shipping_amount/100).toFixed(2),
+      amount,
+      shipping_amount,
       coupon_code,
       coupon_discount
     ))

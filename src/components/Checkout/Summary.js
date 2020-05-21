@@ -49,8 +49,8 @@ const Summary = () => {
         dispatch(setPaymentIntent(
           id,
           client_secret,
-          Number(amount/100),
-          Number(shipping_amount/100).toFixed(2),
+          amount,
+          shipping_amount,
           '',
           0
         ))
@@ -65,8 +65,8 @@ const Summary = () => {
         dispatch(setPaymentIntent(
           id,
           client_secret,
-          Number(amount/100),
-          Number(shipping_amount/100).toFixed(2),
+          amount,
+          shipping_amount,
           coupon_code,
           coupon_discount
         ))
@@ -124,6 +124,12 @@ const Summary = () => {
           <span>Shipping Fee</span>
           <span>&#163;{state.paymentIntent.shipping}</span>
         </div>
+        {isApplied && (
+          <div>
+            <span>Discount Amount</span>
+            <span>- &#163;{state.paymentIntent.discount}</span>
+          </div>
+        )}
       </Block>
       <Discount error={error}>
         <input
@@ -143,7 +149,7 @@ const Summary = () => {
         {error && <p>{error}</p>}
       </Discount>
       <TotalBlock>
-        <span>{isApplied ? 'After Discount' : 'Total'}</span>
+        <span>Total</span>
         <span>&#163;{state.paymentIntent.amount}</span>
       </TotalBlock>
     </SummaryBlock>

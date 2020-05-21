@@ -225,6 +225,19 @@ export const FormWrapper = styled.form`
           margin: 0;
         }
       }
+      & #stripe-card-element.error {
+        & span {
+          color: red;
+        }
+        & p {
+          font-size: 13px;
+          position: absolute;
+          right: 5px;
+          top: -30px;
+          color: red;
+          margin: 0;
+        }
+      }
     }
   }
   & button {

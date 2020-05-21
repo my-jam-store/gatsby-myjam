@@ -16,8 +16,7 @@ const getUpdatedState = () => {
     if(
       preState[key] &&
       (typeof preState[key] === typeof nxtState[key]) &&
-      (Array.isArray(preState[key]) === Array.isArray(nxtState[key])) &&
-      (!!preState[key] === nxtState[key])
+      (Array.isArray(preState[key]) === Array.isArray(nxtState[key]))
     ) {
       state[key] = preState[key]
     } else {

@@ -35,6 +35,7 @@ const Form = () => {
   const [city, setCity] = useState('')
   const [postcode, setPostcode] = useState('')
   const [error, setError] = useState({})
+  const [cardError, setCardError] = useState({ err: false, message: ''})
 
   const stripe = useStripe()
   const elements = useElements()
@@ -94,8 +95,14 @@ const Form = () => {
           card: elements.getElement(CardElement),
         }
       });
-
-
+      if(!!result.error) {
+        setLoading(false)
+        setCardError({
+          error: true,
+          message: result.error.message
+        })
+        return;
+      }
       if(result.paymentIntent.status === 'requires_capture') {
         const res = await sendOrderDetails(
           state.paymentIntent.id,
@@ -112,10 +119,6 @@ const Form = () => {
         )
         setLoading(false)
         navigate('/success')
-      }
-
-      if(!!result.error) {
-        setLoading(false)
       }
     } else {
       setLoading(false)
@@ -228,8 +231,9 @@ const Form = () => {
       <section>
         <h4>Payment Information</h4>
         <fieldset>
-          <label id="stripe-card-element">
+          <label id="stripe-card-element" className={cardError.error && 'error'}>
             <span>Card</span>
+            {cardError.error && <p>{cardError.message}</p>}
             <CardElement options={CARD_ELEMENT_OPTIONS} />
           </label>
         </fieldset>
