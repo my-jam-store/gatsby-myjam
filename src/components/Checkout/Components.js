@@ -25,6 +25,11 @@ export const PageContainer = styled.div`
   display: grid;
   grid-template-columns: auto 28%;
   height: 100vh;
+  @media only screen 
+  and (max-device-width: 768px) {
+    display: block;
+    height: 100%;
+  }
 `
 
 export const SummaryBlock = styled.div`
@@ -40,6 +45,34 @@ export const SummaryBlock = styled.div`
     margin: 0;
     border-bottom: 1px solid #EAEAEA;
   }
+  @media only screen 
+  and (max-device-width: 768px) {
+    background-color: #F8FbFb;
+    box-shadow: none;
+    margin: 0 auto;
+    width: 100%;
+    border: none;
+    padding: 0 10px;
+    & h3 {
+      margin: 0;
+      padding: 15px 0;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: 14px;
+      height: auto;
+      border: none;
+    }
+    & > span {
+      position: absolute;
+      background-color: #F8FbFb;
+      padding: 5px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  & svg.rotate {
+    transform: rotate(-180deg);
+  }
 `
 
 export const ItemsGrid = styled.div`
@@ -48,6 +81,22 @@ export const ItemsGrid = styled.div`
   grid-auto-flow: row;
   grid-gap: 20px;
   border-bottom: 1px solid #EAEAEA;
+  transition: all 0.5s ease;
+  @media only screen 
+  and (max-device-width: 768px) {
+    padding: 12px;
+    grid-gap: 12px;
+    background-color: #FFF;
+    border: 1px solid #EAEAEA;
+    max-height: auto;
+    overflow: hidden;
+    &.show-less {
+      max-height: 135px;
+    }
+    &.show-more {
+      max-height: 1000px;
+    }
+  }
 `
 export const Item = styled.div`
   display: grid;
@@ -71,6 +120,10 @@ export const Item = styled.div`
     width: 100%;
     border-radius: 4px;
   }
+  @media only screen 
+  and (max-device-width: 768px) {
+    grid-template-columns: auto 100px;
+  }
 `
 
 export const Block = styled.div`
@@ -82,6 +135,10 @@ export const Block = styled.div`
   & div:not(:first-child) {
     padding-top: 7px;
   }
+  @media only screen 
+  and (max-device-width: 768px) {
+    padding: 20px 2px;
+  }
 `
 
 export const Discount = styled.div`
@@ -92,6 +149,10 @@ export const Discount = styled.div`
   font-size: 15px;
   justify-content: space-between;
   position: relative;
+  @media only screen 
+  and (max-device-width: 768px) {
+    padding: 20px 0;
+  }
   & p {
     position: absolute;
     bottom: 0;
@@ -142,6 +203,13 @@ export const TotalBlock = styled.div`
   & span {
     font-size: 26px;
   }
+  @media only screen 
+  and (max-device-width: 768px) {
+    padding: 15px 0;
+    & span {
+      font-size: 23px;
+    }
+  }
 `
 
 export const FormWrapper = styled.form`
@@ -149,8 +217,15 @@ export const FormWrapper = styled.form`
   border: 1px solid #e1dede;
   border-radius: 4px;
   padding: 35px;
-  margin: 50px auto;
+  margin: 40px auto 0;
   position: relative;
+  @media only screen 
+  and (max-device-width: 768px) {
+    margin: 0 auto 50px;
+    width: 100%;
+    border: none;
+    padding: 10px;
+  }
   & > p {
     margin-bottom: 0;
     background: #F8FBFB;
@@ -162,6 +237,10 @@ export const FormWrapper = styled.form`
     width: fit-content;
     display: inline-block;
     position: absolute;
+    @media only screen 
+    and (max-device-width: 768px) {
+      display: none;
+    }
   }
   & section {
     & h4 {
@@ -191,6 +270,10 @@ export const FormWrapper = styled.form`
         justify-content: center;
         color: #8898aa;
         font-weight: 400;
+        @media only screen 
+        and (max-device-width: 768px) {
+          padding: 10px;
+        }
         & span {
           transition: all .3s ease-out;
           color: #525F7F;
@@ -225,6 +308,14 @@ export const FormWrapper = styled.form`
           margin: 0;
         }
       }
+      & #stripe-card-element {
+        @media only screen 
+        and (max-device-width: 768px) {
+          & span {
+            display: none;
+          }
+        }
+      }
       & #stripe-card-element.error {
         & span {
           color: red;
@@ -236,6 +327,10 @@ export const FormWrapper = styled.form`
           top: -30px;
           color: red;
           margin: 0;
+          @media only screen 
+          and (max-device-width: 768px) {
+            top: -20px;
+          }
         }
       }
     }

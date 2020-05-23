@@ -9,7 +9,7 @@ export default ({ data }) => {
   return (
     <Index categories={categories.nodes} stickyFooter={true}>
       <SEO title="Success Page" />
-      <h2>Thanks for purchasing from My Jam!</h2>
+      <h2 style={{lineHeight: '1.5'}}>Thanks for purchasing from My Jam!</h2>
 
       <EmptyCart />
     </Index>

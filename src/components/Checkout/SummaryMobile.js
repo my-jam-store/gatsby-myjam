@@ -12,9 +12,11 @@ import {
 } from "./Components"
 import { setPaymentIntent } from "../../store/actions"
 import { LoaderIcon } from "../MiniCart/Components"
+import { ArrowDown } from "../NavItemsMobile/Components"
 
 const Summary = () => {
   const { state, dispatch } = useContext(AppContext)
+  const [showMore, setShowMore] = useState(false)
   const [loading, setLoading] = useState(false)
   const [isApplied, setDiscount] = useState(false)
   const [error, setError] = useState(null)
@@ -81,6 +83,8 @@ const Summary = () => {
   }
 
   useEffect(() => {
+    document.querySelector('html').removeAttribute('style')
+    document.querySelector('body').removeAttribute('style')
     const loading = document && document.getElementById("loading-checkout")
     if(loading) {
       loading.remove()
@@ -97,13 +101,9 @@ const Summary = () => {
   return (
     <SummaryBlock>
       <h3>Order Summary</h3>
-      <ItemsGrid>
+      <ItemsGrid className={showMore ? 'show-more' : 'show-less'}>
         {state.items.map((item) => (
           <Item key={item.id}>
-            <img
-              src={item.image}
-              alt={item.name}
-            />
             <span>{item.name}</span>
             <span className="price">
               <span className="total-price">
@@ -115,6 +115,10 @@ const Summary = () => {
           </Item>
         ))}
       </ItemsGrid>
+      <span onClick={() => {setShowMore(!showMore)}}>
+        {showMore ? 'See Less' : 'See More'}
+        <ArrowDown className={showMore && 'rotate'} />
+      </span>
       <Block>
         <div>
           <span>Subtotal</span>

@@ -4,9 +4,12 @@ import { PageContainer } from "./Components"
 import Header from "./Header"
 import Form from "./Form"
 import Summary from "./Summary"
+import SummaryMobile from "./SummaryMobile"
 
 const Checkout = () => {
   const { state, dispatch } = useContext(AppContext)
+
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
 
   useEffect(() => {
     const hubSpot = document && document.getElementById("hubspot-messages-iframe-container")
@@ -23,9 +26,10 @@ const Checkout = () => {
     <PageContainer>
       <div>
         <Header />
+        {isMobile() && <SummaryMobile />}
         <Form />
       </div>
-      <Summary/>
+      {!isMobile() && <Summary />}
     </PageContainer>
   )
 }
