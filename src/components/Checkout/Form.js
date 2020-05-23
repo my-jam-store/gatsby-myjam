@@ -204,7 +204,7 @@ const Form = () => {
           </label>
           <label className={error.mobile && 'error'}>
             <span>Mobile</span>
-            <input onChange={handleChange} value={mobile} type="text" placeholder="7506222222" id="mobile" />
+            <input onChange={handleChange} value={mobile} type="text" placeholder="0750622222" id="mobile" />
             {error.mobile && <p>{error.mobile}</p>}
           </label>
           <label className={error.address && 'error'}>
