@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { navigate } from "gatsby-link"
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js"
 import { FormWrapper } from "./Components"
 import AppContext from "../../store/context"
-import { LoaderIcon } from "../MiniCart/Components"
+import { LoaderIcon, ChangeAddress, ChangeAddressLabel } from "../MiniCart/Components"
 import { sendOrderDetails } from "../../utils/stripe"
 import { getTodayDate } from "../../utils/helper"
 
@@ -28,12 +28,13 @@ const Form = () => {
 
   const { state } = useContext(AppContext)
   const [loading, setLoading] = useState(false)
-  const [name, setName] = useState('')
+  const [name, setName] = useState({ billing: '', shipping: ''})
   const [email, setEmail] = useState('')
-  const [mobile, setMobile] = useState('')
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [postcode, setPostcode] = useState('')
+  const [mobile, setMobile] = useState({ billing: '', shipping: ''})
+  const [address, setAddress] = useState({ billing: '', shipping: ''})
+  const [city, setCity] = useState({ billing: '', shipping: ''})
+  const [postcode, setPostcode] = useState({ billing: '', shipping: ''})
+  const [sameAddress, setSameAddress] = useState(true)
   const [error, setError] = useState({})
   const [cardError, setCardError] = useState({ err: false, message: ''})
 
@@ -41,26 +42,27 @@ const Form = () => {
   const elements = useElements()
 
   const handleChange = (e) => {
-    const key = e.target.id
+    const key = e.target.id && e.target.id.split('-')[0];
+    const type = e.target.getAttribute('data-form-type')
     const value = e.target.value
     switch (key) {
       case "name":
-        setName(value)
+        setName({ ...name, [type]: value })
         break
       case "email":
         setEmail(value)
         break
       case "mobile":
-        setMobile(value)
+        setMobile({ ...mobile, [type]: value })
         break
       case "address":
-        setAddress(value)
+        setAddress({ ...address, [type]: value })
         break
       case "city":
-        setCity(value)
+        setCity({ ...city, [type]: value })
         break
       case "postcode":
-        setPostcode(value)
+        setPostcode({ ...postcode, [type]: value })
         break
       default:
         return;
@@ -79,22 +81,34 @@ const Form = () => {
 
     if(valid) {
       const result = await stripe.confirmCardPayment(state.paymentIntent.clientSecret, {
+        shipping: {
+          name: sameAddress ? name.billing : name.shipping,
+          phone: sameAddress ? mobile.billing : mobile.shipping,
+          address: {
+            city: sameAddress ? city.billing : city.shipping,
+            country: 'GB',
+            line1: sameAddress ? address.billing : address.shipping,
+            postal_code: sameAddress ? postcode.billing : postcode.shipping,
+            state: null
+          },
+        },
         payment_method: {
+          card: elements.getElement(CardElement),
           billing_details: {
             address: {
-              city: city,
+              city: city.billing,
               country: 'GB',
-              line1: address,
-              postal_code: postcode,
+              line1: address.billing,
+              postal_code: postcode.billing,
               state: null
             },
             email: email,
-            name: name,
-            phone: mobile
-          },
-          card: elements.getElement(CardElement),
+            name: name.billing,
+            phone: mobile.billing
+          }
         }
       });
+
       if(!!result.error) {
         setLoading(false)
         setCardError({
@@ -109,11 +123,17 @@ const Form = () => {
           state.paymentIntent.coupon,
           state.paymentIntent.amount,
           {
-            customer_name: name,
+            customer_name: name.billing,
+            shipping_customer_name: sameAddress ? name.billing : name.shipping,
+            city: city.billing,
+            shipping_city: sameAddress ? city.billing : city.shipping,
             email: email,
-            address: address,
-            post_code: postcode,
-            phone_number: mobile,
+            address: address.billing,
+            shipping_address: sameAddress ? address.billing : address.shipping,
+            post_code: postcode.billing,
+            shipping_post_code: sameAddress ? postcode.billing : postcode.shipping,
+            phone_number: mobile.billing,
+            shipping_phone_number: sameAddress ?  mobile.billing : mobile.shipping,
             date: getTodayDate()
           }
         )
@@ -127,12 +147,20 @@ const Form = () => {
 
   const validateData = () => {
     let valid = true;
-    if(name.trim().length === 0) {
+    if(name.billing.trim().length === 0) {
       setError((preState) => ({
         ...preState,
-        name: 'name is required'
+        nameBilling: 'name is required'
       }))
-      valid = false;
+      valid = false
+    }
+
+    if(!sameAddress && name.shipping.trim().length === 0) {
+      setError((preState) => ({
+        ...preState,
+        nameShipping: 'name is required'
+      }))
+      valid = false
     }
 
     if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
@@ -140,51 +168,104 @@ const Form = () => {
         ...preState,
         email: 'email is invalid'
       }))
-      valid = false;
+      valid = false
     }
 
-    if(/^[a-zA-Z]+$/.test(mobile)) {
+    if(/^[a-zA-Z]+$/.test(mobile.billing)) {
       setError((preState) => ({
         ...preState,
-        mobile: 'mobile number is invalid'
+        mobileBilling: 'mobile number is invalid'
       }))
-      valid = false;
+      valid = false
     }
 
-    if(mobile.trim().length === 0) {
+    if(!sameAddress && /^[a-zA-Z]+$/.test(mobile.shipping)) {
       setError((preState) => ({
         ...preState,
-        mobile: 'mobile number is required'
+        mobileShipping: 'mobile number is invalid'
       }))
-      valid = false;
+      valid = false
     }
 
-    if(city.trim().length === 0) {
+    if(mobile.billing.trim().length === 0) {
       setError((preState) => ({
         ...preState,
-        city: 'city is required'
+        mobileBilling: 'mobile number is required'
       }))
-      valid = false;
+      valid = false
     }
 
-    if(address.trim().length === 0) {
+    if(!sameAddress && mobile.shipping.trim().length === 0) {
       setError((preState) => ({
         ...preState,
-        address: 'address is required'
+        mobileShipping: 'mobile number is required'
       }))
-      valid = false;
+      valid = false
     }
 
-    if(postcode.trim().length === 0) {
+    if(city.billing.trim().length === 0) {
       setError((preState) => ({
         ...preState,
-        postcode: 'postcode is required'
+        cityBilling: 'city is required'
       }))
-      valid = false;
+      valid = false
+    }
+
+    if(!sameAddress && city.shipping.trim().length === 0) {
+      setError((preState) => ({
+        ...preState,
+        cityShipping: 'city is required'
+      }))
+      valid = false
+    }
+
+    if(address.billing.trim().length === 0) {
+      setError((preState) => ({
+        ...preState,
+        addressBilling: 'address is required'
+      }))
+      valid = false
+    }
+
+    if(!sameAddress && address.shipping.trim().length === 0) {
+      setError((preState) => ({
+        ...preState,
+        addressShipping: 'address is required'
+      }))
+      valid = false
+    }
+
+    if(postcode.billing.trim().length === 0) {
+      setError((preState) => ({
+        ...preState,
+        postcodeBilling: 'postcode is required'
+      }))
+      valid = false
+    }
+
+    if(!sameAddress && postcode.shipping.trim().length === 0) {
+      setError((preState) => ({
+        ...preState,
+        postcodeShipping: 'postcode is required'
+      }))
+      valid = false
     }
 
     return valid;
   }
+
+  useEffect(() => {
+    if(sameAddress) {
+      setError({
+        ...error,
+        nameShipping: '',
+        mobileShipping: '',
+        addressShipping: '',
+        cityShipping: '',
+        postcodeShipping: ''
+      })
+    }
+  }, [sameAddress]);
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
@@ -192,41 +273,86 @@ const Form = () => {
       <section>
         <h4>Shipping & Billing Information</h4>
         <fieldset>
-          <label className={error.name && 'error'}>
+          <label className={error.nameBilling && 'error'}>
             <span>Name</span>
-            <input onChange={handleChange} value={name} type="text" placeholder="Full Name" id="name" />
-            {error.name && <p>{error.name}</p>}
+            <input onChange={handleChange} data-form-type="billing" value={name.billing} type="text" placeholder="Full Name" id="name-billing" />
+            {error.nameBilling && <p>{error.nameBilling}</p>}
           </label>
           <label className={error.email && 'error'}>
             <span>Email</span>
-            <input onChange={handleChange} value={email} type="text" placeholder="example@gmail.com" id="email" />
+            <input onChange={handleChange} data-form-type="billing" value={email} type="text" placeholder="example@gmail.com" id="email" />
             {error.email && <p>{error.email}</p>}
           </label>
-          <label className={error.mobile && 'error'}>
+          <label className={error.mobileBilling && 'error'}>
             <span>Mobile</span>
-            <input onChange={handleChange} value={mobile} type="text" placeholder="0750622222" id="mobile" />
-            {error.mobile && <p>{error.mobile}</p>}
+            <input onChange={handleChange} data-form-type="billing" value={mobile.billing} type="text" placeholder="0750622222" id="mobile-billing" />
+            {error.mobileBilling && <p>{error.mobileBilling}</p>}
           </label>
-          <label className={error.address && 'error'}>
+          <label className={error.addressBilling && 'error'}>
             <span>Address</span>
-            <input onChange={handleChange} value={address} type="text" placeholder="185 Berry Street" id="address" />
-            {error.address && <p>{error.address}</p>}
+            <input onChange={handleChange} data-form-type="billing" value={address.billing} type="text" placeholder="185 Berry Street" id="address-billing" />
+            {error.addressBilling && <p>{error.addressBilling}</p>}
           </label>
-          <label className={error.city && 'error'}>
+          <label className={error.cityBilling && 'error'}>
             <span>City</span>
-            <input onChange={handleChange} value={city} type="text" placeholder="London" id="city" />
-            {error.city && <p>{error.city}</p>}
+            <input onChange={handleChange} data-form-type="billing" value={city.billing} type="text" placeholder="London" id="city-billing" />
+            {error.cityBilling && <p>{error.cityBilling}</p>}
           </label>
-          <label className={error.postcode && 'error'}>
+          <label className={error.postcodeBilling && 'error'}>
             <span>Postcode</span>
-            <input onChange={handleChange} value={postcode} type="text" placeholder="CN3912" id="postcode" />
-            {error.postcode && <p>{error.postcode}</p>}
+            <input onChange={handleChange} data-form-type="billing" value={postcode.billing} type="text" placeholder="CN3912" id="postcode-billing" />
+            {error.postcodeBilling && <p>{error.postcodeBilling}</p>}
           </label>
           <label>
             <span>Country</span>
             <div>United Kingdom</div>
           </label>
         </fieldset>
+        <div style={{ marginBottom: '10px'}}>
+          <ChangeAddress
+            type="checkbox"
+            id="changeAddress"
+            name="changeAddress"
+            checked={!sameAddress}
+            onChange={() => {setSameAddress(!sameAddress)}}
+          />
+          <ChangeAddressLabel htmlFor="changeAddress">
+            Use different address for shipping
+          </ChangeAddressLabel>
+        </div>
+        {!sameAddress && (
+          <fieldset>
+            <label className={error.nameShipping && 'error'}>
+              <span>Name</span>
+              <input onChange={handleChange} data-form-type="shipping" value={name.shipping} type="text" placeholder="Full Name" id="name-shipping" />
+              {error.nameShipping && <p>{error.nameShipping}</p>}
+            </label>
+            <label className={error.mobileShipping && 'error'}>
+              <span>Mobile</span>
+              <input onChange={handleChange} data-form-type="shipping" value={mobile.shipping} type="text" placeholder="0750622222" id="mobile" />
+              {error.mobileShipping && <p>{error.mobileShipping}</p>}
+            </label>
+            <label className={error.addressShipping && 'error'}>
+              <span>Address</span>
+              <input onChange={handleChange} data-form-type="shipping" value={address.shipping} type="text" placeholder="185 Berry Street" id="address-shipping" />
+              {error.addressShipping && <p>{error.addressShipping}</p>}
+            </label>
+            <label className={error.cityShipping && 'error'}>
+              <span>City</span>
+              <input onChange={handleChange} data-form-type="shipping" value={city.shipping} type="text" placeholder="London" id="city-shipping" />
+              {error.cityShipping && <p>{error.cityShipping}</p>}
+            </label>
+            <label className={error.postcodeShipping && 'error'}>
+              <span>Postcode</span>
+              <input onChange={handleChange} data-form-type="shipping" value={postcode.shipping} type="text" placeholder="CN3912" id="postcode-shipping" />
+              {error.postcodeShipping && <p>{error.postcodeShipping}</p>}
+            </label>
+            <label>
+              <span>Country</span>
+              <div>United Kingdom</div>
+            </label>
+          </fieldset>
+        )}
       </section>
       <section>
         <h4>Payment Information</h4>

@@ -216,7 +216,7 @@ export const FormWrapper = styled.form`
   width: 550px;
   border: 1px solid #e1dede;
   border-radius: 4px;
-  padding: 35px;
+  padding: 25px 35px;
   margin: 40px auto 0;
   position: relative;
   @media only screen 
@@ -243,6 +243,7 @@ export const FormWrapper = styled.form`
     }
   }
   & section {
+    margin-bottom: 20px;
     & h4 {
       margin: 0;
       padding: 15px 0;
@@ -253,7 +254,7 @@ export const FormWrapper = styled.form`
       color: #000;
     }
     & fieldset {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       background: #FFF;
       box-shadow: 0 1px 3px 0 rgba(50, 50, 93, 0.15), 0 4px 6px 0 rgba(112, 157, 199, 0.15);
       border-radius: 4px;

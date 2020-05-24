@@ -265,7 +265,7 @@ export const LoaderIcon = styled(Loader4)`
   animation: rotation 1.5s linear infinite;
 `
 
-export const EnableTip = styled.input`
+export const ChangeAddress = styled.input`
   display: none;
   & ~ label:after {
     background-color: transparent;
@@ -276,11 +276,12 @@ export const EnableTip = styled.input`
   }
 `
 
-export const Label = styled.label`
+export const ChangeAddressLabel = styled.label`
   padding: 0 20px;
   position: relative;
   cursor: pointer;
   user-select: none;
+  font-size: 15px;
   &:before {
     content: "";
     width: 15px;
@@ -326,7 +327,7 @@ export const TipInput = styled.input`
   }
 `
 
-export const TipBlock = styled.div`
+export const ChangeAddressBlock = styled.div`
   padding: 25px 0px 10px 25px;
   & label {
     font-size: 20px;
