@@ -118,25 +118,6 @@ const Form = () => {
         return;
       }
       if(result.paymentIntent.status === 'requires_capture') {
-        const res = await sendOrderDetails(
-          state.paymentIntent.id,
-          state.paymentIntent.coupon,
-          state.paymentIntent.amount,
-          {
-            customer_name: name.billing,
-            shipping_customer_name: sameAddress ? name.billing : name.shipping,
-            city: city.billing,
-            shipping_city: sameAddress ? city.billing : city.shipping,
-            email: email,
-            address: address.billing,
-            shipping_address: sameAddress ? address.billing : address.shipping,
-            post_code: postcode.billing,
-            shipping_post_code: sameAddress ? postcode.billing : postcode.shipping,
-            phone_number: mobile.billing,
-            shipping_phone_number: sameAddress ?  mobile.billing : mobile.shipping,
-            date: getTodayDate()
-          }
-        )
         setLoading(false)
         navigate('/success')
       }
