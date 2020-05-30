@@ -11,12 +11,19 @@ export const formatPayload = (items) => {
     }
   })
 
+  let metaData = ''
+
+  items.forEach((item) => {
+    metaData += `[${item.sku},${item.quantity}]`
+  })
+
   const amount = items.reduce((total, item) => {
     return total + (item.quantity * Number(item.price) * 100)
   }, 0)
 
   return {
     amount: Number(amount/100),
+    line_items_metadata: metaData,
     line_items: lineItems
   }
 }
