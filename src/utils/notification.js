@@ -10,8 +10,8 @@ export const showMessage = (msg, msgType) => (
     animationIn: ["animated", "fadeIn"],
     animationOut: ["animated", "fadeOut"],
     dismiss: {
-      duration: 3000,
-      showIcon: true
+      duration: 2500,
+      showIcon: false
     }
   })
 )

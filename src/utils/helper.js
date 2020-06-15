@@ -6,7 +6,7 @@ export const formatPayload = (items) => {
         image: item.image,
         price: Number(item.price),
         sku: String(item.sku),
-        qty: item.quantity
+        qty: Number.parseInt(item.quantity)
       }
     }
   })

@@ -50,7 +50,7 @@ export const SummaryBlock = styled.div`
     background-color: #F8FbFb;
     box-shadow: none;
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
     border: none;
     padding: 0 10px;
     & h3 {
@@ -222,7 +222,7 @@ export const FormWrapper = styled.form`
   @media only screen 
   and (max-device-width: 768px) {
     margin: 0 auto 50px;
-    width: 100%;
+    width: 90%;
     border: none;
     padding: 10px;
   }
