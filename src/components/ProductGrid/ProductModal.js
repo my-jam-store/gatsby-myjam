@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import Modal from "react-modal"
-import { Content, QuantityBox, QtyPlus, QtyMinus, CartIcon, CloseIcon } from "./Components"
+import { Content, QuantityBox, QtyPlus, QtyMinus, CartIcon, CloseIcon, ErrorMessage } from "./Components"
 import AppContext from "../../store/context"
 import { addItemAction } from "../../store/actions"
 import { showMessage } from "../../utils/notification"
@@ -8,7 +8,7 @@ import { showMessage } from "../../utils/notification"
 const ProductModal = ({ isOpen, item, handleClose }) => {
   const [ qty, setQty ] = useState(1)
   const [ err, setErr ] = useState(null)
-  const { dispatch } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
 
   const handleQuantityChange = (e) => {
     setQty(e.target.value)
@@ -49,7 +49,7 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
       setErr('invalid quantity value')
     }
   }
-  
+
   return (
     <Modal
       isOpen={isOpen}
@@ -70,23 +70,29 @@ const ProductModal = ({ isOpen, item, handleClose }) => {
           <p>{item.description}</p>
           <span className="price">&#163;{item.price}</span>
           <br/>
-          <span>Quantity</span>
-          <QuantityBox>
-            <div>
-              <input type="number" value={qty} onChange={handleQuantityChange} />
-              <QtyPlus onClick={handleQuantityIncrement} />
-              <QtyMinus onClick={handleQuantityDecrement} />
-            </div>
-            <div>
-              <button onClick={addItemToCart}>
-                <CartIcon/>
-                <span>
+          {state.items.length >= 50 ? (
+            <ErrorMessage>You can not add more than 50 items to the cart.</ErrorMessage>
+          ) : (
+            <>
+              <span>Quantity</span>
+              <QuantityBox>
+                <div>
+                  <input type="number" value={qty} onChange={handleQuantityChange} />
+                  <QtyPlus onClick={handleQuantityIncrement} />
+                  <QtyMinus onClick={handleQuantityDecrement} />
+                </div>
+                <div>
+                  <button onClick={addItemToCart}>
+                    <CartIcon/>
+                    <span>
                   Add To Cart
                 </span>
-              </button>
-            </div>
-            {!!err && (<p style={{gridColumn:'1/-1', color: 'orangered'}}>{err}</p>)}
-          </QuantityBox>
+                  </button>
+                </div>
+                {!!err && (<p style={{gridColumn:'1/-1', color: 'orangered'}}>{err}</p>)}
+              </QuantityBox>
+            </>
+          )}
         </div>
         <CloseIcon onClick={handleCloseModal} />
       </Content>

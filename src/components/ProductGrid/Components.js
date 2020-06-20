@@ -248,4 +248,20 @@ const CloseIcon = styled(CloseO)`
   cursor: pointer;
 `
 
+export const ErrorMessage = styled.p`
+  padding: 10px;
+  background-color: #DE4561;
+  color: #FFF;
+  font-size: 15px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0;
+  box-shadow: 0 1px 6px 0 rgba(133,123,123,.75);
+  @media only screen 
+  and (max-device-width: 768px) {
+    font-size: 17px;
+  }
+}
+`
+
 export { Grid, Item, Title, PlusIcon, Content, QuantityBox, QuantityBoxMobile, QtyPlus, QtyMinus, CartIcon, CloseIcon }

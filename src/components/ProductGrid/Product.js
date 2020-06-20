@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { Item, PlusIcon, QuantityBoxMobile, CartIcon, QtyMinus, QtyPlus } from "./Components"
+import { Item, PlusIcon, QuantityBoxMobile, CartIcon, QtyMinus, QtyPlus, ErrorMessage } from "./Components"
 import AppContext from "../../store/context"
 import { addItemAction } from "../../store/actions"
 import { showMessage } from "../../utils/notification"
@@ -73,12 +73,16 @@ const Product = React.memo(({ js, item }) => {
               <QtyPlus onClick={handleQuantityIncrement} />
               <QtyMinus onClick={handleQuantityDecrement} />
             </div>
-            <div>
-              <button onClick={addItemToCart}>
-                <CartIcon/>
-                <span>Add To Cart</span>
-              </button>
-            </div>
+            {state.items.length >= 50 ? (
+              <ErrorMessage>You can not add more than 50 items to the cart.</ErrorMessage>
+            ) : (
+              <div>
+                <button onClick={addItemToCart}>
+                  <CartIcon/>
+                  <span>Add To Cart</span>
+                </button>
+              </div>
+            )}
             {!!err && (<p style={{gridColumn:'1/-1', color: 'orangered', marginBottom: '0px'}}>{err}</p>)}
           </QuantityBoxMobile>
         </Item>
