@@ -10,6 +10,16 @@ export const generatePaymentIntent = async (payload) => {
   return await response.json()
 }
 
+export const sendCustomerDetails = async (payload) => {
+  const options = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...payload })
+  }
+  const response = await fetch(getUrl('cart/customer'), options)
+  return await response.json()
+}
+
 export const updatePaymentIntent = async (payload, cart_id) => {
   const options = {
     method: 'PUT',

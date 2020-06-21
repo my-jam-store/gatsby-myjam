@@ -4,8 +4,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js"
 import { FormWrapper } from "./Components"
 import AppContext from "../../store/context"
 import { LoaderIcon, ChangeAddress, ChangeAddressLabel } from "../MiniCart/Components"
-import { sendOrderDetails } from "../../utils/stripe"
-import { getTodayDate } from "../../utils/helper"
+import { sendCustomerDetails } from "../../utils/stripe"
 
 const Form = () => {
   const CARD_ELEMENT_OPTIONS = {
@@ -37,6 +36,7 @@ const Form = () => {
   const [sameAddress, setSameAddress] = useState(true)
   const [error, setError] = useState({})
   const [cardError, setCardError] = useState({ err: false, message: ''})
+  const [customerDetails, setCustomerDetails] = useState(false)
 
   const stripe = useStripe()
   const elements = useElements()
@@ -247,6 +247,26 @@ const Form = () => {
       })
     }
   }, [sameAddress]);
+
+  useEffect(() => {
+    setCustomerDetails(
+      Object.values(name).some(Boolean) &&
+      Object.values(mobile).some(Boolean) &&
+      email
+    )
+  }, [address, city, postcode])
+
+  useEffect(() => {
+    if(customerDetails) {
+      const cart_id = state.paymentIntent.id
+      const customer_details = {
+        email,
+        name: Object.values(name).find(Boolean),
+        phone_number: Object.values(mobile).find(Boolean)
+      }
+      sendCustomerDetails({ cart_id, customer_details })
+    }
+  }, [customerDetails])
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
