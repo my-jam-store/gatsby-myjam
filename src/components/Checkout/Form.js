@@ -69,6 +69,12 @@ const Form = () => {
     }
   }
 
+  const sendCustomerData = () => {
+    setCustomerDetails(
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+    );
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError({})
@@ -249,14 +255,6 @@ const Form = () => {
   }, [sameAddress]);
 
   useEffect(() => {
-    setCustomerDetails(
-      Object.values(name).some(Boolean) &&
-      Object.values(mobile).some(Boolean) &&
-      email
-    )
-  }, [address, city, postcode])
-
-  useEffect(() => {
     if(customerDetails) {
       const cart_id = state.paymentIntent.id
       const customer_details = {
@@ -281,7 +279,7 @@ const Form = () => {
           </label>
           <label className={error.email && 'error'}>
             <span>Email</span>
-            <input onChange={handleChange} data-form-type="billing" value={email} type="text" placeholder="example@gmail.com" id="email" />
+            <input onBlur={sendCustomerData} onChange={handleChange} data-form-type="billing" value={email} type="text" placeholder="example@gmail.com" id="email" />
             {error.email && <p>{error.email}</p>}
           </label>
           <label className={error.mobileBilling && 'error'}>
