@@ -28,11 +28,6 @@ export const formatPayload = (items) => {
   }
 }
 
-export const getUrl = (endpoint) => {
-  const url = process.env.GATSBY_CHECKOUT_SERVER_URL
-  return url.substr(-1) === '/' ? url + endpoint : url + '/' + endpoint
-}
-
 export const getTodayDate = () => {
   const today = new Date();
   const D = String(today.getDate()).padStart(2, '0');
