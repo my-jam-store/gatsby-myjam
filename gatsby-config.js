@@ -1,3 +1,4 @@
+require('dotenv').config()
 const queries = require("./src/utils/algolia")
 
 module.exports = {

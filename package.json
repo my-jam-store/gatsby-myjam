@@ -7,8 +7,10 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.5.0",
+    "airtable": "^0.8.1",
     "algoliasearch": "^3.35.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.19.32",
     "gatsby-image": "^2.2.24",
     "gatsby-plugin-algolia": "^0.3.4",
@@ -31,6 +33,7 @@
     "react-instantsearch-dom": "^5.7.0",
     "react-modal": "^3.10.1",
     "react-notifications-component": "^2.2.3",
+    "stripe": "^8.68.0",
     "styled-components": "^4.4.0",
     "styled-icons": "^8.5.1"
   },
@@ -44,7 +47,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "rm -rf .cache && env-cmd -f .env.development gatsby develop",
+    "develop": "rm -rf .cache && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
