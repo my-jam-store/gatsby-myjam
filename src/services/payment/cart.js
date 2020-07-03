@@ -13,7 +13,8 @@ async function create(total, lineItems, lineItemsMetadata) {
     }
   })
 
-  addItems(paymentIntent.id, lineItems)
+  // add await.
+  await addItems(paymentIntent.id, lineItems)
 
   return paymentIntent
 }
@@ -95,12 +96,13 @@ async function createOrder(paymentIntent) {
   order.createOrder(data, lineItems)
 }
 
-function addItems(paymentIntentId, items) {
+// add async/await.
+async function addItems(paymentIntentId, items) {
   items.forEach((item, index) => {
     items[index]['fields']['payment_intent_id'] = paymentIntentId
   })
 
-  airtable.createRecord(process.env.AIRTABLE_CART_ITEMS_VIEW, items)
+  await airtable.createRecord(process.env.AIRTABLE_CART_ITEMS_VIEW, items)
 }
 
 async function items(paymentIntentId) {
@@ -116,8 +118,8 @@ async function updateItems(paymentIntentId, items) {
   } catch (err) {
     return
   }
-
-  addItems(paymentIntentId, items)
+  // add await.
+  await addItems(paymentIntentId, items)
 }
 
 async function deleteItems(paymentIntentId) {
