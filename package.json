@@ -52,10 +52,10 @@
     "develop": "gatsby develop",
     "start": "run-p start:**",
     "start:app": "npm run develop",
-    "start:lambda": "netlify-lambda serve src/functions",
-    "build": "gatsby build && netlify-lambda build src/functions",
+    "start:lambda": "netlify-lambda serve functions",
+    "build": "gatsby build && netlify-lambda build functions",
     "build:app": "gatsby build",
-    "build:lambda": "netlify-lambda build src/functions",
+    "build:lambda": "netlify-lambda build functions",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
