@@ -26,6 +26,9 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       body: '',
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
     }
   } catch (err) {
     console.error(err)
