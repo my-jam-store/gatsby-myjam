@@ -11,18 +11,18 @@ export default ({ data }) => {
     const { categories } = data
 
     useEffect(() => {
-        gtag('event', 'purchase', {
-            "transaction_id": state.paymentIntent.id,
-            "value": state.paymentIntent.amount,
-            "currency": "GBP",
-            "shipping": state.paymentIntent.shipping,
-            "items": state.items.map((item) => ({
-                "id": item.sku,
-                "name": item.name,
-                "quantity": item.quantity,
-                "price": item.price,
-            }))
-        });
+        // gtag('event', 'purchase', {
+        //     "transaction_id": state.paymentIntent.id,
+        //     "value": state.paymentIntent.amount,
+        //     "currency": "GBP",
+        //     "shipping": state.paymentIntent.shipping,
+        //     "items": state.items.map((item) => ({
+        //         "id": item.sku,
+        //         "name": item.name,
+        //         "quantity": item.quantity,
+        //         "price": item.price,
+        //     }))
+        // });
         setClearCart(true)
     }, [])
     return (
