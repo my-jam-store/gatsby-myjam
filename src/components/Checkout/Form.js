@@ -41,6 +41,9 @@ const Form = () => {
   const stripe = useStripe()
   const elements = useElements()
 
+  const upperCaseName = (name) =>
+    name.split(' ').map((str) => str.replace(/^./, str[0].toUpperCase())).join(' ')
+
   const handleChange = (e) => {
     const key = e.target.id && e.target.id.split('-')[0];
     const type = e.target.getAttribute('data-form-type')
@@ -88,7 +91,7 @@ const Form = () => {
     if(valid) {
       const result = await stripe.confirmCardPayment(state.paymentIntent.clientSecret, {
         shipping: {
-          name: sameAddress ? name.billing : name.shipping,
+          name: sameAddress ? upperCaseName(name.billing) : upperCaseName(name.shipping),
           phone: sameAddress ? mobile.billing : mobile.shipping,
           address: {
             city: sameAddress ? city.billing : city.shipping,
@@ -108,8 +111,8 @@ const Form = () => {
               postal_code: postcode.billing,
               state: null
             },
-            email: email,
-            name: name.billing,
+            email: email.toLowerCase(),
+            name: upperCaseName(name.billing),
             phone: mobile.billing
           }
         }
