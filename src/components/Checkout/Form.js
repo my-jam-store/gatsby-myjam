@@ -42,7 +42,10 @@ const Form = () => {
   const elements = useElements()
 
   const upperCaseName = (name) =>
-    name.split(' ').map((str) => str.replace(/^./, str[0].toUpperCase())).join(' ')
+    name.toLowerCase()
+      .split(' ')
+      .map((str) => str.replace(/^./, str[0].toUpperCase()))
+      .join(' ')
 
   const handleChange = (e) => {
     const key = e.target.id && e.target.id.split('-')[0];
