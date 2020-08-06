@@ -147,7 +147,12 @@ const Summary = () => {
             <span>Loading</span> <LoaderIcon />
           </button>
         ):(
-          <button onClick={handleCoupon}>{isApplied ? 'Remove' : 'Apply'}</button>
+          <button
+            disabled={freeShippingApplied()}
+            onClick={handleCoupon}
+          >
+            {isApplied ? 'Remove' : 'Apply'}
+          </button>
         )}
         {error && <p>{error}</p>}
       </Discount>
