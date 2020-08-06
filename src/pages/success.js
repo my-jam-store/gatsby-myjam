@@ -10,6 +10,8 @@ export default ({ data }) => {
     const { state } = useContext(AppContext)
     const { categories } = data
 
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
+
     useEffect(() => {
         gtag('event', 'purchase', {
             "transaction_id": state.paymentIntent.id,
@@ -26,9 +28,23 @@ export default ({ data }) => {
         setClearCart(true)
     }, [])
     return (
-      <Index categories={categories.nodes} stickyFooter={true}>
+      <Index categories={categories.nodes} stickyFooter={false}>
           <SEO title="Success Page" />
-          <h2 style={{lineHeight: '1.5'}}>Thanks for purchasing from Myjam. We will contact you when we start sourcing your items.</h2>
+          <iframe
+            style={ isMobile() ? { margin: '-60px 0 -20px' } : {}}
+            src="https://giphy.com/embed/l0MYt5jPR6QX5pnqM"
+            width={isMobile() ? '100%' : '480'}
+            height="270"
+            frameBorder="0"
+            class="giphy-embed"
+            allowFullScreen
+          />
+          <p><a href="https://giphy.com/gifs/party-the-office-hard-l0MYt5jPR6QX5pnqM">via GIPHY</a></p>
+          <h2 style={{lineHeight: '1.5', marginBottom: '50px', fontSize: '22px'}}>
+            We received your order.<br />
+            We haven't charged your card yet. We will charge it on the day of dispatch, based on items availability.
+            You can track your order status <a href='https://orders.myjam.store/'>here</a> with the same email used when the order was placed.
+          </h2>
           {clearCart && (<EmptyCart />)}
       </Index>
     )

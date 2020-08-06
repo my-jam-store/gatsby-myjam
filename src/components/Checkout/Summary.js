@@ -38,6 +38,9 @@ const Summary = () => {
     setCouponCode(value)
   }
 
+  const freeShippingApplied = () =>
+    Number.parseInt(state.paymentIntent.shipping) === 0
+
   const handleCoupon = async () => {
     setLoading(true)
 
@@ -133,7 +136,7 @@ const Summary = () => {
       </Block>
       <Discount error={error}>
         <input
-          readOnly={isApplied}
+          readOnly={isApplied || freeShippingApplied()}
           type="text"
           placeholder="add coupon code here"
           onChange={handleChange}
