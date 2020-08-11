@@ -40,10 +40,10 @@ export default ({ data }) => {
             allowFullScreen
           />
           <p><a href="https://giphy.com/gifs/party-the-office-hard-l0MYt5jPR6QX5pnqM">via GIPHY</a></p>
+          <h1>Thank you for your order</h1>
           <h2 style={{lineHeight: '1.5', marginBottom: '50px', fontSize: '22px'}}>
-            We received your order.<br />
-            We haven't charged your card yet. We will charge it on the day of dispatch, based on items availability.
-            You can track your order status <a href='https://orders.myjam.store/'>here</a> with the same email used when the order was placed.
+            We received your order. We haven't charged your card yet. We will charge it on the day of dispatch, based on items availability.
+            You can track your order status <a href='https://orders.myjam.store/'>https://orders.myjam.store/</a> with the same email used when the order was placed.
           </h2>
           {clearCart && (<EmptyCart />)}
       </Index>

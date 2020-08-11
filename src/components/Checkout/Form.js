@@ -97,10 +97,10 @@ const Form = () => {
           name: sameAddress ? upperCaseName(name.billing) : upperCaseName(name.shipping),
           phone: sameAddress ? mobile.billing : mobile.shipping,
           address: {
-            city: sameAddress ? city.billing : city.shipping,
+            city: sameAddress ? upperCaseName(city.billing) : upperCaseName(city.shipping),
             country: 'GB',
             line1: sameAddress ? address.billing : address.shipping,
-            postal_code: sameAddress ? postcode.billing : postcode.shipping,
+            postal_code: sameAddress ? postcode.billing.toUpperCase() : postcode.shipping.toUpperCase(),
             state: null
           },
         },
@@ -108,10 +108,10 @@ const Form = () => {
           card: elements.getElement(CardElement),
           billing_details: {
             address: {
-              city: city.billing,
+              city: upperCaseName(city.billing),
               country: 'GB',
               line1: address.billing,
-              postal_code: postcode.billing,
+              postal_code: postcode.billing.toUpperCase(),
               state: null
             },
             email: email.toLowerCase(),
