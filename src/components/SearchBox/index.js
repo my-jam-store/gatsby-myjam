@@ -9,7 +9,7 @@ const searchClient = algoliasearch(`${process.env.GATSBY_ALGOLIA_APP_ID}`, `${pr
 
 export default () => (
   <Wrapper>
-    <InstantSearch searchClient={searchClient} indexName="Products">
+    <InstantSearch searchClient={searchClient} indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}>
       <Configure hitsPerPage={30} />
       <Search />
       <SearchResult />
