@@ -42,7 +42,8 @@ const Form = () => {
   const elements = useElements()
 
   const upperCaseName = (name) =>
-    name.toLowerCase()
+    name.trim()
+      .toLowerCase()
       .replace(/\s+/g,' ')
       .split(' ')
       .map((str) => str.replace(/^./, str[0].toUpperCase()))
