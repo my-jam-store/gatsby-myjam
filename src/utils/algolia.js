@@ -8,6 +8,7 @@ const ProductsQuery = `{
         slug
         sku
         description
+        keywords
         price
         categories
         simply_jazz_mental
