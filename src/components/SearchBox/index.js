@@ -7,10 +7,6 @@ import { Wrapper } from "./Components"
 
 const searchClient = algoliasearch(`${process.env.GATSBY_ALGOLIA_APP_ID}`, `${process.env.GATSBY_ALGOLIA_SEARCH_KEY}`)
 
-searchClient.initIndex(process.env.GATSBY_ALGOLIA_INDEX_NAME).setSettings({
-  searchableAttributes: ["keywords,name"]
-});
-
 export default () => (
   <Wrapper>
     <InstantSearch searchClient={searchClient} indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}>

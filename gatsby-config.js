@@ -57,6 +57,9 @@ module.exports = {
         indexName: `${process.env.GATSBY_ALGOLIA_INDEX_NAME}`,
         queries,
         chunkSize: 10000,
+        settings: {
+          searchableAttributes: ['name', 'keywords']
+        }
       },
     },
     {
