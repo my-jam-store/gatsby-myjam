@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react"
+import { loadStripe } from "@stripe/stripe-js"
 import { navigate } from "gatsby-link"
 import { Button, LoaderIcon } from "./Components"
 import AppContext from "../../store/context"
@@ -7,8 +8,8 @@ import { showMessage } from "../../utils/notification"
 import { setPaymentIntent } from "../../store/actions"
 import { formatPayload } from "../../utils/helper"
 
-
 const CheckoutButton = () => {
+  const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLIC_KEY);
   const [ loading, setLoading ] = useState(false)
   const { state, dispatch } = useContext(AppContext)
 
@@ -30,23 +31,12 @@ const CheckoutButton = () => {
     }
     setLoading(true)
 
+    const stripeInstance = await stripePromise
     const payload = formatPayload(state.items)
 
-    const { amount, id, metadata, client_secret } = state.paymentIntent.id ?
-        await Stripe.updatePaymentIntent(payload, state.paymentIntent.id)
-      : await Stripe.generatePaymentIntent(payload)
+    const { sessionId } = await Stripe.generatePaymentSession(payload)
 
-    const { shipping_amount, coupon_code = '', coupon_discount = 0 } = metadata
-    dispatch(setPaymentIntent(
-      id,
-      client_secret,
-      amount,
-      shipping_amount,
-      coupon_code,
-      coupon_discount
-    ))
-
-    navigate('/checkout')
+    stripeInstance.redirectToCheckout({ sessionId })
   }
 
   return (

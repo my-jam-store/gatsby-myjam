@@ -1,5 +1,15 @@
 import { getUrl } from "./helper"
 
+export const generatePaymentSession = async (payload) => {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...payload })
+  }
+  const response = await fetch(getUrl('session'), options)
+  return await response.json()
+}
+
 export const generatePaymentIntent = async (payload) => {
   const options = {
     method: 'POST',

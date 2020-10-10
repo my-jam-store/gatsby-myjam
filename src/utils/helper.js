@@ -1,29 +1,49 @@
+// export const formatPayload = (items) => {
+//   const lineItems = items.map((item) => {
+//     return {
+//       fields: {
+//         name: item.name,
+//         image: item.image,
+//         price: Number(item.price),
+//         sku: String(item.sku),
+//         qty: Number.parseInt(item.quantity)
+//       }
+//     }
+//   })
+//
+//   let metaData = ''
+//
+//   items.forEach((item) => {
+//     metaData += `[${item.sku},${item.quantity}]`
+//   })
+//
+//   const amount = items.reduce((total, item) => {
+//     return total + (item.quantity * Number(item.price) * 100)
+//   }, 0)
+//
+//   return {
+//     amount: Number(amount/100),
+//     line_items_metadata: metaData,
+//     line_items: lineItems
+//   }
+// }
+
 export const formatPayload = (items) => {
-  const lineItems = items.map((item) => {
-    return {
-      fields: {
+  const lineItems = items.map((item) => ({
+    price_data: {
+      product_data: {
         name: item.name,
-        image: item.image,
-        price: Number(item.price),
-        sku: String(item.sku),
-        qty: Number.parseInt(item.quantity)
-      }
-    }
-  })
-
-  let metaData = ''
-
-  items.forEach((item) => {
-    metaData += `[${item.sku},${item.quantity}]`
-  })
-
-  const amount = items.reduce((total, item) => {
-    return total + (item.quantity * Number(item.price) * 100)
-  }, 0)
+        images: [item.image],
+        metadata: {
+          sku: String(item.sku)
+        }
+      },
+      unit_amount: Number(item.price),
+    },
+    quantity: Number.parseInt(item.quantity)
+  }));
 
   return {
-    amount: Number(amount/100),
-    line_items_metadata: metaData,
     line_items: lineItems
   }
 }
