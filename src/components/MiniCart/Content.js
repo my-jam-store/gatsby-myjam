@@ -36,8 +36,8 @@ const CartContent = () => {
 
   const renderCartItemsBlock = () => (
     <>
-      {state.items.map((item) => (
-        <Item item={item} key={item.id} />
+      {state.items.map((item, index) => (
+        <Item item={item} key={index} />
       ))}
     </>
   )

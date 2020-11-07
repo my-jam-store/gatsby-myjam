@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import AppContext from "../../store/context"
 import MenuItems from "./MenuItems"
-import { TipBlock, BtnBlock, SubTotalBlock, EnableTip, Label, TipInput } from "./Components"
+import { BtnBlock, SubTotalBlock } from "./Components"
 import CheckoutButton from "./CheckoutButton"
 
 const MenuContent = () => {
@@ -21,8 +21,8 @@ const MenuContent = () => {
 
   return (
     <div>
-      {state.items.map((item) => (
-        <MenuItems key={item.id} item={item} />
+      {state.items.map((item, index) => (
+        <MenuItems key={index} item={item} />
       ))}
       {renderCartAmountBlock()}
       <BtnBlock>

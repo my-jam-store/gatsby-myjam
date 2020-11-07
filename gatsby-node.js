@@ -43,7 +43,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
         
-        products: allAirtable(filter: {table: {eq: "Products"} }, sort: { fields: [data___productId] }) {
+        products: allAirtable(filter: {table: {eq: "Products"}, data: {status: {eq: "enabled"}}}, sort: {fields: [data___productId]}) {
           totalCount
           nodes {
             recordId
