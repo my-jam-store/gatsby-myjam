@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "http://myjam.store/"
+  from = "https://myjam.store/"
   to = "https://www.myjam.xyz/"
   status = 301
   force = true
