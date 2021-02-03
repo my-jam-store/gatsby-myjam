@@ -1,3 +1,6 @@
+[build]
+  functions = "src/functions"
+
 [[redirects]]
   from = "https://myjam.store/"
   to = "https://www.myjam.xyz/"
