@@ -8,6 +8,38 @@
   force = true
 [[redirects]]
   from = "https://myjam.store/category/promotions/"
-  to = "https://www.myjam.xyz/"
+  to = "https://www.myjam.xyz/product-category/offers/promotions/"
   status = 301
   force = true
+[[redirects]]
+  from = "https://myjam.store/category/fruits/"
+  to = "https://www.myjam.xyz/product-category/fresh/fruits/"
+  status = 301
+  force = true
+  [[redirects]]
+  from = "https://myjam.store/category/dairy-egg/"
+  to = "https://www.myjam.xyz/product-category/dairy/milk-creamy/"
+  status = 301
+  force = true
+  [[redirects]]
+  from = "https://myjam.store/category/vegetables/"
+  to = "https://www.myjam.xyz/product-category/fresh/vegetables/"
+  status = 301
+  force = true
+  [[redirects]]
+  from = "https://myjam.store/category/meat/"
+  to = "https://www.myjam.xyz/product-category/butchery/"
+  status = 301
+  force = true
+  [[redirects]]
+  from = "https://myjam.store/category/fresh-salad-dips/"
+  to = "https://www.myjam.xyz/product-category/pantry/sauces/"
+  status = 301
+  force = true
+  [[redirects]]
+  from = "https://myjam.store/category/fresh-dips-homemade/"
+  to = "https://www.myjam.xyz/product-category/checf-touch/premium-meal/"
+  status = 301
+  force = true
+ 
+  
