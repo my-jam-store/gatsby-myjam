@@ -6,3 +6,8 @@
   to = "https://www.myjam.xyz/"
   status = 301
   force = true
+[[redirects]]
+  from = "https://myjam.store/category/promotions/"
+  to = "https://www.myjam.xyz/"
+  status = 301
+  force = true
